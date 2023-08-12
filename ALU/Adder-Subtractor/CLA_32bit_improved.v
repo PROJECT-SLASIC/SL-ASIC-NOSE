@@ -6,7 +6,7 @@
 // 
 // Create Date: 07.08.2023 10:19:14
 // Design Name: Carry Look Away Adder / Subtractor Design Prototype
-// Module Name: workspace
+// Module Name: CLA_32bit_improved
 // Project Name: SLASIC
 // Target Devices: 
 // Tool Versions: 
