@@ -18,6 +18,7 @@ module multiplier_last (
     reg [4:0] counter = 0;
     reg start_reg = 0;
     
+    
     wire [2:0] current_bits = multiplier[2:0]; 
     wire [63:0] partial_product0 = multiplicand << (counter * 3);
     wire [63:0] partial_product1 = multiplicand << (counter * 3 + 1);
@@ -36,7 +37,7 @@ module multiplier_last (
             valid <= 0;
             busy <= 0;
         end
-        else begin
+        else if(clk)begin
             start_reg <= start;
     
             if (start_reg && !busy) begin
@@ -62,6 +63,9 @@ module multiplier_last (
                 //result[63] <= (((rs2_signed && rs2[31])) ^ (rs1_signed && rs1[31])) ? 1'b1: 1'b0;
                 valid <= 1;
                 busy <= 0;
+                counter <= counter + 1;
+            end else if (valid && !busy)begin
+                valid <= 1'b0;
             end
         end
     end
