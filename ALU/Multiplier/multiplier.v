@@ -1,4 +1,4 @@
-module multiplier (
+module multiplier_last (
     input clk,
     input rst,
     input [31:0] rs1,
