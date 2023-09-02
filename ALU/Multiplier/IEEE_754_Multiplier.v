@@ -19,6 +19,7 @@ module ieee_754_multiplier (
     reg start_reg = 0;
     reg valid_reg = 0;
     reg zero_flag = 0;
+    reg valid_reg_1 = 0;
     
     wire [31:0] rounded_result = {sign, exponent[7:0], product[2*WIDTH-1:WIDTH+1]} + (product[WIDTH] & (product[WIDTH-1] | product[WIDTH+1]));
     wire [2:0] current_bits = multiplier[2:0]; 
@@ -41,6 +42,8 @@ module ieee_754_multiplier (
             valid <= 0;
             busy <= 0;
             valid_reg <= 0;
+            zero_flag <= 0;
+            valid_reg_1 <= 0;
         end else begin
             start_reg <= start;
     
@@ -82,9 +85,11 @@ module ieee_754_multiplier (
             else if (valid_reg || zero_flag) begin
                 // Compose the final result
                 result <= (!zero_flag) ? rounded_result : 32'b0;
-                valid <= 1;
+                valid <= !valid_reg_1;
                 busy <= 0;
+                valid_reg_1 <= 0;
             end
+            valid_reg_1 <= valid_reg | zero_flag;
         end
     end
 endmodule
