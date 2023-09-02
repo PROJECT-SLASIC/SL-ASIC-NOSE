@@ -109,6 +109,7 @@ module exponentiation(
                 FINISHED: begin
                     valid <= 1;
                     busy <= 0;
+                    state <= IDLE;
                 end
             endcase
         end
