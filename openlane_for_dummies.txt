@@ -22,4 +22,4 @@ set ::env(PL_RESIZER_MAX_WIRE_LENGTH) -------40   eğerki simulation sonrasında
 set ::env(CTS_CLK_MAX_WIRE_LENGTH) -------14 bu da max fanout hatalarında clk_buf ile ilgili hata alındığında bunun azaltılması gerekir
 
 
-./flow.tcl -design "Denemeler"(denemeler yerine dosyanın adı neyse o) -tag log_2(kaydetmek istediğin ad) -overwrite(ztn olmasada yeni yapıo yazmaktan zarar gelmez) 
+./flow.tcl -design Denemeler(denemeler yerine dosyanın adı neyse o) -tag log_2(kaydetmek istediğin ad) -overwrite(ztn olmasada yeni yapıo yazmaktan zarar gelmez) 
