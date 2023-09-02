@@ -1,0 +1,25 @@
+set ::env(DESIGN_NAME) DESIGN_NAME ----- burdaki isim module ismi ile aynı olmalı ve modul ismide dosya ismi ile aynı olmalı i.e    DESIGN_NAME.v  
+
+##Comment this part if u don't wanna manually set the pins
+#set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg   ----eğerki modulün pinlerini e w s n olarak ayarlamak istiyosak bu commandi aktif hale getirip ilgili dosyayı config.tcl yanına atmalıyız
+
+
+set ::env(CLOCK_PERIOD) {10} ----------clok period nano saniye cinsinden ayalıoz
+
+set ::env(CLOCK_PORT) "clk" ----------bu tasarımda c-kullancağın cokla aynı adda olmalı
+
+set ::env(SYNTH_STRATEGY) {AREA 3} -----------bu ne akdar agresif timing oturtmayı ayarlıyo gibi 3 en agresifi
+
+set ::env(MAX_FANOUT_CONSTRAINT) 4 ----------- max fanoutu ayarlıoz bizde hep 4 yapcaz
+
+set ::env(DIE_AREA) {0 0 290 290} ---------alanı ayarlıoz 
+
+set ::env(PL_TARGET_DENSITY) 0.55 --------ne kadar yoğun sıkıştırcağını ayarlıo 
+
+set ::env(PL_RESIZER_MAX_WIRE_LENGTH) -------40   eğerki simulation sonrasında max fanout hatası geliyorse ve report signoff sta_checks doyasında hata alınan path clk değil de wire ile ilgiliyse bunu 1 er 2 şer gibi azalta azalta tekrar run etmek gerekiyo
+
+
+set ::env(CTS_CLK_MAX_WIRE_LENGTH) -------14 bu da max fanout hatalarında clk_buf ile ilgili hata alındığında bunun azaltılması gerekir
+
+
+./flow.tcl -design "Denemeler"(denemeler yerine dosyanın adı neyse o) -tag log_2(kaydetmek istediğin ad) -overwrite(ztn olmasada yeni yapıo yazmaktan zarar gelmez) 
