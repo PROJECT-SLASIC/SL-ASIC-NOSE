@@ -6,32 +6,41 @@ module ALU #(parameter WIDTH = 32)(
     input [WIDTH-1:0] A, B,
     input [4:0] op,
     input start_alu,
+    output error_alu,
     output busy_alu,
     output valid_alu,
     output reg [WIDTH-1:0] result
 );
     reg [1:0] state;
     reg busy_alu_1;
+    reg [WIDTH-1:0]ieee_754_A;
+    reg [WIDTH-1:0]ieee_754_B;
+    reg [4:0] op_reg;
+    reg [WIDTH-1:0] A_reg;
+    reg [WIDTH-1:0] B_reg;
     
+    assign error_alu = error_o_div;     // means divisor is 0 
     assign busy_alu =  acc_busy_mac  | busy_exp  | busy_o_div  | busy_mul_ieee754;
     assign valid_alu = acc_valid_mac | valid_exp | valid_o_div | valid_mul_ieee754;
     
     always @(posedge clk)begin
         if(rst)begin
             busy_alu_1 <= 1'b0;
-            result <= 0;
-            carry_in_add <= 0; 
-            start_mul_mac <= 0; 
-            clear_acc_mac <= 0; 
-            start_exp <= 0; 
-            leading_or_trailing_zerocounter <= 0;
-            return_remainder_or_queotient_div <= 0; 
-            start_flag_div <= 0;
-            ieee_754_A <= 0;
-            ieee_754_B <= 0;
-            start_mul_ieee754 <= 0;
-            state <= 0;
-           
+            result <= {(WIDTH){1'b0}};
+            carry_in_add <= 1'b0; 
+            start_mul_mac <= 1'b0; 
+            clear_acc_mac <= 1'b0; 
+            start_exp <= 1'b0; 
+            leading_or_trailing_zerocounter <= 1'b0;
+            return_remainder_or_queotient_div <= 1'b0; 
+            start_flag_div <= 1'b0;
+            ieee_754_A <= {(WIDTH){1'b0}};
+            ieee_754_B <= {(WIDTH){1'b0}};
+            start_mul_ieee754 <= 1'b0;
+            state <= 2'b0;
+            op_reg <= 5'b0;
+            A_reg <= {(WIDTH){1'b0}};
+            B_reg <= {(WIDTH){1'b0}};
         end
         else if (clk)begin
             if(!busy_alu_1 && start_alu)begin
@@ -39,32 +48,31 @@ module ALU #(parameter WIDTH = 32)(
                 A_reg <= A;
                 B_reg <= B;
                 busy_alu_1 <= 1;
-                
             end
             else if (busy_alu_1 )begin
                 case (op_reg)
                     5'b00000:begin  //AND
-                        result <= A & B;
+                        result <= A_reg & B_reg;
                     end 
                     5'b00001:begin  //OR
-                        result <=  A | B;
+                        result <=  A_reg | B_reg;
                     end 
                     5'b00010:begin  //XOR
-                        result <=  A ^ B;
+                        result <=  A_reg ^ B_reg;
                     end 
                     5'b00011:begin  //NOT
-                        result <=  ~A;
+                        result <=  ~A_reg;
                     end 
                     5'b00100:begin  //NOR
-                        result <= ~(A | B);
+                        result <= ~(A_reg | B_reg);
                     end 
                     5'b00101:begin  // NAND
-                        result <= ~(A & B);
+                        result <= ~(A_reg & B_reg);
                     end 
                     5'b00110:begin  // Adder
                         result <= result_add;
                     end 
-                    5'b00111:begin  // Sub(týraktör)
+                    5'b00111:begin  // Sub(tÄ±raktÃ¶r)
                         result <= result_sub;
                     end 
                     5'b01000:begin  // Multiplier
@@ -81,42 +89,96 @@ module ALU #(parameter WIDTH = 32)(
                             state <= 2'b11;
                         end
                         else if (state==2'b11)begin
+                            start_mul_ieee754 <= 1'b0;
                             if (valid_mul_ieee754)begin
                                 result <= result_mul_ieee754;
+                                busy_alu_1 <= 1'b0;
                                 state <= 2'b00;
-                                
                             end
                         end
                     end 
                     5'b01001:begin  // Exp
-                        if (state==2'b00 & !cengo  )begin
+                        if (state==2'b00)begin
                             start_exp <= 1'b1;
                             state <= 2'b01;
                         end
                         else if (state==2'b01)begin
+                            start_exp <= 1'b0;
                             if (valid_exp)begin
                                 result <= result_exp;
+                                busy_alu_1 <= 1'b0;
                                 state <= 2'b00;
                             end
                         end
                     end 
                     5'b01010:begin  // Divider
-                    
+                        if (state==2'b00)begin
+                            return_remainder_or_queotient_div <= 0;
+                            start_flag_div <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state==2'b01)begin
+                            start_flag_div <= 1'b0;
+                            if (valid_o_div)begin
+                                result <= result_o_div;
+                                busy_alu_1 <= 1'b0;
+                                state <= 2'b00;
+                            end
+                        end
                     end 
-                    5'b01011:begin  // IEEE475 converter
-                    
-                    end  
-                    5'b01100:begin  // ZeroCounter
-                    
+                    5'b01011:begin  // Modulus
+                        if (state==2'b00)begin
+                            return_remainder_or_queotient_div <= 1;
+                            start_flag_div <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state==2'b01)begin
+                            start_flag_div <= 1'b0;
+                            if (valid_o_div)begin
+                                result <= result_o_div;
+                                busy_alu_1 <= 1'b0;
+                                state <= 2'b00;
+                            end
+                        end
+                    end 
+                    5'b01100:begin  // leading ZeroCounter
+                        leading_or_trailing_zerocounter <= 1'b1;
+                        result <= {26'b0, count_zerocounter};
                     end   
-                    5'b01101:begin  // MAC
-                    
+                    5'b01101:begin  // trailing ZeroCounter
+                        leading_or_trailing_zerocounter <= 1'b0;
+                        result <= {26'b0, count_zerocounter};
                     end   
-                    5'b01110:begin  // absolute_value
-                    
-                    end       
+                    5'b01110:begin  // MAC
+                        if (state == 2'b00 && (A_reg != 0) && (B_reg != 0)) begin
+                            start_mul_mac <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state == 2'b00 && (A_reg == 0) && (B_reg == 0))begin
+                            clear_acc_mac <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state==2'b01&&!clear_acc_mac)begin
+                            start_mul_mac <= 1'b0;
+                            if (acc_valid_mac)begin
+                                result <= result_mac;
+                                busy_alu_1 <= 1'b0;
+                                state <= 2'b00;
+                            end
+                        end
+                        else if (state==2'b01&&clear_acc_mac)begin
+                            clear_acc_mac <= 1'b0;
+                            state <= 2'b00;
+                        end
+                    end    
+                    5'b01111:begin  // absolute_value
+                        result <= ieee754_output_conv & 32'h7FFFFFFF;
+                    end     
+//                    5'b10000:begin  // absolute_value
+//                        result <= ieee754_output_conv & 32'h7FFFFFFF;
+//                    end        
                     default: begin  
-                        
+                        result <= 32'b0;
                     end
                 endcase 
             end
@@ -130,9 +192,9 @@ module ALU #(parameter WIDTH = 32)(
     wire [WIDTH-1:0] result_add;
     wire  carry_out_add;
     adder adder1 (
-        . A(A),
+        . A(A_reg),
         . carry_in(carry_in_add), 
-        . B(B), 
+        . B(B_reg), 
         . sum(result_add),
         . carry_out(carry_out_add)
     );
@@ -140,8 +202,8 @@ module ALU #(parameter WIDTH = 32)(
     wire [WIDTH-1:0] result_sub;
     wire borrow_out_sub;
     subtractor subtractor1 (
-        . A(A), 
-        . B(B), 
+        . A(A_reg), 
+        . B(B_reg), 
         . borrow_out(borrow_out_sub),
         . difference(result_sub)
     );
@@ -153,8 +215,8 @@ module ALU #(parameter WIDTH = 32)(
     mac_unit mac_unit_1(
         . clk(clk),
         . rst(rst),
-        . rs1(A),
-        . rs2(B),
+        . rs1(A_reg),
+        . rs2(B_reg),
         . rs1_signed(rs1_signed),
         . rs2_signed(rs2_signed),
         . start_mul(start_mul_mac),
@@ -171,7 +233,7 @@ module ALU #(parameter WIDTH = 32)(
         . clk(clk), 
         . rst(rst), 
         . start(start_exp),
-        . exp(B),
+        . exp(B_reg),
         . result(result_exp),
         . valid(valid_exp),
         . busy(busy_exp)
@@ -179,25 +241,25 @@ module ALU #(parameter WIDTH = 32)(
     /////////////////////////////////
     wire [WIDTH-1:0] ieee754_output_conv;
     ieee754_converter ieee754_converter_1(
-        . integer_part(A), // 32-bit integer part
-        . fractional_part(B), // 32-bit fractional part
+        . integer_part(A_reg), // 32-bit integer part
+        . fractional_part(B_reg), // 32-bit fractional part
         . ieee754_output(ieee754_output_conv) // 32-bit IEEE 754 representation
     );
     ///////////////////////////////////
     reg leading_or_trailing_zerocounter;
     wire [5:0] count_zerocounter;
     ZeroCounter ZeroCounter_1(
-        . data(A),
+        . data(A_reg),
         . leading_or_trailing(leading_or_trailing_zerocounter),  // 1 for leading, 0 for trailing
         . count(count_zerocounter)
     );
     //////////////////////////////////////
-    wire [WIDTH-1:0] data_out_abs;
+    /*wire [WIDTH-1:0] data_out_abs;
     absolute_value absolute_value_1(
-        . data_in(A),
+        . data_in(A_reg),
         . data_out(data_out_abs)
     );
-    ///////////////////////////////////////
+    ///////////////////////////////////////*/
     reg return_remainder_or_queotient_div;
     reg start_flag_div;
     wire busy_o_div;
@@ -205,10 +267,10 @@ module ALU #(parameter WIDTH = 32)(
     wire error_o_div;
     wire [WIDTH-1:0] result_o_div;
     booth_algorithm_divider booth_algorithm_divider_1(
-        . clk_i(clk),
+        . clk(clk),
         . rst_i(rst),
-        . divident(A),
-        . divisor(B),
+        . divident(A_reg),
+        . divisor(B_reg),
         . return_remainder_or_queotient(return_remainder_or_queotient_div),    // 1 = remainder , 0 = queotient
         . start_flag(start_flag_div),
         . busy_o(busy_o_div),
@@ -217,8 +279,6 @@ module ALU #(parameter WIDTH = 32)(
         . result_o(result_o_div)
     );
     /////////////////////////////////////////
-    reg [WIDTH-1:0]ieee_754_A;
-    reg [WIDTH-1:0]ieee_754_B;
     reg start_mul_ieee754;
     wire [WIDTH-1:0] result_mul_ieee754;
     wire valid_mul_ieee754;
