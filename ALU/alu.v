@@ -6,6 +6,7 @@ module ALU #(parameter WIDTH = 32)(
     input [WIDTH-1:0] A, B,
     input [4:0] op,
     input start_alu,
+    input operation_ieee754_or_integer, // will be added later on
     output error_alu,
     output busy_alu,
     output valid_alu,
