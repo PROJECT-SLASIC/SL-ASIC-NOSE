@@ -19,6 +19,7 @@ module ALU #(parameter WIDTH = 32)(
     reg [4:0] op_reg;
     reg [WIDTH-1:0] A_reg;
     reg [WIDTH-1:0] B_reg;
+    reg start_alu_reg;
     
     assign error_alu = error_o_div;     // means divisor is 0 
     assign busy_alu =  acc_busy_mac  | busy_exp  | busy_o_div  | busy_mul_ieee754;
@@ -28,7 +29,6 @@ module ALU #(parameter WIDTH = 32)(
         if(rst)begin
             busy_alu_1 <= 1'b0;
             result <= {(WIDTH){1'b0}};
-            carry_in_add <= 1'b0; 
             start_mul_mac <= 1'b0; 
             clear_acc_mac <= 1'b0; 
             start_exp <= 1'b0; 
@@ -42,9 +42,13 @@ module ALU #(parameter WIDTH = 32)(
             op_reg <= 5'b0;
             A_reg <= {(WIDTH){1'b0}};
             B_reg <= {(WIDTH){1'b0}};
+            start_alu_reg <= 1'b0;
         end
         else if (clk)begin
-            if(!busy_alu_1 && start_alu)begin
+            if(start_alu)begin
+                start_alu_reg <= (start_alu);
+            end
+            if(!busy_alu_1 && start_alu_reg)begin
                 op_reg <= op;
                 A_reg <= A;
                 B_reg <= B;
@@ -54,35 +58,45 @@ module ALU #(parameter WIDTH = 32)(
                 case (op_reg)
                     5'b00000:begin  //AND
                         result <= A_reg & B_reg;
+                        busy_alu_1 <= 1'b0;
                     end 
                     5'b00001:begin  //OR
                         result <=  A_reg | B_reg;
+                        busy_alu_1 <= 1'b0;
                     end 
                     5'b00010:begin  //XOR
                         result <=  A_reg ^ B_reg;
+                        busy_alu_1 <= 1'b0;
                     end 
                     5'b00011:begin  //NOT
                         result <=  ~A_reg;
+                        busy_alu_1 <= 1'b0;
                     end 
                     5'b00100:begin  //NOR
                         result <= ~(A_reg | B_reg);
+                        busy_alu_1 <= 1'b0;
                     end 
                     5'b00101:begin  // NAND
                         result <= ~(A_reg & B_reg);
+                        busy_alu_1 <= 1'b0;
                     end 
                     5'b00110:begin  // Adder
                         result <= result_add;
+                        busy_alu_1 <= 1'b0;
                     end 
                     5'b00111:begin  // Sub(tıraktör)
                         result <= result_sub;
+                        busy_alu_1 <= 1'b0;
                     end 
                     5'b01000:begin  // Multiplier
                         if(state==2'b00) begin
                             ieee_754_A <= ieee754_output_conv;
+                            busy_alu_1 <= 1'b0;
                             state <= 2'b01;
                         end
                         else if (state==2'b01) begin
                             ieee_754_B <= ieee754_output_conv;
+                            busy_alu_1 <= 1'b0;
                             state <= 2'b10;
                         end
                         else if (state==2'b10)begin
@@ -92,6 +106,7 @@ module ALU #(parameter WIDTH = 32)(
                         else if (state==2'b11)begin
                             start_mul_ieee754 <= 1'b0;
                             if (valid_mul_ieee754)begin
+                                start_alu_reg <= 1'b0;
                                 result <= result_mul_ieee754;
                                 busy_alu_1 <= 1'b0;
                                 state <= 2'b00;
@@ -112,22 +127,23 @@ module ALU #(parameter WIDTH = 32)(
                             end
                         end
                     end 
-                    5'b01010:begin  // Divider
+                    5'b01010,5'b01011:begin  // Divider
                         if (state==2'b00)begin
-                            return_remainder_or_queotient_div <= 0;
+                            return_remainder_or_queotient_div <= (op_reg & 5'b00001) ? (1'b1):(1'b0);
                             start_flag_div <= 1'b1;
                             state <= 2'b01;
                         end
                         else if (state==2'b01)begin
                             start_flag_div <= 1'b0;
                             if (valid_o_div)begin
+                                start_alu_reg <= 1'b0;
                                 result <= result_o_div;
                                 busy_alu_1 <= 1'b0;
                                 state <= 2'b00;
                             end
                         end
                     end 
-                    5'b01011:begin  // Modulus
+                    /*5'b01011:begin  // Modulus
                         if (state==2'b00)begin
                             return_remainder_or_queotient_div <= 1;
                             start_flag_div <= 1'b1;
@@ -141,15 +157,15 @@ module ALU #(parameter WIDTH = 32)(
                                 state <= 2'b00;
                             end
                         end
-                    end 
-                    5'b01100:begin  // leading ZeroCounter
-                        leading_or_trailing_zerocounter <= 1'b1;
+                    end */
+                    5'b01100,5'b01101:begin  // trailing ZeroCounter, leading ZeroCounter
+                        leading_or_trailing_zerocounter <= (op_reg & 5'b00001) ? (1'b1):(1'b0);
                         result <= {26'b0, count_zerocounter};
                     end   
-                    5'b01101:begin  // trailing ZeroCounter
+                    /*5'b01101:begin  // trailing ZeroCounter
                         leading_or_trailing_zerocounter <= 1'b0;
                         result <= {26'b0, count_zerocounter};
-                    end   
+                    end   */
                     5'b01110:begin  // MAC
                         if (state == 2'b00 && (A_reg != 0) && (B_reg != 0)) begin
                             start_mul_mac <= 1'b1;
@@ -162,6 +178,7 @@ module ALU #(parameter WIDTH = 32)(
                         else if (state==2'b01&&!clear_acc_mac)begin
                             start_mul_mac <= 1'b0;
                             if (acc_valid_mac)begin
+                                start_alu_reg <= 1'b0;
                                 result <= result_mac;
                                 busy_alu_1 <= 1'b0;
                                 state <= 2'b00;
@@ -189,12 +206,10 @@ module ALU #(parameter WIDTH = 32)(
     
     
     // Arithmetic Operations 
-    reg carry_in_add;
     wire [WIDTH-1:0] result_add;
     wire  carry_out_add;
     adder adder1 (
         . A(A_reg),
-        . carry_in(carry_in_add), 
         . B(B_reg), 
         . sum(result_add),
         . carry_out(carry_out_add)
