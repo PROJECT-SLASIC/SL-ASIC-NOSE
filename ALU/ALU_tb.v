@@ -34,6 +34,7 @@ module ALU_tb();
     );
     reg error_flag = 0;
     reg [WIDTH-1:0] expected_result;
+    reg [2*WIDTH-1:0] expected_result_1;
     
     initial begin
         clk = 0;
@@ -194,7 +195,7 @@ module ALU_tb();
         expected_result = 32'h4C580FEA;
         #1000;
         
-        //Test Case7: Operation 5'b010000 ---ieee754 multiplier
+        //Test Case7: Operation 5'b01000 ---ieee754 multiplier
         start_alu = 1;
         op = 5'b01000;
         A = 32'h0000062C;   //1580,6634
@@ -208,7 +209,67 @@ module ALU_tb();
         start_alu = 0;
         expected_result = 32'h47EA3B9A;
         #1000;
-    
+        
+        //Test Case8: Operation 5'b01001---exp
+        start_alu = 1;
+        op = 5'b01001;
+        B = 32'h0000000A;
+        #10;
+        expected_result = 32'h46AC14EE; // e^10
+        start_alu = 0;
+        #10;
+        #800;
+        
+        start_alu = 1;
+        op = 5'b01001;
+        B = 32'h0000000F;
+        #10;
+        expected_result = 32'h4A478665; // e^15
+        start_alu = 0;
+        #10;
+        #1000;
+        
+        //Test Case9: Operation 5'b01010---divider - modulus
+        start_alu = 1;
+        op = 5'b01010;
+        A = 32'hA3B52F1D;
+        B = 32'h7D3E9A0B;
+        #10;
+        expected_result = 32'h00000001;
+        start_alu = 0;
+        #10;
+        #400;
+        
+        start_alu = 1;
+        op = 5'b01011;
+        A = 32'hA3B52F1D;
+        B = 32'h7D3E9A0B;
+        #10;
+        expected_result = 32'h26769512;
+        start_alu = 0;
+        #10;
+        #400;
+        
+        //Test Case13: Operation 5'b001110---mac
+        start_alu = 1;
+        op = 5'b01110;
+        A = 32'hA3B52F1D;
+        B = 32'h7D3E9A0B;
+        #10;
+        expected_result_1 = 64'h501780649926783F;
+        start_alu = 0;
+        #10;
+        #600;
+        
+        start_alu = 1;
+        A = 32'hA3B52F1D;
+        B = 32'h7D3E9A0B;
+        #10;
+        expected_result_1 = 64'hA02F00C9324CF07E;
+        start_alu = 0;
+        #10;
+        #600;
+        
     
     
     
