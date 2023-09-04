@@ -21,6 +21,8 @@ module ALU #(parameter WIDTH = 32)(
     reg [WIDTH-1:0] B_reg;
     reg start_alu_reg;
     
+    reg [2*WIDTH-1:0] temp_64_result; 
+    
     assign error_alu = error_o_div;     // means divisor is 0 
     assign busy_alu =  acc_busy_mac  | busy_exp  | busy_o_div  | busy_mul_ieee754;
     assign valid_alu = acc_valid_mac | valid_exp | valid_o_div | valid_mul_ieee754;
@@ -43,6 +45,7 @@ module ALU #(parameter WIDTH = 32)(
             A_reg <= {(WIDTH){1'b0}};
             B_reg <= {(WIDTH){1'b0}};
             start_alu_reg <= 1'b0;
+            temp_64_result <= {(2*WIDTH){1'b0}};
         end
         else if (clk)begin
             if(start_alu)begin
@@ -121,6 +124,7 @@ module ALU #(parameter WIDTH = 32)(
                         else if (state==2'b01)begin
                             start_exp <= 1'b0;
                             if (valid_exp)begin
+                                start_alu_reg <= 1'b0;
                                 result <= result_exp;
                                 busy_alu_1 <= 1'b0;
                                 state <= 2'b00;
@@ -179,7 +183,7 @@ module ALU #(parameter WIDTH = 32)(
                             start_mul_mac <= 1'b0;
                             if (acc_valid_mac)begin
                                 start_alu_reg <= 1'b0;
-                                result <= result_mac;
+                                temp_64_result <= result_mac;
                                 busy_alu_1 <= 1'b0;
                                 state <= 2'b00;
                             end
