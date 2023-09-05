@@ -1,158 +1,363 @@
-module log2_calc_gpt (
-    input clk, rst,start,
-    input [31:0] in, // IEEE754 Single Precision
-    output reg [7:0] integer_part, // Output integer part
-    output reg [22:0] fraction_part, // Output fraction part
-    output reg done,
-    output reg busy
+module ALU #(parameter WIDTH = 32)(
+    input clk,
+    input rst,
+    input rs1_signed,
+    input rs2_signed,
+    input [WIDTH-1:0] A, B,
+    input [4:0] op,
+    input start_alu,
+    input operation_ieee754_or_integer, // will be added later on
+    output error_alu,
+    output busy_alu,
+    output valid_alu,
+    output reg [WIDTH-1:0] result
+);
+    reg [1:0] state;
+    reg busy_alu_1;
+    reg [WIDTH-1:0]ieee_754_A;
+    reg [WIDTH-1:0]ieee_754_B;
+    reg [4:0] op_reg;
+    reg [WIDTH-1:0] A_reg;
+    reg [WIDTH-1:0] B_reg;
+    reg start_alu_reg;
+    
+    reg [2*WIDTH-1:0] temp_64_result; 
+    
+    assign error_alu = error_o_div;     // means divisor is 0 
+    assign busy_alu =  acc_busy_mac  | busy_exp  | busy_o_div  | busy_mul_ieee754 | log_busy;
+    assign valid_alu = acc_valid_mac | valid_exp | valid_o_div | valid_mul_ieee754;
+    
+    always @(posedge clk)begin
+        if(rst)begin
+            busy_alu_1 <= 1'b0;
+            result <= {(WIDTH){1'b0}};
+            start_mul_mac <= 1'b0; 
+            clear_acc_mac <= 1'b0; 
+            start_exp <= 1'b0; 
+            leading_or_trailing_zerocounter <= 1'b0;
+            return_remainder_or_queotient_div <= 1'b0; 
+            start_flag_div <= 1'b0;
+            ieee_754_A <= {(WIDTH){1'b0}};
+            ieee_754_B <= {(WIDTH){1'b0}};
+            start_mul_ieee754 <= 1'b0;
+            state <= 2'b0;
+            op_reg <= 5'b0;
+            A_reg <= {(WIDTH){1'b0}};
+            B_reg <= {(WIDTH){1'b0}};
+            start_alu_reg <= 1'b0;
+            temp_64_result <= {(2*WIDTH){1'b0}};
+        end
+        else if (clk)begin
+            if(start_alu)begin
+                start_alu_reg <= (start_alu);
+            end
+            if(!busy_alu_1 && start_alu_reg)begin
+                op_reg <= op;
+                A_reg <= A;
+                B_reg <= B;
+                busy_alu_1 <= 1;
+            end
+            else if (busy_alu_1 )begin
+                case (op_reg)
+                    5'b00000:begin  //AND
+                        result <= A_reg & B_reg;
+                        busy_alu_1 <= 1'b0;
+                    end 
+                    5'b00001:begin  //OR
+                        result <=  A_reg | B_reg;
+                        busy_alu_1 <= 1'b0;
+                    end 
+                    5'b00010:begin  //XOR
+                        result <=  A_reg ^ B_reg;
+                        busy_alu_1 <= 1'b0;
+                    end 
+                    5'b00011:begin  //NOT
+                        result <=  ~A_reg;
+                        busy_alu_1 <= 1'b0;
+                    end 
+                    5'b00100:begin  //NOR
+                        result <= ~(A_reg | B_reg);
+                        busy_alu_1 <= 1'b0;
+                    end 
+                    5'b00101:begin  // NAND
+                        result <= ~(A_reg & B_reg);
+                        busy_alu_1 <= 1'b0;
+                    end 
+                    5'b00110:begin  // Adder
+                        result <= result_add;
+                        busy_alu_1 <= 1'b0;
+                    end 
+                    5'b00111:begin  // Sub(tıraktör)
+                        result <= result_sub;
+                        busy_alu_1 <= 1'b0;
+                    end 
+                    5'b01000:begin  // Multiplier
+                        if(state==2'b00) begin
+                            ieee_754_A <= ieee754_output_conv;
+                            busy_alu_1 <= 1'b0;
+                            state <= 2'b01;
+                        end
+                        else if (state==2'b01) begin
+                            ieee_754_B <= ieee754_output_conv;
+                            busy_alu_1 <= 1'b0;
+                            state <= 2'b10;
+                        end
+                        else if (state==2'b10)begin
+                            start_mul_ieee754 <= 1'b1;
+                            state <= 2'b11;
+                        end
+                        else if (state==2'b11)begin
+                            start_mul_ieee754 <= 1'b0;
+                            if (valid_mul_ieee754)begin
+                                start_alu_reg <= 1'b0;
+                                result <= result_mul_ieee754;
+                                busy_alu_1 <= 1'b0;
+                                state <= 2'b00;
+                            end
+                        end
+                    end 
+                    5'b01001:begin  // Exp
+                        if (state==2'b00)begin
+                            start_exp <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state==2'b01)begin
+                            start_exp <= 1'b0;
+                            if (valid_exp)begin
+                                start_alu_reg <= 1'b0;
+                                result <= result_exp;
+                                busy_alu_1 <= 1'b0;
+                                state <= 2'b00;
+                            end
+                        end
+                    end 
+                    5'b01010,5'b01011:begin  // Divider
+                        if (state==2'b00)begin
+                            return_remainder_or_queotient_div <= (op_reg & 5'b00001) ? (1'b1):(1'b0);
+                            start_flag_div <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state==2'b01)begin
+                            start_flag_div <= 1'b0;
+                            if (valid_o_div)begin
+                                start_alu_reg <= 1'b0;
+                                result <= result_o_div;
+                                busy_alu_1 <= 1'b0;
+                                state <= 2'b00;
+                            end
+                        end
+                    end 
+                    /*5'b01011:begin  // Modulus
+                        if (state==2'b00)begin
+                            return_remainder_or_queotient_div <= 1;
+                            start_flag_div <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state==2'b01)begin
+                            start_flag_div <= 1'b0;
+                            if (valid_o_div)begin
+                                result <= result_o_div;
+                                busy_alu_1 <= 1'b0;
+                                state <= 2'b00;
+                            end
+                        end
+                    end */
+                    5'b01100,5'b01101:begin  // trailing ZeroCounter, leading ZeroCounter
+                        leading_or_trailing_zerocounter <= (op_reg & 5'b00001) ? (1'b1):(1'b0);
+                        result <= {26'b0, count_zerocounter};
+                    end   
+                    /*5'b01101:begin  // trailing ZeroCounter
+                        leading_or_trailing_zerocounter <= 1'b0;
+                        result <= {26'b0, count_zerocounter};
+                    end   */
+                    5'b01110:begin  // MAC
+                        if (state == 2'b00 && (A_reg != 0) && (B_reg != 0)) begin
+                            start_mul_mac <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state == 2'b00 && (A_reg == 0) && (B_reg == 0))begin
+                            clear_acc_mac <= 1'b1;
+                            state <= 2'b01;
+                        end
+                        else if (state==2'b01&&!clear_acc_mac)begin
+                            start_mul_mac <= 1'b0;
+                            if (acc_valid_mac)begin
+                                start_alu_reg <= 1'b0;
+                                temp_64_result <= result_mac;
+                                busy_alu_1 <= 1'b0;
+                                state <= 2'b00;
+                            end
+                        end
+                        else if (state==2'b01&&clear_acc_mac)begin
+                            clear_acc_mac <= 1'b0;
+                            state <= 2'b00;
+                        end
+                    end    
+                    5'b01111:begin  // absolute_value
+                        result <= ieee754_output_conv & 32'h7FFFFFFF;
+                    end     
+                    5'b10000:begin  // log_2_IEEE
+                        if(state== 2'b00) begin
+                        log_start <= 1;
+                        busy_alu_1 <=1;
+                        state<= 2'b01;
+                        end
+                   else if(state== 2'b01) begin  
+                        log_start <= 0;
+                        state<= 2'b10;
+                   
+                   end 
+                    
+                   else if(state== 2'b10 & done) begin
+                        A_reg <= log_integer;
+                        B_reg <= log_fraction;
+                        state<= 2'b11;
+                        log_start <= 0;
+                        
+                        
+                        end
+                        
+                   else if(state== 2'b11) begin
+                        result <=ieee754_output_conv;
+                        state<= 2'b00;
+                        start_alu_reg <= 1'b0;
+                        busy_alu_1 <=0;
+                        
+                        end
+                     end    
+                    default: begin  
+                        result <= 32'b0;
+                         
+                    end
+                endcase 
+            end
+        end
+    end
+    
+    
+    
+    // Arithmetic Operations 
+    wire [WIDTH-1:0] result_add;
+    wire  carry_out_add;
+    adder adder1 (
+        . A(A_reg),
+        . B(B_reg), 
+        . sum(result_add),
+        . carry_out(carry_out_add)
+    );
+    ///////////////////////////////
+    wire [WIDTH-1:0] result_sub;
+    wire borrow_out_sub;
+    subtractor subtractor1 (
+        . A(A_reg), 
+        . B(B_reg), 
+        . borrow_out(borrow_out_sub),
+        . difference(result_sub)
+    );
+    ///////////////////////////////
+    reg start_mul_mac; 
+    reg clear_acc_mac;
+    wire [2*WIDTH-1:0] result_mac;
+    wire acc_valid_mac,acc_busy_mac;
+    mac_unit mac_unit_1(
+        . clk(clk),
+        . rst(rst),
+        . rs1(A_reg),
+        . rs2(B_reg),
+        . rs1_signed(rs1_signed),
+        . rs2_signed(rs2_signed),
+        . start_mul(start_mul_mac),
+        . clear_acc(clear_acc_mac),
+        . mac_result(result_mac),
+        . acc_valid(acc_valid_mac),      // Changed from mul_valid
+        . acc_busy(acc_busy_mac)        // Changed the name for external signal
+    );
+    //////////////////////////////////
+    reg start_exp;
+    wire [WIDTH-1:0] result_exp;
+    wire valid_exp, busy_exp;
+    exponentiation exponentiation_1(
+        . clk(clk), 
+        . rst(rst), 
+        . start(start_exp),
+        . exp(B_reg),
+        . result(result_exp),
+        . valid(valid_exp),
+        . busy(busy_exp)
+    );
+    /////////////////////////////////
+    wire [WIDTH-1:0] ieee754_output_conv;
+    ieee754_converter ieee754_converter_1(
+        . integer_part(A_reg), // 32-bit integer part
+        . fractional_part(B_reg), // 32-bit fractional part
+        . ieee754_output(ieee754_output_conv) // 32-bit IEEE 754 representation
+    );
+    ///////////////////////////////////
+    reg leading_or_trailing_zerocounter;
+    wire [5:0] count_zerocounter;
+    ZeroCounter ZeroCounter_1(
+        . data(A_reg),
+        . leading_or_trailing(leading_or_trailing_zerocounter),  // 1 for leading, 0 for trailing
+        . count(count_zerocounter)
+    );
+    //////////////////////////////////////
+    /*wire [WIDTH-1:0] data_out_abs;
+    absolute_value absolute_value_1(
+        . data_in(A_reg),
+        . data_out(data_out_abs)
+    );
+    ///////////////////////////////////////*/
+    reg return_remainder_or_queotient_div;
+    reg start_flag_div;
+    wire busy_o_div;
+    wire valid_o_div;
+    wire error_o_div;
+    wire [WIDTH-1:0] result_o_div;
+    booth_algorithm_divider booth_algorithm_divider_1(
+        . clk(clk),
+        . rst_i(rst),
+        . divident(A_reg),
+        . divisor(B_reg),
+        . return_remainder_or_queotient(return_remainder_or_queotient_div),    // 1 = remainder , 0 = queotient
+        . start_flag(start_flag_div),
+        . busy_o(busy_o_div),
+        . valid_o(valid_o_div),
+        . error_o(error_o_div),
+        . result_o(result_o_div)
+    );
+    /////////////////////////////////////////
+    reg start_mul_ieee754;
+    wire [WIDTH-1:0] result_mul_ieee754;
+    wire valid_mul_ieee754;
+    wire busy_mul_ieee754;
+    ieee_754_multiplier ieee_754_multiplier_1(
+        . clk(clk),
+        . rst(rst),
+        . rs1(ieee_754_A),  // IEEE 754 single precision
+        . rs2(ieee_754_B),  // IEEE 754 single precision
+        . start(start_mul_ieee754),
+        . result(result_mul_ieee754),  // IEEE 754 single precision
+        . valid(valid_mul_ieee754),
+        . busy(busy_mul_ieee754)
+    );
+    /////////////////////////////////////////////
+    reg log_start;
+    wire [31:0] log_integer;
+    wire [31:0] log_fraction;
+    wire done;
+    wire log_busy;
+    log2_calc_gpt log2_calc_gpt (
+    .clk(clk), 
+    .rst(rst),
+    .start(log_start),
+    .in(A_reg), // IEEE754 Single Precision
+    .integer_part(log_integer), // Output integer part
+    .fraction_part(log_fraction), // Output fraction part
+    .done(done),
+    .busy(log_busy)
                    // signal indicating the computation is complete
 );
-
-parameter         IDLE = 4'b0000,
-                  INITIALIZATION = 4'b0001,
-                  LOAD = 4'b0010,
-                  START_MULTIPLY_SQUARE = 4'b0011,
-                  SQUARE = 4'b0100, 
-                  START_MULTIPLY_CUBIC = 4'b0101,
-                  CUBE = 4'b0110, 
-                  SUBSTRACT_SQUARE = 4'b0111,
-                  ADD_CUBIC = 4'b1000, 
-                  LOAD_LN2_INV = 4'b1001,
-                  START_MULTIPLY_LN2_INV = 4'b1010, 
-                  DONE = 4'b1011;
- // We've added an additional bit to account for the DONE state.
-
-reg [3:0] state, next_state;  // Adjusting the width to accommodate the maximum number of states.
-reg start_reg;
-    reg [23:0] over_ln2;
-    reg [7:0] exp_minus_127;
-    reg [23:0] x, x_square, x_cubic,fraction;
-    reg [23:0] mult_rs1, mult_rs2;
-    reg mult_start;
-    wire mult_busy;
-    wire mult_valid;
-    wire [23:0] mult_result;
-
-    // Instantiate the multiplier
-    multiplier_unsigned #(.WIDTH(24)) mult (
-        .clk(clk),
-        .rst(rst),
-        .rs1(mult_rs1),
-        .rs2(mult_rs2),
-        .start(mult_start),
-        .result(mult_result),
-        .valid(mult_valid),
-        .busy(mult_busy)
-    );
-
-    always @(posedge clk or posedge rst) begin
-         
-        if (rst) begin
-            state <= IDLE;
-            integer_part <= 0;
-            fraction_part <= 0;
-            mult_rs1 <=0;
-            mult_rs2 <=0;
-            fraction <= 0;
-            done <= 0;
-            mult_start <= 0;
-            over_ln2 <= 24'hB8AA3E;
-        end 
-        else  begin
-            
-            
-            if (start )begin 
-            start_reg <=1;
-            end
-        
-        case (state)
-            IDLE: begin
-            if(start_reg) begin
-           state <= INITIALIZATION;
-           done<=0;
-             end
-        end
-            INITIALIZATION: begin
-                exp_minus_127 <= in[30:23] - 8'd127; 
-                x <= {1'b0 , in[22:0]};
-                fraction <= {1'b0 , in[22:0]};
-                state <= LOAD;
-                mult_start <= 1;
-                busy<= 1;
-            end
-
-            LOAD: begin
-                mult_rs1 <= x;
-                mult_rs2 <= x;
-                 mult_start <= 0;
-                state <= START_MULTIPLY_SQUARE;
-            end
-
-            START_MULTIPLY_SQUARE: begin
-                mult_start <= 0;
-                state <= SQUARE;
-            end
-
-            SQUARE: begin
-                if (!mult_busy) begin
-                    x_square <= mult_result;
-                    fraction_part<= mult_result;
-                    state <= CUBE;
-                    mult_start <= 1;
-                end
-            end
-
-            CUBE: begin
-                mult_rs1 <= x;
-                mult_rs2 <= x_square;
-                mult_start <= 0;
-                state <= START_MULTIPLY_CUBIC;
-            end
-
-            START_MULTIPLY_CUBIC: begin
-                mult_start <= 0;
-                state <= SUBSTRACT_SQUARE;
-            end
-
-            SUBSTRACT_SQUARE: begin
-                if (!mult_busy) begin
-                    x_cubic <= mult_result;
-                    fraction_part<= mult_result;
-                    fraction <= fraction - (x_square >> 1);
-                    state <= ADD_CUBIC;
-                    mult_start <= 0;
-                end
-            end
-
-            ADD_CUBIC: begin
-                fraction <= fraction+ (x_cubic/6);
-                state <= LOAD_LN2_INV;
-                mult_start <= 1;
-            end
-            
-             LOAD_LN2_INV: begin
-             mult_rs1 <= fraction;
-             mult_rs2 <= over_ln2;  // Hexadecimal representation of 1/ln(2)
-             mult_start <= 0;
-             state <= START_MULTIPLY_LN2_INV;
-         end
-
-          START_MULTIPLY_LN2_INV: begin
-             mult_start <= 0;
-            state <= DONE;
-            end
-
-            DONE: begin
-            if (!mult_busy) begin
-            fraction_part <= mult_result[22:0]; 
-            integer_part <=exp_minus_127;
-                busy<=0;
-                done<=1;
-                start_reg <= 0;
-                state <= IDLE;
-            end
-        end
-        endcase
-    end
-end
-endmodule 
+    //////////////////////////////////////////////
+    
+    
+endmodule
