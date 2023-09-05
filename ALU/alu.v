@@ -24,7 +24,7 @@ module ALU #(parameter WIDTH = 32)(
     reg [2*WIDTH-1:0] temp_64_result; 
     
     assign error_alu = error_o_div;     // means divisor is 0 
-    assign busy_alu =  acc_busy_mac  | busy_exp  | busy_o_div  | busy_mul_ieee754;
+    assign busy_alu =  acc_busy_mac  | busy_exp  | busy_o_div  | busy_mul_ieee754 | log_busy;
     assign valid_alu = acc_valid_mac | valid_exp | valid_o_div | valid_mul_ieee754;
     
     always @(posedge clk)begin
@@ -196,11 +196,38 @@ module ALU #(parameter WIDTH = 32)(
                     5'b01111:begin  // absolute_value
                         result <= ieee754_output_conv & 32'h7FFFFFFF;
                     end     
-//                    5'b10000:begin  // absolute_value
-//                        result <= ieee754_output_conv & 32'h7FFFFFFF;
-//                    end        
+                    5'b10000:begin  // log_2_IEEE
+                        if(state== 2'b00) begin
+                        log_start <= 1;
+                        busy_alu_1 <=1;
+                        state<= 2'b01;
+                        end
+                   else if(state== 2'b01) begin  
+                        log_start <= 0;
+                        state<= 2'b10;
+                   
+                   end 
+                    
+                   else if(state== 2'b10 & done) begin
+                        A_reg <= log_integer;
+                        B_reg <= log_fraction;
+                        state<= 2'b11;
+                        log_start <= 0;
+                        
+                        
+                        end
+                        
+                   else if(state== 2'b11) begin
+                        result <=ieee754_output_conv;
+                        state<= 2'b00;
+                        start_alu_reg <= 1'b0;
+                        busy_alu_1 <=0;
+                        
+                        end
+                     end    
                     default: begin  
                         result <= 32'b0;
+                         
                     end
                 endcase 
             end
@@ -314,7 +341,23 @@ module ALU #(parameter WIDTH = 32)(
         . busy(busy_mul_ieee754)
     );
     /////////////////////////////////////////////
-    
+    reg log_start;
+    wire [31:0] log_integer;
+    wire [31:0] log_fraction;
+    wire done;
+    wire log_busy;
+    log2_calc_gpt log2_calc_gpt (
+    .clk(clk), 
+    .rst(rst),
+    .start(log_start),
+    .in(A_reg), // IEEE754 Single Precision
+    .integer_part(log_integer), // Output integer part
+    .fraction_part(log_fraction), // Output fraction part
+    .done(done),
+    .busy(log_busy)
+                   // signal indicating the computation is complete
+);
+    //////////////////////////////////////////////
     
     
 endmodule
