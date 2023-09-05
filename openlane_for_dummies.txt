@@ -4,11 +4,11 @@ set ::env(DESIGN_NAME) DESIGN_NAME ----- burdaki isim module ismi ile aynı olma
 #set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg   ----eğerki modulün pinlerini e w s n olarak ayarlamak istiyosak bu commandi aktif hale getirip ilgili dosyayı config.tcl yanına atmalıyız
 
 
-set ::env(CLOCK_PERIOD) {10} ----------clok period nano saniye cinsinden ayarlıoz
+set ::env(CLOCK_PERIOD) {10} ----------clok period nano saniye cinsinden ayalıoz
 
-set ::env(CLOCK_PORT) "clk" ----------bu tasarımda kullancağın cokla aynı adda olmalı
+set ::env(CLOCK_PORT) "clk" ----------bu tasarımda c-kullancağın cokla aynı adda olmalı
 
-set ::env(SYNTH_STRATEGY) {AREA 3} -----------bu ne kadar agresif timing oturtmaya çalışcağını ayarlıyo gibi 3 en agresifi
+set ::env(SYNTH_STRATEGY) {AREA 3} -----------bu ne akdar agresif timing oturtmayı ayarlıyo gibi 3 en agresifi
 
 set ::env(MAX_FANOUT_CONSTRAINT) 4 ----------- max fanoutu ayarlıoz bizde hep 4 yapcaz
 
@@ -22,4 +22,16 @@ set ::env(PL_RESIZER_MAX_WIRE_LENGTH) -------40   eğerki simulation sonrasında
 set ::env(CTS_CLK_MAX_WIRE_LENGTH) -------14 bu da max fanout hatalarında clk_buf ile ilgili hata alındığında bunun azaltılması gerekir
 
 
-./flow.tcl -design Denemeler(denemeler yerine dosyanın adı neyse o) -tag log_2(kaydetmek istediğin ad) -overwrite(ztn olmasada yeni yapıo yazmaktan zarar gelmez) 
+./flow.tcl -design "Denemeler"(denemeler yerine dosyanın adı neyse o) -tag log_2(kaydetmek istediğin ad) -overwrite(ztn olmasada yeni yapıo yazmaktan zarar gelmez) 
+
+
+make mounttadn sonra openroadd açmak istiosan 
+
+python3 gui.py --viewer openroad ./designs/(dosya adı)/runs/(dosya adı)  ------------ bu normal görünüş
+
+python3 gui.py --viewer openroad --stage floorplan ./designs/(dosya adı)/runs/(dosya adı) ------------ bu da floorpan görünüşü
+
+
+
+
+Openroad incelemek istiosan izle  ------------------  https://www.youtube.com/watch?v=NuFJLy9ywVg
