@@ -1,0 +1,36 @@
+
+61. Executing CHECK pass (checking for obvious problems).
+Checking module adder_32bit_behavioral...
+Warning: Wire adder_32bit_behavioral.\sum [31] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [30] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [29] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [28] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [27] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [26] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [25] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [24] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [23] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [22] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [21] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [20] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [19] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [18] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [17] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [16] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [15] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [14] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [13] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [12] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [11] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [10] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [9] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [8] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [7] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [6] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [5] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [4] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [3] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [2] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [1] is used but has no driver.
+Warning: Wire adder_32bit_behavioral.\sum [0] is used but has no driver.
+Found and reported 32 problems.
