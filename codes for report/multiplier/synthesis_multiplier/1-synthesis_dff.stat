@@ -1,0 +1,24 @@
+
+53. Printing statistics.
+
+=== multiplier_32bit_behavioral ===
+
+   Number of wires:               6487
+   Number of wire bits:           7367
+   Number of public wires:           7
+   Number of public wire bits:     194
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               6661
+     $_ANDNOT_                    1936
+     $_AND_                        892
+     $_NAND_                       389
+     $_NOR_                        165
+     $_NOT_                        256
+     $_ORNOT_                       80
+     $_OR_                         735
+     $_XNOR_                       493
+     $_XOR_                       1587
+     sky130_fd_sc_hd__dfrtp_2      128
+
