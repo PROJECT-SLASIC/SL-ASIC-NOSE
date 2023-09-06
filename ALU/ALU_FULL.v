@@ -1,12 +1,10 @@
-module ALU #(parameter WIDTH = 32)(
+module alu #(parameter WIDTH = 32)(
     input clk,
     input rst,
-    input rs1_signed,
-    input rs2_signed,
-    input [WIDTH-1:0] A, B,
+    input [WIDTH-1:0] A, 
+    input [WIDTH-1:0] B,
     input [4:0] op,
     input start_alu,
-    input operation_ieee754_or_integer, // will be added later on
     output error_alu,
     output busy_alu,
     output valid_alu,
@@ -20,6 +18,8 @@ module ALU #(parameter WIDTH = 32)(
     reg [WIDTH-1:0] A_reg;
     reg [WIDTH-1:0] B_reg;
     reg start_alu_reg;
+    reg rs1_signed;
+    reg rs2_signed;
     
     reg [2*WIDTH-1:0] temp_64_result; 
     
@@ -29,6 +29,8 @@ module ALU #(parameter WIDTH = 32)(
     
     always @(posedge clk)begin
         if(rst)begin
+            rs1_signed <= 1'b0;
+            rs2_signed <= 1'b0;
             busy_alu_1 <= 1'b0;
             result <= {(WIDTH){1'b0}};
             start_mul_mac <= 1'b0; 
@@ -1050,6 +1052,7 @@ reg start_reg;
             mult_rs2 <=0;
             fraction <= 0;
             done <= 0;
+            busy <= 0;
             mult_start <= 0;
             over_ln2 <= 24'hB8AA3E;
         end 
