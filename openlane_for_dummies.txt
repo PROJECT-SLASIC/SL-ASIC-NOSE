@@ -33,5 +33,6 @@ python3 gui.py --viewer openroad --stage floorplan ./designs/(dosya adı)/runs/(
 
 
 
-
 Openroad incelemek istiosan izle  ------------------  https://www.youtube.com/watch?v=NuFJLy9ywVg
+
+verilator --lint-only your_file.v ----------------------
