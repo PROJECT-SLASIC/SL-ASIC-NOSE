@@ -40,7 +40,7 @@ set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
 #Floorplanning
 ##########################################################################################################################################
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) {0 0 800 800}
+set ::env(DIE_AREA) {0 0 700 700}
 set ::env(FP_CORE_UTIL) 35
 set ::env(DESIGN_IS_CORE) 1
 set ::env(FP_PDN_CORE_RING) 1
