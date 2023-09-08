@@ -1,5 +1,5 @@
 # User config
-set ::env(DESIGN_NAME) ALU
+set ::env(DESIGN_NAME) alu
 set ::env(VERILOG_FILES) [glob $::env(DESIGN_DIR)/src/*.v]
 
 ##Comment this part if u don't wanna manually set the pins
@@ -12,7 +12,7 @@ set ::env(QUIT_ON_TIMING_VIOLATIONS) "0"
 ##########################################################################################################################################
 # CLOCK
 ##########################################################################################################################################
-set ::env(CLOCK_PERIOD) {15}
+set ::env(CLOCK_PERIOD) {20}
 set ::env(RUN_CTS) 1
 set ::env(CLOCK_PORT) "clk"
 set ::env(CLOCK_NET) $::env(CLOCK_PORT)
@@ -40,7 +40,7 @@ set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
 #Floorplanning
 ##########################################################################################################################################
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) {0 0 700 700}
+set ::env(DIE_AREA) {0 0 1000 1000}
 set ::env(FP_CORE_UTIL) 35
 set ::env(DESIGN_IS_CORE) 1
 set ::env(FP_PDN_CORE_RING) 1
