@@ -12,7 +12,7 @@ set ::env(QUIT_ON_TIMING_VIOLATIONS) "0"
 ##########################################################################################################################################
 # CLOCK
 ##########################################################################################################################################
-set ::env(CLOCK_PERIOD) {20}
+set ::env(CLOCK_PERIOD) {15}
 set ::env(RUN_CTS) 1
 set ::env(CLOCK_PORT) "clk"
 set ::env(CLOCK_NET) $::env(CLOCK_PORT)
@@ -33,14 +33,15 @@ set ::env(LEC_ENABLE) 0
 ##########################################################################################################################################
 #SYNTHESIS
 ##########################################################################################################################################
-set ::env(SYNTH_STRATEGY) {AREA 3}
+set ::env(SYNTH_STRATEGY) {AREA 3} 
 set ::env(MAX_FANOUT_CONSTRAINT) 100
 set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
+set ::env(SYNTH_SIZING) 1
 ##########################################################################################################################################
 #Floorplanning
 ##########################################################################################################################################
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) {0 0 1000 1000}
+set ::env(DIE_AREA) {0 0 700 700}
 set ::env(FP_CORE_UTIL) 35
 set ::env(DESIGN_IS_CORE) 1
 set ::env(FP_PDN_CORE_RING) 1
@@ -99,9 +100,9 @@ set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_BUFFER_INPUT_PORTS) 1
 set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 1
-set ::env(PL_RESIZER_HOLD_MAX_BUFFER_PERCENT) 40
+set ::env(PL_RESIZER_HOLD_MAX_BUFFER_PERCENT) 60
 set ::env(PL_RESIZER_SETUP_MAX_BUFFER_PERCENT) 60
-set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 0
+set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 1
 set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.2
 set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 0.1
 set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 180
@@ -129,3 +130,7 @@ set ::env(DRT_OPT_ITERS) 45
 set ::env(ROUTING_CORES) 10
 set ::env(DETAILED_ROUTER) tritonroute
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
+set ::env(GLB_RESIZER_ALLOW_SETUP_VIOS) 1
+
+set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 100
+set ::env(GLB_RESIZER_HOLD_MAX_BUFFER_PERCENT) 90
