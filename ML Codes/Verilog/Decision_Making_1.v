@@ -3,7 +3,7 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
     input rst,  // sw15 rst
     input start_i,    // sw14 start
     input [11:0] switch_for_data,    // sw11 - sw0 for input arrangment
-    output reg [2:0] led // 100 for led 15 filter coffee, 010 for led 14 air, 001 for led 13 espresso
+    output reg [2:0] led // 100 for led 15 air, 010 for led 14 espresso, 001 for led 13 filter
     );
     
     reg [width-1:0] Temperature [0:599];
@@ -53,14 +53,13 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
     
     reg [2:0] i;
     
-    wire signed [2*width-1:0] temp_layer1 [0:3];
     reg signed [width-1:0] first_layer [0:3];
     reg signed [width-1:0] w0_l1 [0:5];
     reg signed [width-1:0] w1_l1 [0:5];
     reg signed [width-1:0] w2_l1 [0:5];
     reg signed [width-1:0] w3_l1 [0:5];
     
-    wire signed [2*width-1:0] temp_layer2 [0:5];
+    reg signed [2*width-1:0] temp_layer2 [0:5];
     reg signed [width-1:0] second_layer [0:5];
     reg signed [width-1:0] second_layer_bias [0:5];
     reg signed [width-1:0] w0_l2 [0:4];
@@ -70,6 +69,7 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
     reg signed [width-1:0] w4_l2 [0:4];
     reg signed [width-1:0] w5_l2 [0:4];
     
+    reg signed [2*width-1:0] temp_layer3 [0:4];
     reg signed [width-1:0] third_layer [0:4];
     reg signed [width-1:0] third_layer_bias [0:4];
     reg signed [width-1:0] w0_l3 [0:2];
@@ -78,10 +78,16 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
     reg signed [width-1:0] w3_l3 [0:2];
     reg signed [width-1:0] w4_l3 [0:2];
     
-    reg signed [width-1:0] fourth_layer [0:2];
+    reg signed [2*width-1:0] temp_layer4 [0:2];
+    reg signed [2*width-1:0] fourth_layer [0:2];
     reg signed [width-1:0] fourth_layer_bias [0:2];
     
     reg [5:0] LUT [0:500];
+    
+    
+    wire signed [43:0] fourth_layer_wire_1 = (fourth_layer[0][63:20]);
+    wire signed [43:0] fourth_layer_wire_2 = (fourth_layer[1][63:20]);
+    wire signed [43:0] fourth_layer_wire_3 = (fourth_layer[2][63:20]);
     
     always @(posedge clk )begin
         if(rst)begin
@@ -93,10 +99,10 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
         else begin
             case (state_0)
                 IDLE:begin
-                    first_layer[0] <= Temperature[switch_for_data];
+                    first_layer[0] <= VCO[switch_for_data];
                     first_layer[1] <= Humidity[switch_for_data];
                     first_layer[2] <= Pressure[switch_for_data];
-                    first_layer[3] <= VCO[switch_for_data];
+                    first_layer[3] <= Temperature[switch_for_data];
                     if(start_i)begin
                         state_0 <= START;
                     end
@@ -105,7 +111,7 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
                     case (state_1)
                         layer1:begin
                             if (i<6) begin
-                                temp_layer1[i] <=  first_layer[0] * w0_l1[i]
+                                temp_layer2[i] <=  first_layer[0] * w0_l1[i]
                                                  + first_layer[1] * w1_l1[i]
                                                  + first_layer[2] * w2_l1[i]
                                                  + first_layer[3] * w3_l1[i] 
@@ -114,12 +120,12 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
                             end
                             else begin
                                 // ReLu
-                                second_layer[0] <= (temp_layer1[0][2*width-1]) ? ({(width){1'b0}}) : (temp_layer1[0][41:10]);
-                                second_layer[1] <= (temp_layer1[1][2*width-1]) ? ({(width){1'b0}}) : (temp_layer1[1][41:10]);
-                                second_layer[2] <= (temp_layer1[2][2*width-1]) ? ({(width){1'b0}}) : (temp_layer1[2][41:10]);
-                                second_layer[3] <= (temp_layer1[3][2*width-1]) ? ({(width){1'b0}}) : (temp_layer1[3][41:10]);
-                                second_layer[4] <= (temp_layer1[4][2*width-1]) ? ({(width){1'b0}}) : (temp_layer1[4][41:10]);
-                                second_layer[5] <= (temp_layer1[5][2*width-1]) ? ({(width){1'b0}}) : (temp_layer1[5][41:10]);
+                                second_layer[0] <= (temp_layer2[0][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[0][41:10]);
+                                second_layer[1] <= (temp_layer2[1][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[1][41:10]);
+                                second_layer[2] <= (temp_layer2[2][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[2][41:10]);
+                                second_layer[3] <= (temp_layer2[3][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[3][41:10]);
+                                second_layer[4] <= (temp_layer2[4][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[4][41:10]);
+                                second_layer[5] <= (temp_layer2[5][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[5][41:10]);
                                 
                                 // Leaky ReLu
 //                              second_layer[0] <= (second_layer[0][width-1]) ? (second_layer[0] >> shift) : (second_layer[0]);
@@ -134,7 +140,7 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
                         end
                         layer2:begin
                             if (i < 5) begin
-                                temp_layer2[i] <= second_layer[0] * w0_l2[i]
+                                temp_layer3[i] <= second_layer[0] * w0_l2[i]
                                                +  second_layer[1] * w1_l2[i]
                                                +  second_layer[2] * w2_l2[i]
                                                +  second_layer[3] * w3_l2[i] 
@@ -145,11 +151,11 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
                             end
                             else begin
                                 // ReLu
-                                third_layer[0] <= (temp_layer2[0][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[0][41:10]);
-                                third_layer[1] <= (temp_layer2[1][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[1][41:10]);
-                                third_layer[2] <= (temp_layer2[2][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[2][41:10]);
-                                third_layer[3] <= (temp_layer2[3][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[3][41:10]);
-                                third_layer[4] <= (temp_layer2[4][2*width-1]) ? ({(width){1'b0}}) : (temp_layer2[4][41:10]);
+                                third_layer[0] <= (temp_layer3[0][2*width-1]) ? ({(width){1'b0}}) : (temp_layer3[0][41:10]);
+                                third_layer[1] <= (temp_layer3[1][2*width-1]) ? ({(width){1'b0}}) : (temp_layer3[1][41:10]);
+                                third_layer[2] <= (temp_layer3[2][2*width-1]) ? ({(width){1'b0}}) : (temp_layer3[2][41:10]);
+                                third_layer[3] <= (temp_layer3[3][2*width-1]) ? ({(width){1'b0}}) : (temp_layer3[3][41:10]);
+                                third_layer[4] <= (temp_layer3[4][2*width-1]) ? ({(width){1'b0}}) : (temp_layer3[4][41:10]);
                                 
                                 // Leaky ReLu
  //                             third_layer[0] <= (third_layer[0][width-1]) ? (third_layer[0] >> shift) : (third_layer[0]);
@@ -162,13 +168,14 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
                             end
                         end
                         layer3:begin
-                            if(i<2)begin
+                            if(i<3)begin
                                 fourth_layer[i] <= third_layer[0] * w0_l3[i]
                                                 +  third_layer[1] * w1_l3[i]
                                                 +  third_layer[2] * w2_l3[i]
                                                 +  third_layer[3] * w3_l3[i] 
                                                 +  third_layer[4] * w4_l3[i] 
                                                 +  fourth_layer_bias[i];
+                                i <= i + 1; 
                             end
                             else begin
                                 i <= 3'b0;
@@ -179,12 +186,16 @@ module Decision_Making_1#(parameter width = 32,parameter shift = 4)(
                     endcase
                 end
                 SIGMOID:begin
-                    fourth_layer[0] <= LUT [fourth_layer[0]];
-                    fourth_layer[1] <= LUT [fourth_layer[1]];
-                    fourth_layer[2] <= LUT [fourth_layer[2]];
+//                    fourth_layer[0] <= LUT [fourth_layer[0]]; (fourth_layer[0]>5) ? (1'b1) : (1'b0);
+//                    fourth_layer[1] <= LUT [fourth_layer[1]];
+//                    fourth_layer[2] <= LUT [fourth_layer[2]];
+                    fourth_layer[0] <= (fourth_layer_wire_1>4) ? (32'd1) : (32'd0);
+                    fourth_layer[1] <= (fourth_layer_wire_2>4) ? (32'd1) : (32'd0);
+                    fourth_layer[2] <= (fourth_layer_wire_3>4) ? (32'd1) : (32'd0);
                     state_0 <= VALID;
                 end
                 VALID:begin
+                    led <= {fourth_layer[0][0],fourth_layer[1][0],fourth_layer[2][0]};
                     state_0 <= IDLE;
                 end
             endcase
