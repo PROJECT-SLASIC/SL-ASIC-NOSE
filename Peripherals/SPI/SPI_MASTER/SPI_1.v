@@ -133,39 +133,6 @@ module SPI_1#(parameter width = 48)(
                     valid_response <= 1'b0;
                     valid_spi <= 1'b0;
                     wait_data <= 1'b0;
-                    if (t==0)begin
-                        wr_en_fifo <= 1'b1;
-                        wr_data_fifo <= 8'b01010101;
-                        t <= t+1;
-                    end
-                    else if (t==1)begin
-                        wr_en_fifo <= 1'b1;
-                        wr_data_fifo <= 8'b01010101;
-                        t <= t+1;
-                    end
-                    else if (t==2)begin
-                        wr_en_fifo <= 1'b1;
-                        wr_data_fifo <= 8'b01010101;
-                        t <= t+1;
-                    end
-                    else if (t==3)begin
-                        wr_en_fifo <= 1'b1;
-                        wr_data_fifo <= 8'b01010101;
-                        t <= t+1;
-                    end
-                    else if (t==4)begin
-                        wr_en_fifo <= 1'b1;
-                        wr_data_fifo <= 8'b01010101;
-                        t <= t+1;
-                    end
-                    else if (t==5)begin
-                        wr_en_fifo <= 1'b1;
-                        wr_data_fifo <= 8'b01010101;
-                        t <= t+1;
-                    end
-                    else begin
-                        wr_en_fifo <= 1'b0;
-                    end
                     if(spi_start)begin
                         state <= SEND_CMD_AND_DATA;
                         CS <= 1'b0;
