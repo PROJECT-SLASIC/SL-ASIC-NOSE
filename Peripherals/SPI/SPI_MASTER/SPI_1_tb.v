@@ -7,7 +7,7 @@ module SPI_1_tb();
     
     reg spi_start_tb;
     reg [5:0] response_length_tb;
-    reg [9:0] data_length_tb;
+    reg [9:0] receive_data_length_tb;
     reg [5:0] cmd_length_tb;        // represent in byte
     reg [9:0] send_data_length_tb;            // represent in byte
     reg cmd_type_tb;     // 0 for read 1 for write
@@ -29,10 +29,9 @@ module SPI_1_tb();
         
         . spi_start(spi_start_tb),
         . response_length(response_length_tb),
-        . data_length(data_length_tb),
+        . receive_data_length(receive_data_length_tb),
         . cmd_length(cmd_length_tb),        // represent in byte
         . send_data_length(send_data_length_tb),            // represent in byte
-        . cmd_type(cmd_type_tb),     // 0 for read 1 for write
         
         . CS(CS_tb),      // Chip Select - Active Low 
         . MOSI(MOSI_tb),    // Master out Slave in
@@ -53,10 +52,12 @@ module SPI_1_tb();
         rst_tb = 1'b0;
         clk_ss_tb = 1'b0;
         spi_start_tb = 1'b0;
+        
         response_length_tb = 6'b0;
-        data_length_tb = 10'b0;
+        receive_data_length_tb = 10'b0;
         cmd_length_tb = 6'b0;
         send_data_length_tb = 10'b0;
+        
         cmd_type_tb = 1'b0;
         MISO_tb = 1'b1;
         
@@ -67,11 +68,12 @@ module SPI_1_tb();
         #25000;
         // Test Cases 
         clk_ss_tb = 1'b0;
+        
         response_length_tb = 6'd1;
-        data_length_tb = 10'd5;
-        cmd_length_tb = 6'b0;
+        receive_data_length_tb = 10'd5;
+        cmd_length_tb = 6'd6;
         send_data_length_tb = 10'b0;
-        cmd_length_tb = 6'b0;
+        
         spi_start_tb = 1'b1;
         #200000;
         MISO_tb = 1'b0;
@@ -88,8 +90,9 @@ module SPI_1_tb();
         #1000000;
         clk_ss_tb = 1'b1;
         response_length_tb = 6'd5;
-        data_length_tb = 10'd0;
-        cmd_type_tb = 1'b1;
+        receive_data_length_tb = 10'd0;
+        cmd_length_tb = 6'd6;
+        send_data_length_tb = 10'd3;
         spi_start_tb = 1'b1;
         #200000;
         spi_start_tb = 1'b0;
@@ -102,13 +105,26 @@ module SPI_1_tb();
         #3000;
         MISO_tb = 1'b1;
         #40015;
+        // Test Cases 
+        clk_ss_tb = 1'b0;
         
+        response_length_tb = 6'd1;
+        receive_data_length_tb = 10'd0;
+        cmd_length_tb = 6'd6;
+        send_data_length_tb = 10'b0;
         
+        spi_start_tb = 1'b1;
+        #200000;
+        MISO_tb = 1'b0;
+        #10000;
+        MISO_tb = 1'b1;
+        spi_start_tb = 1'b0;
         
-        
+        #40000
+        MISO_tb = 1'b0;
+        #10000;
+        MISO_tb = 1'b1;
+        #89015;
+        spi_start_tb = 1'b0;
     end
-    
-    
-    
-    
 endmodule
