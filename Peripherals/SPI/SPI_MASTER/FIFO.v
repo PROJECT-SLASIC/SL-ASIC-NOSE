@@ -21,6 +21,7 @@ module FIFO(
             wr_ptr <= 0;
             rd_ptr <= 0;
             count <= 0;
+            rd_data <= 8'b0;
         end else begin
             if (wr_en && !full) begin
                 mem[wr_ptr] <= wr_data;
