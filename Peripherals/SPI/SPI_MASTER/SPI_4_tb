@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module SPI_4_tb();
+module SPI_5_tb();
     parameter width = 48;
     reg clk_tb;      // Internal Clock - 100 MHz - 10ns
     reg rst_tb;
@@ -23,7 +23,7 @@ module SPI_4_tb();
     wire valid_spi_tb;
     
     
-    SPI_4 DUT(
+    SPI_5 DUT(
         . clk(clk_tb),      // Internal Clock - 100 MHz - 10ns
         . rst(rst_tb),
         . clk_ss(clk_ss_tb),   // 0 means 400_000Hz, 1 means 20_000_000Hz
@@ -72,14 +72,16 @@ module SPI_4_tb();
         // Test Cases 
         clk_ss_tb = 1'b0;
         
-        response_length_tb = 6'd1;
-        mode_tb = 2'b11;
+        response_length_tb = 6'd0;
+        mode_tb = 2'b01;
         receive_data_length_tb = 10'd5;
         cmd_length_tb = 6'd6;
         send_data_length_tb = 10'b0;
         
         spi_start_tb = 1'b1;
-        #200000;
+        #50000
+        spi_start_tb = 1'b0;
+        #150000;
         MISO_tb = 1'b0;
         #10000;
         MISO_tb = 1'b1;
@@ -89,7 +91,6 @@ module SPI_4_tb();
         #10000;
         MISO_tb = 1'b1;
         #6015;
-        spi_start_tb = 1'b0;
         
         #1000000;
         clk_ss_tb = 1'b1;
