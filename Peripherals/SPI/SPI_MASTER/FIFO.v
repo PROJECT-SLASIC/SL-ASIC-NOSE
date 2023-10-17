@@ -9,7 +9,7 @@ module FIFO(
     output full
     );
     
-    parameter DEPTH = 516; // Default depth, can be changed as needed
+    parameter DEPTH = 128; // Default depth, can be changed as needed
     
     reg [7:0] mem [0:DEPTH-1];
     reg [9:0] wr_ptr = 0;
