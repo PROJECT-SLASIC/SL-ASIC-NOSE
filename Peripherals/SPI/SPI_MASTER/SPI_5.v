@@ -42,7 +42,7 @@ module SPI_5(
     reg [1:0] mode_prev ;               // Used to indicate that mode has been changed clear counter_1
     
     localparam TIME_SLOW = 250/2-1;     // 400 kHz
-    localparam TIME_FAST = 4/2-1;       // 25 MHz
+    localparam TIME_FAST = 10/2-1;       // 25 MHz
     
     reg [19:0] counter_1 ;              // Used to create clock for SCK
     reg  counter_2;                     // Used to arrange SCK for sending data
@@ -56,6 +56,8 @@ module SPI_5(
     reg SCK_en;
     reg received_started;
     reg [9:0] counter_3;
+    reg [3:0] counter_4;
+    reg ready;
     reg [9:0] compare_reg;
     reg wait_data;
     reg send_data;
@@ -83,6 +85,8 @@ module SPI_5(
             
             state <= 3'b0;
             counter_3 <= 10'b0;
+            counter_4 <= 4'b0;
+            ready <= 1'b0;
             received_started <= 1'b0;
             compare_reg <= 10'b0;
             wait_data <= 1'b0;
@@ -119,32 +123,42 @@ module SPI_5(
 
                             if (t==0)begin
                                 wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h40;
+                                wr_data_fifo <= 8'h53;
                                 t <= t+1;
                             end
                             else if (t==1)begin
                                 wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h0;
+                                wr_data_fifo <= 8'h50;
                                 t <= t+1;
                             end
                             else if (t==2)begin
                                 wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h0;
+                                wr_data_fifo <= 8'h49;
                                 t <= t+1;
                             end
                             else if (t==3)begin
                                 wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h0;
+                                wr_data_fifo <= 8'h57;
                                 t <= t+1;
                             end
                             else if (t==4)begin
                                 wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h0;
+                                wr_data_fifo <= 8'h4f;
                                 t <= t+1;
                             end
                             else if (t==5)begin
                                 wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h95;
+                                wr_data_fifo <= 8'h52;
+                                t <= t+1;
+                            end
+                            else if (t==6)begin
+                                wr_en_fifo <= 1'b1;
+                                wr_data_fifo <= 8'h4b;
+                                t <= t+1;
+                            end
+                            else if (t==7)begin
+                                wr_en_fifo <= 1'b1;
+                                wr_data_fifo <= 8'h53;
                                 t <= t+1;
                             end
                             else begin
@@ -153,6 +167,13 @@ module SPI_5(
             if(counter_1==compare_reg_1)begin
                 counter_1 <= 20'b0;
                 SCK <= (SCK_en) ? (~SCK) : (CPOL);
+                if ((counter_4<8) && !ready)begin
+                    counter_4 <= counter_4 + 1;
+                end
+                else begin
+                    counter_4 <= 4'b0;
+                    ready <= 1'b1;
+                end
                 case (state)
                     IDLE:begin
                         counter_3 <= 10'b0;
@@ -161,7 +182,7 @@ module SPI_5(
                         wait_data <= 1'b0;
                         send_data <= 1'b0;
                         SCK_en <= 1'b0;
-                        if(spi_start)begin
+                        if(spi_start && ready && !empty_fifo)begin
                             state <= SEND_CMD_AND_DATA;
                             CS <= 1'b0;
                             busy_spi <= 1'b1;
@@ -181,7 +202,7 @@ module SPI_5(
                                 MOSI <= rd_data_fifo[7-i];
                                 if(i == 7) begin
                                     counter_3 <= counter_3 + 1;
-                                    read_fifo <= 1'b1;
+                                    read_fifo <= (counter_3==compare_reg) ? (1'b0) : (1'b1);
                                     i <= 0;
                                 end else begin
                                     i <= i + 1;
@@ -197,7 +218,7 @@ module SPI_5(
                         end
                     end
                     WAIT_RESPONSE_AND_DATA:begin
-                        if (compare_reg_3) begin
+                        if (compare_reg_3 && !full_fifo) begin
                             received_started <= ((!MISO && !received_started)) ? (1'b1) : (received_started);
                             compare_reg <= (!wait_data) ? (response_length-1) : (receive_data_length-1);
                             if(received_started)begin
@@ -248,7 +269,9 @@ module SPI_5(
                         busy_spi <= 1'b0;
                         valid_spi <= 1'b1;
                         CS <= 1'b1;
+                        MOSI <= 1'b1;
                         state <= IDLE;
+                        ready <= 1'b0;
                     end
                 endcase
             end
