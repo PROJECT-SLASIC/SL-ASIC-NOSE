@@ -121,49 +121,49 @@ module SPI_5(
                             //For manually buffer data into FIFO
                             //////////////////////////////
 
-                            if (t==0)begin
-                                wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h53;
-                                t <= t+1;
-                            end
-                            else if (t==1)begin
-                                wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h50;
-                                t <= t+1;
-                            end
-                            else if (t==2)begin
-                                wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h49;
-                                t <= t+1;
-                            end
-                            else if (t==3)begin
-                                wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h57;
-                                t <= t+1;
-                            end
-                            else if (t==4)begin
-                                wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h4f;
-                                t <= t+1;
-                            end
-                            else if (t==5)begin
-                                wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h52;
-                                t <= t+1;
-                            end
-                            else if (t==6)begin
-                                wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h4b;
-                                t <= t+1;
-                            end
-                            else if (t==7)begin
-                                wr_en_fifo <= 1'b1;
-                                wr_data_fifo <= 8'h53;
-                                t <= t+1;
-                            end
-                            else begin
-                                wr_en_fifo <= 1'b0;
-                            end
+//                           if (t==0)begin
+//                                wr_en_fifo <= 1'b1;
+//                                wr_data_fifo <= 8'h53;
+//                                t <= t+1;
+//                            end
+//                            else if (t==1)begin
+//                                wr_en_fifo <= 1'b1;
+//                                wr_data_fifo <= 8'h50;
+//                                t <= t+1;
+//                            end
+//                            else if (t==2)begin
+//                                wr_en_fifo <= 1'b1;
+//                                wr_data_fifo <= 8'h49;
+//                                t <= t+1;
+//                            end
+//                            else if (t==3)begin
+//                                wr_en_fifo <= 1'b1;
+//                                wr_data_fifo <= 8'h57;
+//                                t <= t+1;
+//                            end
+//                            else if (t==4)begin
+//                                wr_en_fifo <= 1'b1;
+//                                wr_data_fifo <= 8'h4f;
+//                                t <= t+1;
+//                            end
+//                            else if (t==5)begin
+//                                wr_en_fifo <= 1'b1;
+//                                wr_data_fifo <= 8'h52;
+//                                t <= t+1;
+//                            end
+//                            else if (t==6)begin
+//                                wr_en_fifo <= 1'b1;
+//                                wr_data_fifo <= 8'h4b;
+//                                t <= t+1;
+//                            end
+//                            else if (t==7)begin
+//                                wr_en_fifo <= 1'b1;
+//                                wr_data_fifo <= 8'h53;
+//                                t <= t+1;
+//                            end
+//                            else begin
+//                                wr_en_fifo <= 1'b0;
+//                            end
             if(counter_1==compare_reg_1)begin
                 counter_1 <= 20'b0;
                 SCK <= (SCK_en) ? (~SCK) : (CPOL);
