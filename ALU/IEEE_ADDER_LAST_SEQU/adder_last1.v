@@ -1,4 +1,4 @@
-module adder#(parameter exponent=8, mantissa=23)(
+module adderr#(parameter exponent=8, mantissa=23)(
     input [exponent+mantissa:0] input1,
     input [exponent+mantissa:0] input2,
     input clk,
@@ -29,10 +29,9 @@ module adder#(parameter exponent=8, mantissa=23)(
    wire [mantissa+1:0] sum_mantissa2;
    assign sum_mantissa2 = shifted1+{2'b01,outB[22:0]};
    reg [mantissa+1:0] sum_mantissa ;
-
    always @(posedge clk or posedge rst) begin
-if (rst) sum_mantissa <= 0;
-else sum_mantissa <= sum_mantissa2;
+if (rst)begin sum_mantissa <= 0; end
+else begin sum_mantissa <= sum_mantissa2; end
    end
 
    wire [4:0] count;
@@ -44,14 +43,14 @@ else sum_mantissa <= sum_mantissa2;
    assign lead_shift = sum_mantissa << count;
    wire [mantissa+1:0] sum_mantissa1;
    wire control;
-   assign control = sum_mantissa[mantissa+1] || ((dif==0)&& ~sign);
+   assign control = sum_mantissa[mantissa+1] || dif==0;
    assign sum_mantissa1= control ? sum_mantissa>>1:sum_mantissa; 
    assign  out[22:0] = sign ? lead_shift[22:0] : sum_mantissa1[22:0];
    
     wire [7:0]exp_inc;
     assign exp_inc= outB[30:23]+1;
     wire [7:0]exp_mux;
-    assign exp_mux = sign ? outB[30:23]-count :outB[30:23] ;
-    assign out[30:23] = control ? exp_inc:exp_mux;
+    assign exp_mux = control ? exp_inc :outB[30:23] ;
+    assign out[30:23] = sign ? exp_inc+~{3'd0,count} :exp_mux;
     assign out[31] = outB[31];
 endmodule
