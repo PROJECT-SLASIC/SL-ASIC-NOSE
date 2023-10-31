@@ -38,6 +38,6 @@ Openroad incelemek istiosan izle  ------------------  https://www.youtube.com/wa
 verilator --lint-only your_file.v ----------------------
 
 WSL sanal bellek yönetimi için:
-Powershell => "diskspace"
+Powershell => "diskpart"
 açılan terminalde => select vdisk file="C:\\...\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\ext4.vhdx"
                   => compact vdisk
