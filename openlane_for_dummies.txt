@@ -41,3 +41,10 @@ WSL sanal bellek yönetimi için:
 Powershell => "diskpart"
 açılan terminalde => select vdisk file="C:\\...\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc\LocalState\ext4.vhdx"
                   => compact vdisk
+
+
+VSCode exec format error alırsan:
+  sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+  sudo systemctl unmask systemd-binfmt.service
+  sudo systemctl restart systemd-binfmt
+  sudo systemctl mask systemd-binfmt.service
