@@ -37,11 +37,14 @@ module adder#(parameter exponent=8, mantissa=23)(
    reg [mantissa+1:0] sum_mantissa ;
 
    always @(posedge clk or posedge rst) begin
- if(state==0) valid<=0;
+ 
 if (rst)begin sum_mantissa <= 0; dif<=0;outB<=0; outL<=0;strt_reg<=0; state<=0; busy<=0; valid<=0; end
 
 
-else if(strt_reg)begin 
+else begin
+if(state==0) begin valid<=0; end
+if(strt)begin strt_reg<=1; end
+if(strt_reg)begin 
 case(state)
  0: begin dif<=dif1;outB<=outB1; outL<=outL1; busy<=1; state<=1; end
  
@@ -51,7 +54,7 @@ case(state)
 
 endcase
  end
-if(strt)begin strt_reg<=1; end
+ end
    end
 
    wire [4:0] count;
