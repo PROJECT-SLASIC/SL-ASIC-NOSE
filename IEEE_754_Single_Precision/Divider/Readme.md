@@ -1,2 +1,1 @@
-100K tane inputla denendi mantissanın son 2 biti bazen hatalı gelebilmektedir.
-Openlanede koşuldu 15ns clokta başarılı sonuç geldi
+During tests with 100K inputs, the last two bits of the mantissa occasionally returned incorrect values. The configuration for Openlane is detailed in the following config.tcl file.
