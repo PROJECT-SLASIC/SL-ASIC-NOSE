@@ -1,4 +1,4 @@
-module ieee_754_multiplier(
+module multiplier(
     input clk,
     input rst,
     input [31:0] rs1,  // IEEE 754 single precision
