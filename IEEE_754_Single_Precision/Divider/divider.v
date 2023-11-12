@@ -1,4 +1,4 @@
-module IEEE_divider#(parameter width=32)(
+module divider #(parameter width=32)(
 input clk,
 input rst,
 input start,
