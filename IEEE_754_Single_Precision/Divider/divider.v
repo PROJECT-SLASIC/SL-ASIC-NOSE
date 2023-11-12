@@ -1,13 +1,14 @@
 module divider #(parameter width=32)(
-input clk,
-input rst,
-input start,
-input[width-1:0] dividened ,
-input[width-1:0] divisor,
-output reg busy,
-output reg valid,
-output reg [width-1:0] out_reg
+    input clk,
+    input rst,
+    input start,
+    input[width-1:0] dividened ,
+    input[width-1:0] divisor,
+    output reg busy,
+    output reg valid,
+    output reg [width-1:0] out_reg
     );
+    
     parameter idle=4'd0;
     parameter initialize=4'd1;
     parameter compute=4'd2;
@@ -15,9 +16,10 @@ output reg [width-1:0] out_reg
     
     wire[4:0] count;
     leading_finder first(
-    .data(divisor[22:0]),
-    .count(count)
-);
+        .data(divisor[22:0]),
+        .count(count)
+    );
+    
     wire[31:0] out;
     wire [7:0] out_wire;
     reg finish;
@@ -36,6 +38,7 @@ output reg [width-1:0] out_reg
     assign temp_mantissa1 = mantissa1[48:24];
     assign temp_mantissa2 = mantissa2[48:24];
     assign out [22:0]=result[22:0];
+    
     always @(posedge clk or posedge rst) begin
         if(rst) begin
             mantissa1<=0;
@@ -112,7 +115,7 @@ output reg [width-1:0] out_reg
                             state<=final;
                         end
                     end
-                    endcase
+                endcase
             end
         end
 endmodule
