@@ -8,7 +8,7 @@ reg clk,rst,start;
 reg[31:0] dividened,divisor;
 wire [31:0] out;
 wire busy,valid;
-IEEE_divider uut(
+divider uut(
 .clk(clk),
 .rst(rst),
 .start(start),
