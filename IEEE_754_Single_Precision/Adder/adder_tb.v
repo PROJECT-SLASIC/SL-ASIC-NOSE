@@ -18,7 +18,7 @@ adder uut(
 .input2(input2),
 .clk(clk),
 .rst(rst),
-.strt(strt),
+.start(strt),
 .valid(valid),
 .busy(busy),
 .out(out)   
