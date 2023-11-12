@@ -19,7 +19,7 @@ module IEEE_754_Multiplier_tb;
     reg [32:0] control;
     integer i;
     
-    multiplier  dut(
+    multiplier dut(
         . clk(clk_tb),
         . rst(rst_tb),
         . rs1(rs1_tb),  // IEEE 754 single precision
