@@ -4,7 +4,7 @@ module feed_forward(
     input [31:0]data,
     input load,
     input start,
-    input [2:0]first_layer,second_layer,third_layer,fourth_layer,
+    input [3:0]first_layer,second_layer,third_layer,fourth_layer,
     output reg oldu
     );
     
@@ -24,14 +24,14 @@ parameter wait_add=2;
 parameter store=3;
 
 reg [1:0] ana;
-reg [2:0]first_reg,second_reg,third_reg,fourth_reg;
+reg [3:0]first_reg,second_reg,third_reg,fourth_reg;
 reg counter;
 reg [31:0]adder_temp1,adder_temp2;
 reg adder_temp1_full,adder_temp2_full;
 reg adder_load1,adder_load2;
 reg start_load_mult;
 reg write,read;
-reg [7:0]adr;
+reg [8:0]adr;
 wire [31:0]sram_out,sram_in;   
 reg sram_input;
 sram ram1(
@@ -103,12 +103,12 @@ reg load_reg;
 
 
 reg mult1_load,mult2_load;
-reg [7:0] weight_adr=0,bias_adr,neuron_adr,neuron_adr_hold;    
+reg [8:0] weight_adr=0,bias_adr,neuron_adr,neuron_adr_hold;    
 reg [3:0]state;
 reg [3:0]state_load;
 reg [4:0]X;
 reg [4:0]Y;
-wire [7:0]adr_next,adr_next_weight,adr_next_neuron,adr_next_bias,next_store_adr; 
+wire [8:0]adr_next,adr_next_weight,adr_next_neuron,adr_next_bias,next_store_adr; 
 reg start_reg;
 
 wire ok,ok_future,ok2,ok2_future;
@@ -116,7 +116,7 @@ wire next_load;
 
 reg add_case;
 reg [3:0]counter_first,counter_second,current,current2;
-reg [7:0] first_layer_neuron_adr,secon_layer_neuron_adr,third_layer_neuron_adr,fourth_layer_neuron_adr,store_adr;
+reg [8:0] first_layer_neuron_adr,secon_layer_neuron_adr,third_layer_neuron_adr,fourth_layer_neuron_adr,store_adr;
 reg [3:0]main;
 reg loaded;
 reg add_finish,add_last;
@@ -561,3 +561,4 @@ reg finish;
     end
  end
 endmodule
+//selam
