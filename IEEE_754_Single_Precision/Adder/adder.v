@@ -57,7 +57,7 @@ module adder#(parameter exponent=8, mantissa=23)(
             if (start) begin 
                 strt_reg <= 1; 
             end
-            if(strt_reg)begin 
+            if(strt_reg || start)begin 
                 case(state)
                     0 : begin 
                         dif <= dif1;
