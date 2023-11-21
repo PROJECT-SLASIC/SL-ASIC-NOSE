@@ -5,7 +5,9 @@ module feed_forward(
     input load,
     input start,
     input [3:0]first_layer,second_layer,third_layer,fourth_layer,
-    output reg oldu
+    output reg oldu,
+    output reg busy,
+    output reg valid
     );
     
 parameter initilaze= 0;
@@ -32,6 +34,7 @@ reg adder_load1,adder_load2;
 reg start_load_mult;
 reg write,read;
 reg [8:0]adr;
+wire [31:0] relu;
 wire [31:0]sram_out,sram_in;   
 reg sram_input;
 sram ram1(
@@ -60,7 +63,8 @@ adder adder1(
    .busy(adder_busy),
    .out(adder_out)
     );    
-    assign sram_in= sram_input ? adder_out : data ;
+    wire control;
+ 
     
 reg [31:0] mult_input1[1:0]; 
 reg [31:0] mult_input2[1:0]; 
@@ -98,7 +102,7 @@ reg control1,control2;
 
 reg [2:0]load_mul;
 reg load_reg;
-  
+ reg c; 
 
 
 
@@ -141,12 +145,18 @@ reg [31:0]temp_bias;
 reg a;
 reg adder_temp_load1,adder_temp_load2;
 reg finish;
+
+  assign control= c ? 0: adder_out[31] ;
+  assign relu = control ? 32'd0:adder_out ;
+  assign sram_in= sram_input ? relu : data ;
+  reg decision;
  always@(posedge clk or posedge rst) begin 
  
     if (rst) begin 
         adr<=0; 
         X<=0; 
         Y<=0;  
+        c<=0;
         load_mul<=0;
         start_reg<=0;
         load_reg<=0;
@@ -185,6 +195,8 @@ reg finish;
         adder_temp_load2<=0;
         finish<=0;
         oldu<=0;
+        busy<=0;
+        valid<=0;
     end
     
     
@@ -205,7 +217,6 @@ reg finish;
                 end
             adr<= adr_next;
         end
-
         if(start_reg && !load_reg) begin
             case(ana) 
 
@@ -229,37 +240,34 @@ reg finish;
 
              case(main)
 
-        first:begin 
-            if(a)begin
-            temp_bias<=sram_out;
-            a<=0;
-            end
-            if(ok)begin
-            neuron_adr<= neuron_adr_hold;
-            read<=1;
-            adr<=adr_next_bias;
-            bias_adr<=adr_next_bias;
-            a<=1;
+                first:begin 
+                    if(a)begin
+                        temp_bias<=sram_out;
+                        a<=0;
+                    end
+                    if(ok)begin
+                        neuron_adr<= neuron_adr_hold;
+                        read<=1;
+                        adr<=adr_next_bias;
+                        bias_adr<=adr_next_bias;
+                        a<=1;
                     end
 
-            if(valid_current2==valid_counter2)begin
-            valid_current<=second_layer;
-            valid_current2<=third_layer;
-            main <= second;
-            valid_counter2<=0;
-            
-            end         
-            if(ok2_future)begin
-            
-            current<=second_layer;
-            current2<=third_layer;
-            
-            counter_second<=0;
-            neuron_adr_hold<=first_layer_neuron_adr+first_reg;
-            neuron_adr<=first_layer_neuron_adr+first_reg;
-           
-            end
-        end
+                    if(valid_current2==valid_counter2)begin
+                        valid_current<=second_layer;
+                        valid_current2<=third_layer;
+                        main <= second;
+                        valid_counter2<=0;
+                    end 
+                            
+                    if(ok2_future)begin
+                        current<=second_layer;
+                        current2<=third_layer;
+                        counter_second<=0;
+                        neuron_adr_hold<=first_layer_neuron_adr+first_reg;
+                        neuron_adr<=first_layer_neuron_adr+first_reg;
+                    end
+                end
         second: begin
            if(a)begin
             temp_bias<=sram_out;
@@ -303,6 +311,9 @@ reg finish;
             bias_adr<=adr_next_bias;
             a<=1;
                     end
+            if (valid_counter2==1)begin
+                c=1;    
+            end
 
             if(valid_current2 +1 ==valid_counter2)begin
             valid_current<=third_layer;
@@ -327,11 +338,7 @@ reg finish;
            
             end
         end
-     
-
-
-
-        endcase
+       endcase
 
         if(mult1_valid || mult2_valid)begin
             if(mult1_valid&& mult2_valid)begin
@@ -341,10 +348,6 @@ reg finish;
                 valid_counter<=valid_counter+1;
             end
         end
-
-          
-
-
         if(valid_current==valid_counter)begin
             valid_counter<=0;
             add_finish<=1;
@@ -353,18 +356,12 @@ reg finish;
        
         if(current==counter_first)begin
             counter_first<=0;
-            counter_second<= counter_second +1;
-            
+            counter_second<= counter_second +1;            
         end
 
         if(loaded)begin
             counter_first <= counter_first +1;
             end
-
-
-
-
-
             case(state_load)
 
                 load_multiply:begin
@@ -455,8 +452,6 @@ reg finish;
             end
 
             case(state)
-            
-
 
             adder_idle:begin
                 if(add_finish && ~adder_load2 && ~adder_load1 )begin
@@ -516,8 +511,6 @@ reg finish;
                         state<=wait_add;
                     end
                 end
-
-
             end
 
             wait_add:begin
@@ -530,7 +523,6 @@ reg finish;
                 state<=adder_idle;
                 adder_temp1<=0;
                 adder_temp2<=0;
-
 
             end
 
@@ -561,4 +553,3 @@ reg finish;
     end
  end
 endmodule
-//selam
