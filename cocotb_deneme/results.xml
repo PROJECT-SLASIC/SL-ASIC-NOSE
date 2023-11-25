@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1700940537" />
+    <testcase name="divider_test" classname="test" file="/home/bduman/PycharmProjects/cocotb_deneme/test.py" lineno="6" time="193.39781785011292" sim_time_ns="5800020.001" ratio_time="29990.10053720011" />
+  </testsuite>
+</testsuites>

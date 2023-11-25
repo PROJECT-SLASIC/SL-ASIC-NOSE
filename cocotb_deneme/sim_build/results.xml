@@ -1,0 +1,11 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1700492871" />
+    <testcase name="adder_basic_test" classname="test" file="/home/bduman/PycharmProjects/cocotb_deneme/test.py" lineno="17" time="0.0008487701416015625" sim_time_ns="0.001" ratio_time="1.1781752808988764">
+      <failure message="Test failed with RANDOM_SEED=1700492871" />
+    </testcase>
+    <testcase name="adder_randomised_test" classname="test" file="/home/bduman/PycharmProjects/cocotb_deneme/test.py" lineno="34" time="0.00029540061950683594" sim_time_ns="0.001" ratio_time="3.3852332526230833">
+      <failure message="Test failed with RANDOM_SEED=1700492871" />
+    </testcase>
+  </testsuite>
+</testsuites>
