@@ -22,5 +22,5 @@ def convert_to_int(a: BinaryValue) -> int:
             i = i + 1
     return res
 
-print(convert_to_int(BinaryValue(0x455568ac, n_bits=32)))
+
 
