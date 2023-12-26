@@ -44,7 +44,7 @@ module demo
         .input4(voc4),
         .input5(voc5),
         
-        .class(decision)          // asl?nda genel output olarak tam?nlanmas? beklenen decision signal
+        .class(decision)
     );
     
     lcd_driver LCD
