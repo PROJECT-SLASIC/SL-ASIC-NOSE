@@ -48,13 +48,21 @@ module lcd_driver(
     parameter COMPLETED  = 3;
 
     reg [7:0] sequences [1:0][2:0]; // Clear Display
-    reg [7:0] sequences_1 [19:0][2:0]; // Weather
-    reg [7:0] sequences_2 [19:0][2:0]; // Hazelnut
-    reg [7:0] sequences_3 [19:0][2:0]; // Cookie
-    reg [7:0] sequences_4 [19:0][2:0]; // Rulokat
-    reg [7:0] sequences_5 [19:0][2:0]; // Salad
-    reg [7:0] sequences_6 [19:0][2:0]; // Orange
+    reg [7:0] sequences_1 [19:0][2:0]; // Air
+    reg [7:0] sequences_2 [19:0][2:0]; // Mint
+    reg [7:0] sequences_3 [19:0][2:0]; // Coconut
+    reg [7:0] sequences_4 [19:0][2:0]; // Thyme
+    reg [7:0] sequences_5 [19:0][2:0]; // Cinnamon
+    reg [7:0] sequences_6 [19:0][2:0]; // Sumac
     reg [7:0] sequences_7 [19:0][2:0]; // Error
+    
+    reg [63:0] sequences_1_reg = {8'h41, 8'h69, 8'h72, 8'h23, 8'h23, 8'h23, 8'h23, 8'h23}; // Air#####
+    reg [63:0] sequences_2_reg = {8'h4D, 8'h69, 8'h6E, 8'h74, 8'h23, 8'h23, 8'h23, 8'h23}; // Mint#### 
+    reg [63:0] sequences_3_reg = {8'h43, 8'h6F, 8'h63, 8'h6F, 8'h6E, 8'h75, 8'h74, 8'h23}; // Coconut#
+    reg [63:0] sequences_4_reg = {8'h54, 8'h68, 8'h79, 8'h6D, 8'h65, 8'h23, 8'h23, 8'h23}; // Thyme###
+    reg [63:0] sequences_5_reg = {8'h43, 8'h69, 8'h6E, 8'h6E, 8'h61, 8'h6D, 8'h6F, 8'h6E}; // Cinnamon
+    reg [63:0] sequences_6_reg = {8'h53, 8'h75, 8'h6D, 8'h61, 8'h63, 8'h23, 8'h23, 8'h23}; // Sumac###
+    reg [63:0] sequences_7_reg = {8'h45, 8'h72, 8'h72, 8'h6F, 8'h72, 8'h23, 8'h23, 8'h23}; // Error###
 
 
     reg [9:0] counter_1;
@@ -76,7 +84,7 @@ module lcd_driver(
         sequences[0][0] = 8'h4e; sequences[0][1] = 8'h0C; sequences[0][2] = 8'h08; // high nibble  - blink cursor
         sequences[1][0] = 8'h4e; sequences[1][1] = 8'h1C; sequences[1][2] = 8'h18;
         /////////////////////////
-        // Weather
+        // Air
         /////////////////////////
         sequences_1[0][0] = 8'h4e; sequences_1[0][1] = 8'h0C; sequences_1[0][2] = 8'h08; // high nibble  - blink cursor
         sequences_1[1][0] = 8'h4e; sequences_1[1][1] = 8'hfC; sequences_1[1][2] = 8'hf8;
@@ -84,31 +92,31 @@ module lcd_driver(
         sequences_1[2][0] = 8'h4e; sequences_1[2][1] = 8'h8C; sequences_1[2][2] = 8'h88; // high nibble - ddram position
         sequences_1[3][0] = 8'h4e; sequences_1[3][1] = 8'h0C; sequences_1[3][2] = 8'h08;
 
-        sequences_1[4][0] = 8'h4e; sequences_1[4][1] = 8'h5D; sequences_1[4][2] = 8'h59; // high nibble - W into 1_1
-        sequences_1[5][0] = 8'h4e; sequences_1[5][1] = 8'h7D; sequences_1[5][2] = 8'h79;
+        sequences_1[4][0] = 8'h4e; sequences_1[4][1] = {sequences_1_reg[63:60],4'hD}; sequences_1[4][2] = {sequences_1_reg[63:60],4'h9}; // high nibble - A into 1_1
+        sequences_1[5][0] = 8'h4e; sequences_1[5][1] = {sequences_1_reg[59:56],4'hD}; sequences_1[5][2] = {sequences_1_reg[59:56],4'h9};
 
-        sequences_1[6][0] = 8'h4e; sequences_1[6][1] = 8'h6D; sequences_1[6][2] = 8'h69; // high nibble - e into 1_2
-        sequences_1[7][0] = 8'h4e; sequences_1[7][1] = 8'h5D; sequences_1[7][2] = 8'h59;
+        sequences_1[6][0] = 8'h4e; sequences_1[6][1] = {sequences_1_reg[55:52],4'hD}; sequences_1[6][2] = {sequences_1_reg[55:52],4'h9}; // high nibble - i into 1_2
+        sequences_1[7][0] = 8'h4e; sequences_1[7][1] = {sequences_1_reg[51:48],4'hD}; sequences_1[7][2] = {sequences_1_reg[51:48],4'h9};
 
-        sequences_1[8][0] = 8'h4e; sequences_1[8][1] = 8'h6D; sequences_1[8][2] = 8'h69; // high nibble - a into 1_1
-        sequences_1[9][0] = 8'h4e; sequences_1[9][1] = 8'h1D; sequences_1[9][2] = 8'h19;
+        sequences_1[8][0] = 8'h4e; sequences_1[8][1] = {sequences_1_reg[47:44],4'hD}; sequences_1[8][2] = {sequences_1_reg[47:44],4'h9}; // high nibble - r into 1_1
+        sequences_1[9][0] = 8'h4e; sequences_1[9][1] = {sequences_1_reg[43:40],4'hD}; sequences_1[9][2] = {sequences_1_reg[43:40],4'h9};
 
-        sequences_1[10][0] = 8'h4e; sequences_1[10][1] = 8'h7D; sequences_1[10][2] = 8'h79; // high nibble - t into 1_1
-        sequences_1[11][0] = 8'h4e; sequences_1[11][1] = 8'h4D; sequences_1[11][2] = 8'h49;
+        sequences_1[10][0] = 8'h4e; sequences_1[10][1] = {sequences_1_reg[39:36],4'hD}; sequences_1[10][2] = {sequences_1_reg[39:36],4'h9}; // high nibble - # into 1_1
+        sequences_1[11][0] = 8'h4e; sequences_1[11][1] = {sequences_1_reg[35:32],4'hD}; sequences_1[11][2] = {sequences_1_reg[35:32],4'h9};
 
-        sequences_1[12][0] = 8'h4e; sequences_1[12][1] = 8'h6D; sequences_1[12][2] = 8'h69; // high nibble - h into 1_2
-        sequences_1[13][0] = 8'h4e; sequences_1[13][1] = 8'h8D; sequences_1[13][2] = 8'h89;
+        sequences_1[12][0] = 8'h4e; sequences_1[12][1] = {sequences_1_reg[31:28],4'hD}; sequences_1[12][2] = {sequences_1_reg[31:28],4'h9}; // high nibble - # into 1_2
+        sequences_1[13][0] = 8'h4e; sequences_1[13][1] = {sequences_1_reg[27:24],4'hD}; sequences_1[13][2] = {sequences_1_reg[27:24],4'h9};
 
-        sequences_1[14][0] = 8'h4e; sequences_1[14][1] = 8'h6D; sequences_1[14][2] = 8'h69; // high nibble - e into 1_1
-        sequences_1[15][0] = 8'h4e; sequences_1[15][1] = 8'h5D; sequences_1[15][2] = 8'h59;
+        sequences_1[14][0] = 8'h4e; sequences_1[14][1] = {sequences_1_reg[23:20],4'hD}; sequences_1[14][2] = {sequences_1_reg[23:20],4'h9}; // high nibble - # into 1_1
+        sequences_1[15][0] = 8'h4e; sequences_1[15][1] = {sequences_1_reg[19:16],4'hD}; sequences_1[15][2] = {sequences_1_reg[19:16],4'h9};
 
-        sequences_1[16][0] = 8'h4e; sequences_1[16][1] = 8'h7D; sequences_1[16][2] = 8'h79; // high nibble - r into 1_1
-        sequences_1[17][0] = 8'h4e; sequences_1[17][1] = 8'h2D; sequences_1[17][2] = 8'h29;
+        sequences_1[16][0] = 8'h4e; sequences_1[16][1] = {sequences_1_reg[15:12],4'hD}; sequences_1[16][2] = {sequences_1_reg[15:12],4'h9}; // high nibble - # into 1_1
+        sequences_1[17][0] = 8'h4e; sequences_1[17][1] = {sequences_1_reg[11:8],4'hD}; sequences_1[17][2] = {sequences_1_reg[11:8],4'h9};
 
-        sequences_1[18][0] = 8'h4e; sequences_1[18][1] = 8'h2D; sequences_1[18][2] = 8'h29; // high nibble - # into 1_1
-        sequences_1[19][0] = 8'h4e; sequences_1[19][1] = 8'h3D; sequences_1[19][2] = 8'h39;
+        sequences_1[18][0] = 8'h4e; sequences_1[18][1] = {sequences_1_reg[7:4],4'hD}; sequences_1[18][2] = {sequences_1_reg[7:4],4'h9}; // high nibble - # into 1_1
+        sequences_1[19][0] = 8'h4e; sequences_1[19][1] = {sequences_1_reg[3:0],4'hD}; sequences_1[19][2] = {sequences_1_reg[3:0],4'h9};
         /////////////////////////
-        // Hazelnut
+        // Mint
         /////////////////////////
         sequences_2[0][0] = 8'h4e; sequences_2[0][1] = 8'h0C; sequences_2[0][2] = 8'h08; // high nibble  - blink cursor
         sequences_2[1][0] = 8'h4e; sequences_2[1][1] = 8'hfC; sequences_2[1][2] = 8'hf8;
@@ -116,31 +124,31 @@ module lcd_driver(
         sequences_2[2][0] = 8'h4e; sequences_2[2][1] = 8'h8C; sequences_2[2][2] = 8'h88; // high nibble - ddram position
         sequences_2[3][0] = 8'h4e; sequences_2[3][1] = 8'h0C; sequences_2[3][2] = 8'h08;
 
-        sequences_2[4][0] = 8'h4e; sequences_2[4][1] = 8'h4D; sequences_2[4][2] = 8'h49; // high nibble - H into 1_1
-        sequences_2[5][0] = 8'h4e; sequences_2[5][1] = 8'h8D; sequences_2[5][2] = 8'h89;
+        sequences_2[4][0] = 8'h4e; sequences_2[4][1] = {sequences_2_reg[63:60],4'hD}; sequences_2[4][2] = {sequences_2_reg[63:60],4'h9}; // high nibble - A into 1_1
+        sequences_2[5][0] = 8'h4e; sequences_2[5][1] = {sequences_2_reg[59:56],4'hD}; sequences_2[5][2] = {sequences_2_reg[59:56],4'h9};
 
-        sequences_2[6][0] = 8'h4e; sequences_2[6][1] = 8'h6D; sequences_2[6][2] = 8'h69; // high nibble - a into 1_2
-        sequences_2[7][0] = 8'h4e; sequences_2[7][1] = 8'h1D; sequences_2[7][2] = 8'h19;
+        sequences_2[6][0] = 8'h4e; sequences_2[6][1] = {sequences_2_reg[55:52],4'hD}; sequences_2[6][2] = {sequences_2_reg[55:52],4'h9}; // high nibble - i into 1_2
+        sequences_2[7][0] = 8'h4e; sequences_2[7][1] = {sequences_2_reg[51:48],4'hD}; sequences_2[7][2] = {sequences_2_reg[51:48],4'h9};
 
-        sequences_2[8][0] = 8'h4e; sequences_2[8][1] = 8'h7D; sequences_2[8][2] = 8'h79; // high nibble - z into 1_1
-        sequences_2[9][0] = 8'h4e; sequences_2[9][1] = 8'hAD; sequences_2[9][2] = 8'hA9;
+        sequences_2[8][0] = 8'h4e; sequences_2[8][1] = {sequences_2_reg[47:44],4'hD}; sequences_2[8][2] = {sequences_2_reg[47:44],4'h9}; // high nibble - r into 1_1
+        sequences_2[9][0] = 8'h4e; sequences_2[9][1] = {sequences_2_reg[43:40],4'hD}; sequences_2[9][2] = {sequences_2_reg[43:40],4'h9};
 
-        sequences_2[10][0] = 8'h4e; sequences_2[10][1] = 8'h6D; sequences_2[10][2] = 8'h69; // high nibble - e into 1_1
-        sequences_2[11][0] = 8'h4e; sequences_2[11][1] = 8'h5D; sequences_2[11][2] = 8'h59;
+        sequences_2[10][0] = 8'h4e; sequences_2[10][1] = {sequences_2_reg[39:36],4'hD}; sequences_2[10][2] = {sequences_2_reg[39:36],4'h9}; // high nibble - # into 1_1
+        sequences_2[11][0] = 8'h4e; sequences_2[11][1] = {sequences_2_reg[35:32],4'hD}; sequences_2[11][2] = {sequences_2_reg[35:32],4'h9};
 
-        sequences_2[12][0] = 8'h4e; sequences_2[12][1] = 8'h6D; sequences_2[12][2] = 8'h69; // high nibble - l into 1_2
-        sequences_2[13][0] = 8'h4e; sequences_2[13][1] = 8'hCD; sequences_2[13][2] = 8'hC9;
+        sequences_2[12][0] = 8'h4e; sequences_2[12][1] = {sequences_2_reg[31:28],4'hD}; sequences_2[12][2] = {sequences_2_reg[31:28],4'h9}; // high nibble - # into 1_2
+        sequences_2[13][0] = 8'h4e; sequences_2[13][1] = {sequences_2_reg[27:24],4'hD}; sequences_2[13][2] = {sequences_2_reg[27:24],4'h9};
 
-        sequences_2[14][0] = 8'h4e; sequences_2[14][1] = 8'h6D; sequences_2[14][2] = 8'h69; // high nibble - n into 1_1
-        sequences_2[15][0] = 8'h4e; sequences_2[15][1] = 8'hED; sequences_2[15][2] = 8'hE9;
+        sequences_2[14][0] = 8'h4e; sequences_2[14][1] = {sequences_2_reg[23:20],4'hD}; sequences_2[14][2] = {sequences_2_reg[23:20],4'h9}; // high nibble - # into 1_1
+        sequences_2[15][0] = 8'h4e; sequences_2[15][1] = {sequences_2_reg[19:16],4'hD}; sequences_2[15][2] = {sequences_2_reg[19:16],4'h9};
 
-        sequences_2[16][0] = 8'h4e; sequences_2[16][1] = 8'h7D; sequences_2[16][2] = 8'h79; // high nibble - u into 1_1
-        sequences_2[17][0] = 8'h4e; sequences_2[17][1] = 8'h5D; sequences_2[17][2] = 8'h59;
+        sequences_2[16][0] = 8'h4e; sequences_2[16][1] = {sequences_2_reg[15:12],4'hD}; sequences_2[16][2] = {sequences_2_reg[15:12],4'h9}; // high nibble - # into 1_1
+        sequences_2[17][0] = 8'h4e; sequences_2[17][1] = {sequences_2_reg[11:8],4'hD}; sequences_2[17][2] = {sequences_2_reg[11:8],4'h9};
 
-        sequences_2[18][0] = 8'h4e; sequences_2[18][1] = 8'h7D; sequences_2[18][2] = 8'h79; // high nibble - t into 1_1
-        sequences_2[19][0] = 8'h4e; sequences_2[19][1] = 8'h4D; sequences_2[19][2] = 8'h49;
+        sequences_2[18][0] = 8'h4e; sequences_2[18][1] = {sequences_2_reg[7:4],4'hD}; sequences_2[18][2] = {sequences_2_reg[7:4],4'h9}; // high nibble - # into 1_1
+        sequences_2[19][0] = 8'h4e; sequences_2[19][1] = {sequences_2_reg[3:0],4'hD}; sequences_2[19][2] = {sequences_2_reg[3:0],4'h9};
         /////////////////////////
-        // Cookie
+        // Coconut
         /////////////////////////
         sequences_3[0][0] = 8'h4e; sequences_3[0][1] = 8'h0C; sequences_3[0][2] = 8'h08; // high nibble  - blink cursor
         sequences_3[1][0] = 8'h4e; sequences_3[1][1] = 8'hfC; sequences_3[1][2] = 8'hf8;
@@ -148,31 +156,31 @@ module lcd_driver(
         sequences_3[2][0] = 8'h4e; sequences_3[2][1] = 8'h8C; sequences_3[2][2] = 8'h88; // high nibble - ddram position
         sequences_3[3][0] = 8'h4e; sequences_3[3][1] = 8'h0C; sequences_3[3][2] = 8'h08;
 
-        sequences_3[4][0] = 8'h4e; sequences_3[4][1] = 8'h4D; sequences_3[4][2] = 8'h49; // high nibble - C into 1_1
-        sequences_3[5][0] = 8'h4e; sequences_3[5][1] = 8'h3D; sequences_3[5][2] = 8'h39;
+        sequences_3[4][0] = 8'h4e; sequences_3[4][1] = {sequences_3_reg[63:60],4'hD}; sequences_3[4][2] = {sequences_3_reg[63:60],4'h9}; // high nibble - A into 1_1
+        sequences_3[5][0] = 8'h4e; sequences_3[5][1] = {sequences_3_reg[59:56],4'hD}; sequences_3[5][2] = {sequences_3_reg[59:56],4'h9};
 
-        sequences_3[6][0] = 8'h4e; sequences_3[6][1] = 8'h6D; sequences_3[6][2] = 8'h69; // high nibble - o into 1_2
-        sequences_3[7][0] = 8'h4e; sequences_3[7][1] = 8'hFD; sequences_3[7][2] = 8'hF9;
+        sequences_3[6][0] = 8'h4e; sequences_3[6][1] = {sequences_3_reg[55:52],4'hD}; sequences_3[6][2] = {sequences_3_reg[55:52],4'h9}; // high nibble - i into 1_2
+        sequences_3[7][0] = 8'h4e; sequences_3[7][1] = {sequences_3_reg[51:48],4'hD}; sequences_3[7][2] = {sequences_3_reg[51:48],4'h9};
 
-        sequences_3[8][0] = 8'h4e; sequences_3[8][1] = 8'h6D; sequences_3[8][2] = 8'h69; // high nibble - o into 1_1
-        sequences_3[9][0] = 8'h4e; sequences_3[9][1] = 8'hFD; sequences_3[9][2] = 8'hF9;
+        sequences_3[8][0] = 8'h4e; sequences_3[8][1] = {sequences_3_reg[47:44],4'hD}; sequences_3[8][2] = {sequences_3_reg[47:44],4'h9}; // high nibble - r into 1_1
+        sequences_3[9][0] = 8'h4e; sequences_3[9][1] = {sequences_3_reg[43:40],4'hD}; sequences_3[9][2] = {sequences_3_reg[43:40],4'h9};
 
-        sequences_3[10][0] = 8'h4e; sequences_3[10][1] = 8'h6D; sequences_3[10][2] = 8'h69; // high nibble - k into 1_1
-        sequences_3[11][0] = 8'h4e; sequences_3[11][1] = 8'hBD; sequences_3[11][2] = 8'hB9;
+        sequences_3[10][0] = 8'h4e; sequences_3[10][1] = {sequences_3_reg[39:36],4'hD}; sequences_3[10][2] = {sequences_3_reg[39:36],4'h9}; // high nibble - # into 1_1
+        sequences_3[11][0] = 8'h4e; sequences_3[11][1] = {sequences_3_reg[35:32],4'hD}; sequences_3[11][2] = {sequences_3_reg[35:32],4'h9};
 
-        sequences_3[12][0] = 8'h4e; sequences_3[12][1] = 8'h6D; sequences_3[12][2] = 8'h69; // high nibble - i into 1_2
-        sequences_3[13][0] = 8'h4e; sequences_3[13][1] = 8'h9D; sequences_3[13][2] = 8'h99;
+        sequences_3[12][0] = 8'h4e; sequences_3[12][1] = {sequences_3_reg[31:28],4'hD}; sequences_3[12][2] = {sequences_3_reg[31:28],4'h9}; // high nibble - # into 1_2
+        sequences_3[13][0] = 8'h4e; sequences_3[13][1] = {sequences_3_reg[27:24],4'hD}; sequences_3[13][2] = {sequences_3_reg[27:24],4'h9};
 
-        sequences_3[14][0] = 8'h4e; sequences_3[14][1] = 8'h6D; sequences_3[14][2] = 8'h69; // high nibble - e into 1_1
-        sequences_3[15][0] = 8'h4e; sequences_3[15][1] = 8'h5D; sequences_3[15][2] = 8'h59;
+        sequences_3[14][0] = 8'h4e; sequences_3[14][1] = {sequences_3_reg[23:20],4'hD}; sequences_3[14][2] = {sequences_3_reg[23:20],4'h9}; // high nibble - # into 1_1
+        sequences_3[15][0] = 8'h4e; sequences_3[15][1] = {sequences_3_reg[19:16],4'hD}; sequences_3[15][2] = {sequences_3_reg[19:16],4'h9};
 
-        sequences_3[16][0] = 8'h4e; sequences_3[16][1] = 8'h2D; sequences_3[16][2] = 8'h29; // high nibble - # into 1_1
-        sequences_3[17][0] = 8'h4e; sequences_3[17][1] = 8'h3D; sequences_3[17][2] = 8'h39;
+        sequences_3[16][0] = 8'h4e; sequences_3[16][1] = {sequences_3_reg[15:12],4'hD}; sequences_3[16][2] = {sequences_3_reg[15:12],4'h9}; // high nibble - # into 1_1
+        sequences_3[17][0] = 8'h4e; sequences_3[17][1] = {sequences_3_reg[11:8],4'hD}; sequences_3[17][2] = {sequences_3_reg[11:8],4'h9};
 
-        sequences_3[18][0] = 8'h4e; sequences_3[18][1] = 8'h2D; sequences_3[18][2] = 8'h29; // high nibble - # into 1_1
-        sequences_3[19][0] = 8'h4e; sequences_3[19][1] = 8'h3D; sequences_3[19][2] = 8'h39;
+        sequences_3[18][0] = 8'h4e; sequences_3[18][1] = {sequences_3_reg[7:4],4'hD}; sequences_3[18][2] = {sequences_3_reg[7:4],4'h9}; // high nibble - # into 1_1
+        sequences_3[19][0] = 8'h4e; sequences_3[19][1] = {sequences_3_reg[3:0],4'hD}; sequences_3[19][2] = {sequences_3_reg[3:0],4'h9};
         /////////////////////////
-        // Rulokat
+        // Thyme
         /////////////////////////
         sequences_4[0][0] = 8'h4e; sequences_4[0][1] = 8'h0C; sequences_4[0][2] = 8'h08; // high nibble  - blink cursor
         sequences_4[1][0] = 8'h4e; sequences_4[1][1] = 8'hfC; sequences_4[1][2] = 8'hf8;
@@ -180,29 +188,29 @@ module lcd_driver(
         sequences_4[2][0] = 8'h4e; sequences_4[2][1] = 8'h8C; sequences_4[2][2] = 8'h88; // high nibble - ddram position
         sequences_4[3][0] = 8'h4e; sequences_4[3][1] = 8'h0C; sequences_4[3][2] = 8'h08;
 
-        sequences_4[4][0] = 8'h4e; sequences_4[4][1] = 8'h5D; sequences_4[4][2] = 8'h59; // high nibble - R into 1_1
-        sequences_4[5][0] = 8'h4e; sequences_4[5][1] = 8'h2D; sequences_4[5][2] = 8'h29;
+        sequences_4[4][0] = 8'h4e; sequences_4[4][1] = {sequences_4_reg[63:60],4'hD}; sequences_4[4][2] = {sequences_4_reg[63:60],4'h9}; // high nibble - A into 1_1
+        sequences_4[5][0] = 8'h4e; sequences_4[5][1] = {sequences_4_reg[59:56],4'hD}; sequences_4[5][2] = {sequences_4_reg[59:56],4'h9};
 
-        sequences_4[6][0] = 8'h4e; sequences_4[6][1] = 8'h7D; sequences_4[6][2] = 8'h79; // high nibble - u into 1_2
-        sequences_4[7][0] = 8'h4e; sequences_4[7][1] = 8'h5D; sequences_4[7][2] = 8'h59;
+        sequences_4[6][0] = 8'h4e; sequences_4[6][1] = {sequences_4_reg[55:52],4'hD}; sequences_4[6][2] = {sequences_4_reg[55:52],4'h9}; // high nibble - i into 1_2
+        sequences_4[7][0] = 8'h4e; sequences_4[7][1] = {sequences_4_reg[51:48],4'hD}; sequences_4[7][2] = {sequences_4_reg[51:48],4'h9};
 
-        sequences_4[8][0] = 8'h4e; sequences_4[8][1] = 8'h6D; sequences_4[8][2] = 8'h69; // high nibble - l into 1_1
-        sequences_4[9][0] = 8'h4e; sequences_4[9][1] = 8'hCD; sequences_4[9][2] = 8'hC9;
+        sequences_4[8][0] = 8'h4e; sequences_4[8][1] = {sequences_4_reg[47:44],4'hD}; sequences_4[8][2] = {sequences_4_reg[47:44],4'h9}; // high nibble - r into 1_1
+        sequences_4[9][0] = 8'h4e; sequences_4[9][1] = {sequences_4_reg[43:40],4'hD}; sequences_4[9][2] = {sequences_4_reg[43:40],4'h9};
 
-        sequences_4[10][0] = 8'h4e; sequences_4[10][1] = 8'h6D; sequences_4[10][2] = 8'h69; // high nibble - o into 1_1
-        sequences_4[11][0] = 8'h4e; sequences_4[11][1] = 8'hFD; sequences_4[11][2] = 8'hF9;
+        sequences_4[10][0] = 8'h4e; sequences_4[10][1] = {sequences_4_reg[39:36],4'hD}; sequences_4[10][2] = {sequences_4_reg[39:36],4'h9}; // high nibble - # into 1_1
+        sequences_4[11][0] = 8'h4e; sequences_4[11][1] = {sequences_4_reg[35:32],4'hD}; sequences_4[11][2] = {sequences_4_reg[35:32],4'h9};
 
-        sequences_4[12][0] = 8'h4e; sequences_4[12][1] = 8'h6D; sequences_4[12][2] = 8'h69; // high nibble - k into 1_2
-        sequences_4[13][0] = 8'h4e; sequences_4[13][1] = 8'hBD; sequences_4[13][2] = 8'hB9;
+        sequences_4[12][0] = 8'h4e; sequences_4[12][1] = {sequences_4_reg[31:28],4'hD}; sequences_4[12][2] = {sequences_4_reg[31:28],4'h9}; // high nibble - # into 1_2
+        sequences_4[13][0] = 8'h4e; sequences_4[13][1] = {sequences_4_reg[27:24],4'hD}; sequences_4[13][2] = {sequences_4_reg[27:24],4'h9};
 
-        sequences_4[14][0] = 8'h4e; sequences_4[14][1] = 8'h6D; sequences_4[14][2] = 8'h69; // high nibble - a into 1_1
-        sequences_4[15][0] = 8'h4e; sequences_4[15][1] = 8'h1D; sequences_4[15][2] = 8'h19;
+        sequences_4[14][0] = 8'h4e; sequences_4[14][1] = {sequences_4_reg[23:20],4'hD}; sequences_4[14][2] = {sequences_4_reg[23:20],4'h9}; // high nibble - # into 1_1
+        sequences_4[15][0] = 8'h4e; sequences_4[15][1] = {sequences_4_reg[19:16],4'hD}; sequences_4[15][2] = {sequences_4_reg[19:16],4'h9};
 
-        sequences_4[16][0] = 8'h4e; sequences_4[16][1] = 8'h7D; sequences_4[16][2] = 8'h79; // high nibble - t into 1_1
-        sequences_4[17][0] = 8'h4e; sequences_4[17][1] = 8'h4D; sequences_4[17][2] = 8'h49;
+        sequences_4[16][0] = 8'h4e; sequences_4[16][1] = {sequences_4_reg[15:12],4'hD}; sequences_4[16][2] = {sequences_4_reg[15:12],4'h9}; // high nibble - # into 1_1
+        sequences_4[17][0] = 8'h4e; sequences_4[17][1] = {sequences_4_reg[11:8],4'hD}; sequences_4[17][2] = {sequences_4_reg[11:8],4'h9};
 
-        sequences_4[18][0] = 8'h4e; sequences_4[18][1] = 8'h2D; sequences_4[18][2] = 8'h29; // high nibble - # into 1_1
-        sequences_4[19][0] = 8'h4e; sequences_4[19][1] = 8'h3D; sequences_4[19][2] = 8'h39;
+        sequences_4[18][0] = 8'h4e; sequences_4[18][1] = {sequences_4_reg[7:4],4'hD}; sequences_4[18][2] = {sequences_4_reg[7:4],4'h9}; // high nibble - # into 1_1
+        sequences_4[19][0] = 8'h4e; sequences_4[19][1] = {sequences_4_reg[3:0],4'hD}; sequences_4[19][2] = {sequences_4_reg[3:0],4'h9};
         /////////////////////////
         // Salad
         /////////////////////////
@@ -212,29 +220,29 @@ module lcd_driver(
         sequences_5[2][0] = 8'h4e; sequences_5[2][1] = 8'h8C; sequences_5[2][2] = 8'h88; // high nibble - ddram position
         sequences_5[3][0] = 8'h4e; sequences_5[3][1] = 8'h0C; sequences_5[3][2] = 8'h08;
 
-        sequences_5[4][0] = 8'h4e; sequences_5[4][1] = 8'h5D; sequences_5[4][2] = 8'h59; // high nibble - S into 1_1
-        sequences_5[5][0] = 8'h4e; sequences_5[5][1] = 8'h3D; sequences_5[5][2] = 8'h39;
+        sequences_5[4][0] = 8'h4e; sequences_5[4][1] = {sequences_5_reg[63:60],4'hD}; sequences_5[4][2] = {sequences_5_reg[63:60],4'h9}; // high nibble - A into 1_1
+        sequences_5[5][0] = 8'h4e; sequences_5[5][1] = {sequences_5_reg[59:56],4'hD}; sequences_5[5][2] = {sequences_5_reg[59:56],4'h9};
 
-        sequences_5[6][0] = 8'h4e; sequences_5[6][1] = 8'h6D; sequences_5[6][2] = 8'h69; // high nibble - a into 1_2
-        sequences_5[7][0] = 8'h4e; sequences_5[7][1] = 8'h1D; sequences_5[7][2] = 8'h19;
+        sequences_5[6][0] = 8'h4e; sequences_5[6][1] = {sequences_5_reg[55:52],4'hD}; sequences_5[6][2] = {sequences_5_reg[55:52],4'h9}; // high nibble - i into 1_2
+        sequences_5[7][0] = 8'h4e; sequences_5[7][1] = {sequences_5_reg[51:48],4'hD}; sequences_5[7][2] = {sequences_5_reg[51:48],4'h9};
 
-        sequences_5[8][0] = 8'h4e; sequences_5[8][1] = 8'h6D; sequences_5[8][2] = 8'h69; // high nibble - l into 1_1
-        sequences_5[9][0] = 8'h4e; sequences_5[9][1] = 8'hCD; sequences_5[9][2] = 8'hC9;
+        sequences_5[8][0] = 8'h4e; sequences_5[8][1] = {sequences_5_reg[47:44],4'hD}; sequences_5[8][2] = {sequences_5_reg[47:44],4'h9}; // high nibble - r into 1_1
+        sequences_5[9][0] = 8'h4e; sequences_5[9][1] = {sequences_5_reg[43:40],4'hD}; sequences_5[9][2] = {sequences_5_reg[43:40],4'h9};
 
-        sequences_5[10][0] = 8'h4e; sequences_5[10][1] = 8'h6D; sequences_5[10][2] = 8'h69; // high nibble - a into 1_1
-        sequences_5[11][0] = 8'h4e; sequences_5[11][1] = 8'h1D; sequences_5[11][2] = 8'h19;
+        sequences_5[10][0] = 8'h4e; sequences_5[10][1] = {sequences_5_reg[39:36],4'hD}; sequences_5[10][2] = {sequences_5_reg[39:36],4'h9}; // high nibble - # into 1_1
+        sequences_5[11][0] = 8'h4e; sequences_5[11][1] = {sequences_5_reg[35:32],4'hD}; sequences_5[11][2] = {sequences_5_reg[35:32],4'h9};
 
-        sequences_5[12][0] = 8'h4e; sequences_5[12][1] = 8'h6D; sequences_5[12][2] = 8'h69; // high nibble - d into 1_2
-        sequences_5[13][0] = 8'h4e; sequences_5[13][1] = 8'h4D; sequences_5[13][2] = 8'h49;
+        sequences_5[12][0] = 8'h4e; sequences_5[12][1] = {sequences_5_reg[31:28],4'hD}; sequences_5[12][2] = {sequences_5_reg[31:28],4'h9}; // high nibble - # into 1_2
+        sequences_5[13][0] = 8'h4e; sequences_5[13][1] = {sequences_5_reg[27:24],4'hD}; sequences_5[13][2] = {sequences_5_reg[27:24],4'h9};
 
-        sequences_5[14][0] = 8'h4e; sequences_5[14][1] = 8'h2D; sequences_5[14][2] = 8'h29; // high nibble - # into 1_1
-        sequences_5[15][0] = 8'h4e; sequences_5[15][1] = 8'h3D; sequences_5[15][2] = 8'h39;
+        sequences_5[14][0] = 8'h4e; sequences_5[14][1] = {sequences_5_reg[23:20],4'hD}; sequences_5[14][2] = {sequences_5_reg[23:20],4'h9}; // high nibble - # into 1_1
+        sequences_5[15][0] = 8'h4e; sequences_5[15][1] = {sequences_5_reg[19:16],4'hD}; sequences_5[15][2] = {sequences_5_reg[19:16],4'h9};
 
-        sequences_5[16][0] = 8'h4e; sequences_5[16][1] = 8'h2D; sequences_5[16][2] = 8'h29; // high nibble - # into 1_1
-        sequences_5[17][0] = 8'h4e; sequences_5[17][1] = 8'h3D; sequences_5[17][2] = 8'h39;
+        sequences_5[16][0] = 8'h4e; sequences_5[16][1] = {sequences_5_reg[15:12],4'hD}; sequences_5[16][2] = {sequences_5_reg[15:12],4'h9}; // high nibble - # into 1_1
+        sequences_5[17][0] = 8'h4e; sequences_5[17][1] = {sequences_5_reg[11:8],4'hD}; sequences_5[17][2] = {sequences_5_reg[11:8],4'h9};
 
-        sequences_5[18][0] = 8'h4e; sequences_5[18][1] = 8'h2D; sequences_5[18][2] = 8'h29; // high nibble - # into 1_1
-        sequences_5[19][0] = 8'h4e; sequences_5[19][1] = 8'h3D; sequences_5[19][2] = 8'h39;
+        sequences_5[18][0] = 8'h4e; sequences_5[18][1] = {sequences_5_reg[7:4],4'hD}; sequences_5[18][2] = {sequences_5_reg[7:4],4'h9}; // high nibble - # into 1_1
+        sequences_5[19][0] = 8'h4e; sequences_5[19][1] = {sequences_5_reg[3:0],4'hD}; sequences_5[19][2] = {sequences_5_reg[3:0],4'h9};
         /////////////////////////
         // Orange
         /////////////////////////
@@ -244,29 +252,29 @@ module lcd_driver(
         sequences_6[2][0] = 8'h4e; sequences_6[2][1] = 8'h8C; sequences_6[2][2] = 8'h88; // high nibble - ddram position
         sequences_6[3][0] = 8'h4e; sequences_6[3][1] = 8'h0C; sequences_6[3][2] = 8'h08;
 
-        sequences_6[4][0] = 8'h4e; sequences_6[4][1] = 8'h4D; sequences_6[4][2] = 8'h49; // high nibble - O into 1_1
-        sequences_6[5][0] = 8'h4e; sequences_6[5][1] = 8'hFD; sequences_6[5][2] = 8'hF9;
+        sequences_6[4][0] = 8'h4e; sequences_6[4][1] = {sequences_6_reg[63:60],4'hD}; sequences_6[4][2] = {sequences_6_reg[63:60],4'h9}; // high nibble - A into 1_1
+        sequences_6[5][0] = 8'h4e; sequences_6[5][1] = {sequences_6_reg[59:56],4'hD}; sequences_6[5][2] = {sequences_6_reg[59:56],4'h9};
 
-        sequences_6[6][0] = 8'h4e; sequences_6[6][1] = 8'h7D; sequences_6[6][2] = 8'h79; // high nibble - r into 1_2
-        sequences_6[7][0] = 8'h4e; sequences_6[7][1] = 8'h2D; sequences_6[7][2] = 8'h29;
+        sequences_6[6][0] = 8'h4e; sequences_6[6][1] = {sequences_6_reg[55:52],4'hD}; sequences_6[6][2] = {sequences_6_reg[55:52],4'h9}; // high nibble - i into 1_2
+        sequences_6[7][0] = 8'h4e; sequences_6[7][1] = {sequences_6_reg[51:48],4'hD}; sequences_6[7][2] = {sequences_6_reg[51:48],4'h9};
 
-        sequences_6[8][0] = 8'h4e; sequences_6[8][1] = 8'h6D; sequences_6[8][2] = 8'h69; // high nibble - a into 1_1
-        sequences_6[9][0] = 8'h4e; sequences_6[9][1] = 8'h1D; sequences_6[9][2] = 8'h19;
+        sequences_6[8][0] = 8'h4e; sequences_6[8][1] = {sequences_6_reg[47:44],4'hD}; sequences_6[8][2] = {sequences_6_reg[47:44],4'h9}; // high nibble - r into 1_1
+        sequences_6[9][0] = 8'h4e; sequences_6[9][1] = {sequences_6_reg[43:40],4'hD}; sequences_6[9][2] = {sequences_6_reg[43:40],4'h9};
 
-        sequences_6[10][0] = 8'h4e; sequences_6[10][1] = 8'h6D; sequences_6[10][2] = 8'h69; // high nibble - n into 1_1
-        sequences_6[11][0] = 8'h4e; sequences_6[11][1] = 8'hED; sequences_6[11][2] = 8'hE9;
+        sequences_6[10][0] = 8'h4e; sequences_6[10][1] = {sequences_6_reg[39:36],4'hD}; sequences_6[10][2] = {sequences_6_reg[39:36],4'h9}; // high nibble - # into 1_1
+        sequences_6[11][0] = 8'h4e; sequences_6[11][1] = {sequences_6_reg[35:32],4'hD}; sequences_6[11][2] = {sequences_6_reg[35:32],4'h9};
 
-        sequences_6[12][0] = 8'h4e; sequences_6[12][1] = 8'h6D; sequences_6[12][2] = 8'h69; // high nibble - g into 1_2
-        sequences_6[13][0] = 8'h4e; sequences_6[13][1] = 8'h7D; sequences_6[13][2] = 8'h79;
+        sequences_6[12][0] = 8'h4e; sequences_6[12][1] = {sequences_6_reg[31:28],4'hD}; sequences_6[12][2] = {sequences_6_reg[31:28],4'h9}; // high nibble - # into 1_2
+        sequences_6[13][0] = 8'h4e; sequences_6[13][1] = {sequences_6_reg[27:24],4'hD}; sequences_6[13][2] = {sequences_6_reg[27:24],4'h9};
 
-        sequences_6[14][0] = 8'h4e; sequences_6[14][1] = 8'h6D; sequences_6[14][2] = 8'h69; // high nibble - e into 1_1
-        sequences_6[15][0] = 8'h4e; sequences_6[15][1] = 8'h5D; sequences_6[15][2] = 8'h59;
+        sequences_6[14][0] = 8'h4e; sequences_6[14][1] = {sequences_6_reg[23:20],4'hD}; sequences_6[14][2] = {sequences_6_reg[23:20],4'h9}; // high nibble - # into 1_1
+        sequences_6[15][0] = 8'h4e; sequences_6[15][1] = {sequences_6_reg[19:16],4'hD}; sequences_6[15][2] = {sequences_6_reg[19:16],4'h9};
 
-        sequences_6[16][0] = 8'h4e; sequences_6[16][1] = 8'h2D; sequences_6[16][2] = 8'h29; // high nibble - # into 1_1
-        sequences_6[17][0] = 8'h4e; sequences_6[17][1] = 8'h3D; sequences_6[17][2] = 8'h39;
+        sequences_6[16][0] = 8'h4e; sequences_6[16][1] = {sequences_6_reg[15:12],4'hD}; sequences_6[16][2] = {sequences_6_reg[15:12],4'h9}; // high nibble - # into 1_1
+        sequences_6[17][0] = 8'h4e; sequences_6[17][1] = {sequences_6_reg[11:8],4'hD}; sequences_6[17][2] = {sequences_6_reg[11:8],4'h9};
 
-        sequences_6[18][0] = 8'h4e; sequences_6[18][1] = 8'h2D; sequences_6[18][2] = 8'h29; // high nibble - # into 1_1
-        sequences_6[19][0] = 8'h4e; sequences_6[19][1] = 8'h3D; sequences_6[19][2] = 8'h39;
+        sequences_6[18][0] = 8'h4e; sequences_6[18][1] = {sequences_6_reg[7:4],4'hD}; sequences_6[18][2] = {sequences_6_reg[7:4],4'h9}; // high nibble - # into 1_1
+        sequences_6[19][0] = 8'h4e; sequences_6[19][1] = {sequences_6_reg[3:0],4'hD}; sequences_6[19][2] = {sequences_6_reg[3:0],4'h9};
         /////////////////////////
         // Error
         /////////////////////////
@@ -276,29 +284,29 @@ module lcd_driver(
         sequences_7[2][0] = 8'h4e; sequences_7[2][1] = 8'h8C; sequences_7[2][2] = 8'h88; // high nibble - ddram position
         sequences_7[3][0] = 8'h4e; sequences_7[3][1] = 8'h0C; sequences_7[3][2] = 8'h08;
 
-        sequences_7[4][0] = 8'h4e; sequences_7[4][1] = 8'h4D; sequences_7[4][2] = 8'h49; // high nibble - E into 1_1
-        sequences_7[5][0] = 8'h4e; sequences_7[5][1] = 8'h5D; sequences_7[5][2] = 8'h59;
+        sequences_7[4][0] = 8'h4e; sequences_7[4][1] = {sequences_7_reg[63:60],4'hD}; sequences_7[4][2] = {sequences_7_reg[63:60],4'h9}; // high nibble - A into 1_1
+        sequences_7[5][0] = 8'h4e; sequences_7[5][1] = {sequences_7_reg[59:56],4'hD}; sequences_7[5][2] = {sequences_7_reg[59:56],4'h9};
 
-        sequences_7[6][0] = 8'h4e; sequences_7[6][1] = 8'h7D; sequences_7[6][2] = 8'h79; // high nibble - r into 1_2
-        sequences_7[7][0] = 8'h4e; sequences_7[7][1] = 8'h2D; sequences_7[7][2] = 8'h29;
+        sequences_7[6][0] = 8'h4e; sequences_7[6][1] = {sequences_7_reg[55:52],4'hD}; sequences_7[6][2] = {sequences_7_reg[55:52],4'h9}; // high nibble - i into 1_2
+        sequences_7[7][0] = 8'h4e; sequences_7[7][1] = {sequences_7_reg[51:48],4'hD}; sequences_7[7][2] = {sequences_7_reg[51:48],4'h9};
 
-        sequences_7[8][0] = 8'h4e; sequences_7[8][1] = 8'h7D; sequences_7[8][2] = 8'h79; // high nibble - r into 1_1
-        sequences_7[9][0] = 8'h4e; sequences_7[9][1] = 8'h2D; sequences_7[9][2] = 8'h29;
+        sequences_7[8][0] = 8'h4e; sequences_7[8][1] = {sequences_7_reg[47:44],4'hD}; sequences_7[8][2] = {sequences_7_reg[47:44],4'h9}; // high nibble - r into 1_1
+        sequences_7[9][0] = 8'h4e; sequences_7[9][1] = {sequences_7_reg[43:40],4'hD}; sequences_7[9][2] = {sequences_7_reg[43:40],4'h9};
 
-        sequences_7[10][0] = 8'h4e; sequences_7[10][1] = 8'h6D; sequences_7[10][2] = 8'h69; // high nibble - o into 1_1
-        sequences_7[11][0] = 8'h4e; sequences_7[11][1] = 8'hFD; sequences_7[11][2] = 8'hF9;
+        sequences_7[10][0] = 8'h4e; sequences_7[10][1] = {sequences_7_reg[39:36],4'hD}; sequences_7[10][2] = {sequences_7_reg[39:36],4'h9}; // high nibble - # into 1_1
+        sequences_7[11][0] = 8'h4e; sequences_7[11][1] = {sequences_7_reg[35:32],4'hD}; sequences_7[11][2] = {sequences_7_reg[35:32],4'h9};
 
-        sequences_7[12][0] = 8'h4e; sequences_7[12][1] = 8'h7D; sequences_7[12][2] = 8'h79; // high nibble - r into 1_2
-        sequences_7[13][0] = 8'h4e; sequences_7[13][1] = 8'h29; sequences_7[13][2] = 8'h29;
+        sequences_7[12][0] = 8'h4e; sequences_7[12][1] = {sequences_7_reg[31:28],4'hD}; sequences_7[12][2] = {sequences_7_reg[31:28],4'h9}; // high nibble - # into 1_2
+        sequences_7[13][0] = 8'h4e; sequences_7[13][1] = {sequences_7_reg[27:24],4'hD}; sequences_7[13][2] = {sequences_7_reg[27:24],4'h9};
 
-        sequences_7[14][0] = 8'h4e; sequences_7[14][1] = 8'h2D; sequences_7[14][2] = 8'h29; // high nibble - # into 1_1
-        sequences_7[15][0] = 8'h4e; sequences_7[15][1] = 8'h3D; sequences_7[15][2] = 8'h39;
+        sequences_7[14][0] = 8'h4e; sequences_7[14][1] = {sequences_7_reg[23:20],4'hD}; sequences_7[14][2] = {sequences_7_reg[23:20],4'h9}; // high nibble - # into 1_1
+        sequences_7[15][0] = 8'h4e; sequences_7[15][1] = {sequences_7_reg[19:16],4'hD}; sequences_7[15][2] = {sequences_7_reg[19:16],4'h9};
 
-        sequences_7[16][0] = 8'h4e; sequences_7[16][1] = 8'h2D; sequences_7[16][2] = 8'h29; // high nibble - # into 1_1
-        sequences_7[17][0] = 8'h4e; sequences_7[17][1] = 8'h3D; sequences_7[17][2] = 8'h39;
+        sequences_7[16][0] = 8'h4e; sequences_7[16][1] = {sequences_7_reg[15:12],4'hD}; sequences_7[16][2] = {sequences_7_reg[15:12],4'h9}; // high nibble - # into 1_1
+        sequences_7[17][0] = 8'h4e; sequences_7[17][1] = {sequences_7_reg[11:8],4'hD}; sequences_7[17][2] = {sequences_7_reg[11:8],4'h9};
 
-        sequences_7[18][0] = 8'h4e; sequences_7[18][1] = 8'h2D; sequences_7[18][2] = 8'h29; // high nibble - # into 1_1
-        sequences_7[19][0] = 8'h4e; sequences_7[19][1] = 8'h3D; sequences_7[19][2] = 8'h39;
+        sequences_7[18][0] = 8'h4e; sequences_7[18][1] = {sequences_7_reg[7:4],4'hD}; sequences_7[18][2] = {sequences_7_reg[7:4],4'h9}; // high nibble - # into 1_1
+        sequences_7[19][0] = 8'h4e; sequences_7[19][1] = {sequences_7_reg[3:0],4'hD}; sequences_7[19][2] = {sequences_7_reg[3:0],4'h9};
     end
 
     always @(posedge clk)begin
