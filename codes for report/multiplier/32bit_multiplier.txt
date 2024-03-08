@@ -1,2 +1,0 @@
-code and testbench: 
-https://codepal.ai/code-generator/query/Xoibptgt/32-bit-multiplier-without-loops
