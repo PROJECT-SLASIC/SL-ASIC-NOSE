@@ -1,0 +1,545 @@
+#-----------------------------------------------------------
+# Vivado v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:48:09 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Thu Jan 18 15:51:48 2024
+# Process ID: 4948
+# Current directory: C:/Users/ethem/IC_Project/IC_Project.runs/synth_1
+# Command line: vivado.exe -log Single_Cycle_RISCV32I.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Single_Cycle_RISCV32I.tcl
+# Log file: C:/Users/ethem/IC_Project/IC_Project.runs/synth_1/Single_Cycle_RISCV32I.vds
+# Journal file: C:/Users/ethem/IC_Project/IC_Project.runs/synth_1\vivado.jou
+# Running On: DESKTOP-DBLLDSI, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 4, Host memory: 34222 MB
+#-----------------------------------------------------------
+source Single_Cycle_RISCV32I.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1250.344 ; gain = 10.027
+Command: read_checkpoint -auto_incremental -incremental C:/Users/ethem/IC_Project/IC_Project.srcs/utils_1/imports/synth_1/Single_Cycle_RISCV32I.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/ethem/IC_Project/IC_Project.srcs/utils_1/imports/synth_1/Single_Cycle_RISCV32I.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top Single_Cycle_RISCV32I -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis because the design is too small; reverting to default synthesis
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 14148
+WARNING: [Synth 8-6901] identifier 'busy_div_alu' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:12]
+WARNING: [Synth 8-6901] identifier 'busy_mul_alu' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:12]
+WARNING: [Synth 8-6901] identifier 'valid_div_alu' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:13]
+WARNING: [Synth 8-6901] identifier 'valid_mul_alu' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:13]
+WARNING: [Synth 8-6901] identifier 'busy_mul_alu' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:72]
+WARNING: [Synth 8-6901] identifier 'valid_mul_alu' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:72]
+WARNING: [Synth 8-6901] identifier 'busy_div_alu' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:87]
+WARNING: [Synth 8-6901] identifier 'valid_div_alu' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:87]
+WARNING: [Synth 8-6901] identifier 'rs1_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:46]
+WARNING: [Synth 8-6901] identifier 'rs2_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:47]
+WARNING: [Synth 8-6901] identifier 'pc_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:48]
+WARNING: [Synth 8-6901] identifier 'rs1_addr_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:49]
+WARNING: [Synth 8-6901] identifier 'rs2_addr_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:50]
+WARNING: [Synth 8-6901] identifier 'rd_addr_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:51]
+WARNING: [Synth 8-6901] identifier 'immediate_extended_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:52]
+WARNING: [Synth 8-6901] identifier 'pc_plus_4_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:53]
+WARNING: [Synth 8-6901] identifier 'Reg_Write_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:56]
+WARNING: [Synth 8-6901] identifier 'ResultSrc_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:57]
+WARNING: [Synth 8-6901] identifier 'Mem_Write_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:58]
+WARNING: [Synth 8-6901] identifier 'Jump_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:59]
+WARNING: [Synth 8-6901] identifier 'Branch_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:60]
+WARNING: [Synth 8-6901] identifier 'Alu_Control_id_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:61]
+WARNING: [Synth 8-6901] identifier 'AluSrc_top_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:62]
+WARNING: [Synth 8-6901] identifier 'jalr_top_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:63]
+WARNING: [Synth 8-6901] identifier 'alu_result_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:30]
+WARNING: [Synth 8-6901] identifier 'rs2_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:31]
+WARNING: [Synth 8-6901] identifier 'rd_addr_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:32]
+WARNING: [Synth 8-6901] identifier 'pc_plus_4_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:33]
+WARNING: [Synth 8-6901] identifier 'pc_target_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:34]
+WARNING: [Synth 8-6901] identifier 'immediate_extended_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:35]
+WARNING: [Synth 8-6901] identifier 'Reg_Write_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:37]
+WARNING: [Synth 8-6901] identifier 'ResultSrc_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:38]
+WARNING: [Synth 8-6901] identifier 'Mem_Write_ex_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:39]
+WARNING: [Synth 8-6901] identifier 'alu_result_mem_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:28]
+WARNING: [Synth 8-6901] identifier 'rd_mem_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:29]
+WARNING: [Synth 8-6901] identifier 'rd_addr_mem_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:30]
+WARNING: [Synth 8-6901] identifier 'pc_plus_4_mem_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:31]
+WARNING: [Synth 8-6901] identifier 'pc_target_mem_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:32]
+WARNING: [Synth 8-6901] identifier 'immediate_extended_mem_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:33]
+WARNING: [Synth 8-6901] identifier 'Reg_Write_mem_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:35]
+WARNING: [Synth 8-6901] identifier 'ResultSrc_mem_reg' is used before its declaration [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:36]
+WARNING: [Synth 8-992] funct7_top is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:127]
+WARNING: [Synth 8-992] rs2_addr_top is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:128]
+WARNING: [Synth 8-992] rs1_addr_top is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:129]
+WARNING: [Synth 8-992] rd_addr_id_ex_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:159]
+WARNING: [Synth 8-992] ResultSrc_id_ex_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:165]
+WARNING: [Synth 8-992] Jump_id_ex_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:167]
+WARNING: [Synth 8-992] Branch_id_ex_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:168]
+WARNING: [Synth 8-992] rs1_addr_ex_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:171]
+WARNING: [Synth 8-992] rs2_addr_ex_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:172]
+WARNING: [Synth 8-992] jalr_ctrl_top_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:173]
+WARNING: [Synth 8-992] busy_alu_top is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:224]
+WARNING: [Synth 8-992] valid_alu_top is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:225]
+WARNING: [Synth 8-992] alu_result_ex_mem_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:246]
+WARNING: [Synth 8-992] rd_addr_ex_mem_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:248]
+WARNING: [Synth 8-992] Reg_Write_ex_mem_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:253]
+WARNING: [Synth 8-992] tx_busy_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:304]
+WARNING: [Synth 8-992] tx_done_tick_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:305]
+WARNING: [Synth 8-992] rd_addr_mem_wb_wb_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:319]
+WARNING: [Synth 8-992] Reg_Write_mem_wb_wire is already implicitly declared earlier [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:324]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1250.344 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Single_Cycle_RISCV32I' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Hazard_Unit_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Hazard_Unit.v:1]
+WARNING: [Synth 8-3848] Net ex_Stall in module/entity Hazard_Unit_1 does not have driver. [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Hazard_Unit.v:28]
+WARNING: [Synth 8-3848] Net mem_Stall in module/entity Hazard_Unit_1 does not have driver. [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Hazard_Unit.v:29]
+INFO: [Synth 8-6155] done synthesizing module 'Hazard_Unit_1' (1#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Hazard_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Control_Unit_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:25]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:83]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:147]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Control_Unit_1' (2#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'PC_Counter_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/PC_Counter.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'PC_Counter_1' (3#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/PC_Counter.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pc_plus_4_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/pc_plus_4.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pc_plus_4_1' (4#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/pc_plus_4.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_Memory_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:1]
+INFO: [Synth 8-3876] $readmem data file 'uart_mem_file.mem' is read successfully [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_Memory_1' (5#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Fetch_Stage_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Fetch_Stage.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Fetch_Stage_1' (6#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Fetch_Stage.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_Decoder_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Instruction_Decoder.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_Decoder_1' (7#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Instruction_Decoder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Register_File_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Register_File.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Register_File_1' (8#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Register_File.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Decode_Stage_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Decode_Stage_1' (9#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Decode_Stage.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pc_imm_adder_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/pc_imm_adder.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pc_imm_adder_1' (10#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/pc_imm_adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ALU_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Function_Control' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Function_Control.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Function_Control' (11#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Function_Control.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Ripple_Carry_Adder' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Ripple_Carry_Adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'full_adder' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Ripple_Carry_Adder.v:35]
+INFO: [Synth 8-6155] done synthesizing module 'full_adder' (12#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Ripple_Carry_Adder.v:35]
+INFO: [Synth 8-6155] done synthesizing module 'Ripple_Carry_Adder' (13#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Ripple_Carry_Adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Logic_Unit' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Logic_Unit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Logic_Unit' (14#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Logic_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Shifter_Unit' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Shifter_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Shifter_Unit.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'mux' (15#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Shifter_Unit.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'Shifter_Unit' (16#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Shifter_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Comparison_Unit' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Comparison_Unit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Comparison_Unit' (17#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Comparison_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Booth_Radix4_Multiplier' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/new/Booth_Radix4_Multiplier.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Booth_Radix4_Multiplier' (18#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/new/Booth_Radix4_Multiplier.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Booth_Radix2_Divider' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/new/Booth_Radix2_Divider.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Booth_Radix2_Divider' (19#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/new/Booth_Radix2_Divider.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'ALU_1' (20#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Extend_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Extend.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Extend.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'Extend_1' (21#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Extend.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Execute_Stage_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Execute_Stage_1' (22#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Execute_Stage.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Data_Memory_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Data_Memory.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Data_Memory_1' (23#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Data_Memory.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Uart_TX' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/new/Uart_TX.v:2]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/new/Uart_TX.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'Uart_TX' (24#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/new/Uart_TX.v:2]
+WARNING: [Synth 8-689] width (9) of port connection 'din_i' does not match port width (8) of module 'Uart_TX' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:309]
+INFO: [Synth 8-6157] synthesizing module 'Memory_Access_Stage_1' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_Access_Stage_1' (25#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/new/Memory_Access_Stage.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Mux_2' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Mux_2.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Mux_2' (26#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Mux_2.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Single_Cycle_RISCV32I' (27#1) [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:1]
+WARNING: [Synth 8-7129] Port alu_result[31] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[30] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[29] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[28] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[27] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[26] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[25] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[24] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[23] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[22] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[21] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[20] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[19] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[18] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[17] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[16] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[15] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[14] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[13] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[12] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[11] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[10] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[9] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[8] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[31] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[30] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[29] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[28] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[27] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[26] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[25] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[24] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[23] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[22] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[21] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[20] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[19] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[18] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[17] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[16] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[15] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[14] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[13] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[12] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[11] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[10] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[9] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[8] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[7] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[6] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[5] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[31] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ex_Stall in module Hazard_Unit_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mem_Stall in module Hazard_Unit_1 is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1250.344 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 1250.344 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 1250.344 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.141 . Memory (MB): peak = 1250.344 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/ethem/IC_Project/IC_Project.srcs/constrs_1/new/SDSD.xdc]
+Finished Parsing XDC File [C:/Users/ethem/IC_Project/IC_Project.srcs/constrs_1/new/SDSD.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/ethem/IC_Project/IC_Project.srcs/constrs_1/new/SDSD.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Single_Cycle_RISCV32I_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Single_Cycle_RISCV32I_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1350.980 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.037 . Memory (MB): peak = 1350.980 ; gain = 0.000
+WARNING: [Designutils 20-4072] Reference run did not run incremental synthesis because the design is too small; reverting to default synthesis
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1350.980 ; gain = 100.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1350.980 ; gain = 100.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1350.980 ; gain = 100.637
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Uart_TX'
+WARNING: [Synth 8-327] inferring latch for variable 'ResultSrc_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'Mem_Write_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'Alu_Control_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'AluSrc_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'ImmSrc_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'jalr_ctrl_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'Reg_Write_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'arith_op_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Function_Control.v:36]
+WARNING: [Synth 8-327] inferring latch for variable 'logic_op_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Function_Control.v:45]
+WARNING: [Synth 8-327] inferring latch for variable 'shifter_op_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Function_Control.v:79]
+WARNING: [Synth 8-327] inferring latch for variable 'cmp_op_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Function_Control.v:58]
+WARNING: [Synth 8-327] inferring latch for variable 'mul_op_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Function_Control.v:99]
+WARNING: [Synth 8-327] inferring latch for variable 'div_op_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Function_Control.v:103]
+WARNING: [Synth 8-327] inferring latch for variable 'F_o_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/ALU_top.v:107]
+WARNING: [Synth 8-327] inferring latch for variable 'immediate_extended_reg' [C:/Users/ethem/IC_Project/IC_Project.srcs/sources_1/imports/sources_1/imports/new/Extend.v:10]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                               00 |                              000
+                 S_START |                               01 |                              001
+                  S_DATA |                               10 |                              010
+                  S_STOP |                               11 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'Uart_TX'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:19 . Memory (MB): peak = 1350.980 ; gain = 100.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input   64 Bit       Adders := 1     
+	   2 Input   33 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 4     
+	   2 Input    6 Bit       Adders := 3     
+	   2 Input    3 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 65    
++---Registers : 
+	               65 Bit    Registers := 1     
+	               64 Bit    Registers := 3     
+	               33 Bit    Registers := 1     
+	               32 Bit    Registers := 205   
+	                8 Bit    Registers := 1     
+	                6 Bit    Registers := 5     
+	                5 Bit    Registers := 6     
+	                3 Bit    Registers := 4     
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   2 Input   65 Bit        Muxes := 4     
+	   3 Input   64 Bit        Muxes := 1     
+	   2 Input   64 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 25    
+	   4 Input   32 Bit        Muxes := 2     
+	   6 Input   32 Bit        Muxes := 1     
+	   3 Input   32 Bit        Muxes := 2     
+	   7 Input   21 Bit        Muxes := 1     
+	   4 Input    8 Bit        Muxes := 1     
+	   7 Input    7 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 3     
+	   2 Input    5 Bit        Muxes := 4     
+	   7 Input    5 Bit        Muxes := 4     
+	  10 Input    5 Bit        Muxes := 1     
+	   9 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 1     
+	   6 Input    3 Bit        Muxes := 1     
+	  10 Input    3 Bit        Muxes := 2     
+	   7 Input    3 Bit        Muxes := 2     
+	  19 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   4 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 3     
+	  19 Input    2 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 222   
+	   8 Input    1 Bit        Muxes := 4     
+	   7 Input    1 Bit        Muxes := 1     
+	  10 Input    1 Bit        Muxes := 6     
+	  19 Input    1 Bit        Muxes := 7     
+	   4 Input    1 Bit        Muxes := 9     
+	   6 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port alu_result[31] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[30] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[29] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[28] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[27] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[26] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[25] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[24] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[23] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[22] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[21] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[20] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[19] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[18] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[17] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[16] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[15] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[14] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[13] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[12] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[11] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[10] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[9] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[8] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[31] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[30] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[29] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[28] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[27] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[26] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[25] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[24] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[23] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[22] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[21] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[20] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[19] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[18] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[17] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[16] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[15] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[14] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[13] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[12] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[11] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[10] in module Shifter_Unit is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/mul_op_reg) is unused and will be removed from module ALU_1.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:54 ; elapsed = 00:00:54 . Memory (MB): peak = 1350.980 ; gain = 100.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++---------------------+--------------------------------+---------------+----------------+
+|Module Name          | RTL Object                     | Depth x Width | Implemented As | 
++---------------------+--------------------------------+---------------+----------------+
+|Instruction_Memory_1 | uart_mem                       | 2048x30       | LUT            | 
+|Function_Control     | unit_select                    | 32x3          | LUT            | 
+|Function_Control     | cmp_op                         | 32x1          | LUT            | 
+|Instruction_Memory_1 | p_0_out                        | 2048x30       | LUT            | 
+|ALU_1                | Function_Control_1/unit_select | 32x3          | LUT            | 
+|ALU_1                | Function_Control_1/cmp_op      | 32x1          | LUT            | 
++---------------------+--------------------------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:00 ; elapsed = 00:01:00 . Memory (MB): peak = 1350.980 ; gain = 100.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:03 ; elapsed = 00:01:03 . Memory (MB): peak = 1350.980 ; gain = 100.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:06 ; elapsed = 00:01:07 . Memory (MB): peak = 1405.711 ; gain = 155.367
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:12 ; elapsed = 00:01:12 . Memory (MB): peak = 1419.996 ; gain = 169.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:12 ; elapsed = 00:01:12 . Memory (MB): peak = 1419.996 ; gain = 169.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:12 ; elapsed = 00:01:12 . Memory (MB): peak = 1419.996 ; gain = 169.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:12 ; elapsed = 00:01:12 . Memory (MB): peak = 1419.996 ; gain = 169.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 1419.996 ; gain = 169.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 1419.996 ; gain = 169.652
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     3|
+|2     |CARRY4 |    79|
+|3     |LUT1   |    72|
+|4     |LUT2   |   191|
+|5     |LUT3   |   227|
+|6     |LUT4   |   296|
+|7     |LUT5   |   608|
+|8     |LUT6   |  2813|
+|9     |MUXF7  |  1011|
+|10    |MUXF8  |   439|
+|11    |FDRE   |  6456|
+|12    |FDSE   |   349|
+|13    |LD     |    88|
+|14    |IBUF   |     2|
+|15    |OBUF   |     1|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 1419.996 ; gain = 169.652
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 91 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:00 ; elapsed = 00:01:10 . Memory (MB): peak = 1419.996 ; gain = 69.016
+Synthesis Optimization Complete : Time (s): cpu = 00:01:12 ; elapsed = 00:01:13 . Memory (MB): peak = 1419.996 ; gain = 169.652
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.171 . Memory (MB): peak = 1423.785 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1617 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1437.941 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 88 instances were transformed.
+  LD => LDCE: 88 instances
+
+Synth Design complete, checksum: 71ef55f9
+INFO: [Common 17-83] Releasing license: Synthesis
+83 Infos, 182 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:17 ; elapsed = 00:01:19 . Memory (MB): peak = 1437.941 ; gain = 187.598
+INFO: [Common 17-1381] The checkpoint 'C:/Users/ethem/IC_Project/IC_Project.runs/synth_1/Single_Cycle_RISCV32I.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Single_Cycle_RISCV32I_utilization_synth.rpt -pb Single_Cycle_RISCV32I_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Jan 18 15:53:17 2024...
