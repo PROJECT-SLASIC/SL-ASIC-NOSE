@@ -101,7 +101,7 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 	Data_Memory_1 DATA_MEMORY (
 		.clk              (clk                   ),
 		.rst_i            (rst_i                 ),
-		.alu_result       (alu_result_ex_mem_wire),
+		.alu_result       (alu_result_ex_mem_wire), // TODO: "sensor_data_register_address" if "mlp_busy"
 		.wd_data          (rs2_ex_mem_wire       ),
 		.write_enable     (Mem_Write_ex_mem_wire ),
 		.rd               (rd_top                ),
