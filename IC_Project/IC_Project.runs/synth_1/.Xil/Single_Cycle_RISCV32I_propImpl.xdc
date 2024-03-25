@@ -1,0 +1,7 @@
+set_property SRC_FILE_INFO {cfile:C:/Users/ethem/IC_Project/IC_Project.srcs/constrs_1/new/SDSD.xdc rfile:../../../IC_Project.srcs/constrs_1/new/SDSD.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN E3 [get_ports clk]
+set_property src_info {type:XDC file:1 line:3 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN J15 [get_ports rst_i]
+set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN D4 [get_ports tx_pin]
