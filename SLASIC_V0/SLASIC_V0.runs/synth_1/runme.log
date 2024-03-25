@@ -1,0 +1,830 @@
+
+*** Running vivado
+    with args -log Single_Cycle_RISCV32I.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Single_Cycle_RISCV32I.tcl
+
+
+
+****** Vivado v2022.1 (64-bit)
+  **** SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+  **** IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source Single_Cycle_RISCV32I.tcl -notrace
+Command: read_checkpoint -auto_incremental -incremental C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/utils_1/imports/synth_1/Single_Cycle_RISCV32I.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/utils_1/imports/synth_1/Single_Cycle_RISCV32I.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top Single_Cycle_RISCV32I -part xc7a50ticsg324-1L
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a50ti'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a50ti'
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 25488
+WARNING: [Synth 8-6901] identifier 'busy_div_alu' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:12]
+WARNING: [Synth 8-6901] identifier 'busy_mul_alu' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:12]
+WARNING: [Synth 8-6901] identifier 'valid_div_alu' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:13]
+WARNING: [Synth 8-6901] identifier 'valid_mul_alu' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:13]
+WARNING: [Synth 8-6901] identifier 'busy_mul_alu' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:72]
+WARNING: [Synth 8-6901] identifier 'valid_mul_alu' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:72]
+WARNING: [Synth 8-6901] identifier 'busy_div_alu' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:87]
+WARNING: [Synth 8-6901] identifier 'valid_div_alu' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:87]
+WARNING: [Synth 8-6901] identifier 'rs1_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:46]
+WARNING: [Synth 8-6901] identifier 'rs2_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:47]
+WARNING: [Synth 8-6901] identifier 'pc_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:48]
+WARNING: [Synth 8-6901] identifier 'rs1_addr_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:49]
+WARNING: [Synth 8-6901] identifier 'rs2_addr_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:50]
+WARNING: [Synth 8-6901] identifier 'rd_addr_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:51]
+WARNING: [Synth 8-6901] identifier 'immediate_extended_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:52]
+WARNING: [Synth 8-6901] identifier 'pc_plus_4_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:53]
+WARNING: [Synth 8-6901] identifier 'Reg_Write_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:56]
+WARNING: [Synth 8-6901] identifier 'ResultSrc_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:57]
+WARNING: [Synth 8-6901] identifier 'Mem_Write_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:58]
+WARNING: [Synth 8-6901] identifier 'Jump_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:59]
+WARNING: [Synth 8-6901] identifier 'Branch_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:60]
+WARNING: [Synth 8-6901] identifier 'Alu_Control_id_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:61]
+WARNING: [Synth 8-6901] identifier 'AluSrc_top_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:62]
+WARNING: [Synth 8-6901] identifier 'jalr_top_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:63]
+WARNING: [Synth 8-6901] identifier 'alu_result_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:30]
+WARNING: [Synth 8-6901] identifier 'rs2_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:31]
+WARNING: [Synth 8-6901] identifier 'rd_addr_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:32]
+WARNING: [Synth 8-6901] identifier 'pc_plus_4_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:33]
+WARNING: [Synth 8-6901] identifier 'pc_target_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:34]
+WARNING: [Synth 8-6901] identifier 'immediate_extended_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:35]
+WARNING: [Synth 8-6901] identifier 'Reg_Write_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:37]
+WARNING: [Synth 8-6901] identifier 'ResultSrc_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:38]
+WARNING: [Synth 8-6901] identifier 'Mem_Write_ex_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:39]
+WARNING: [Synth 8-6901] identifier 'data_will_send' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:19]
+WARNING: [Synth 8-6901] identifier 'send_operation' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:19]
+WARNING: [Synth 8-6901] identifier 'temp_data' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:20]
+WARNING: [Synth 8-6901] identifier 'data_will_send' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:22]
+WARNING: [Synth 8-6901] identifier 'bit_count' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:22]
+WARNING: [Synth 8-6901] identifier 'data_will_send' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:22]
+WARNING: [Synth 8-6901] identifier 'bit_count' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:22]
+WARNING: [Synth 8-6901] identifier 'sda_enable_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:23]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'I2C_Slave' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:75]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'I2C_Slave' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:76]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'I2C_Slave' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:77]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'I2C_Slave' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:78]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'I2C_Slave' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:79]
+WARNING: [Synth 8-6901] identifier 'alu_result_mem_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:28]
+WARNING: [Synth 8-6901] identifier 'rd_mem_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:29]
+WARNING: [Synth 8-6901] identifier 'rd_addr_mem_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:30]
+WARNING: [Synth 8-6901] identifier 'pc_plus_4_mem_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:31]
+WARNING: [Synth 8-6901] identifier 'pc_target_mem_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:32]
+WARNING: [Synth 8-6901] identifier 'immediate_extended_mem_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:33]
+WARNING: [Synth 8-6901] identifier 'Reg_Write_mem_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:35]
+WARNING: [Synth 8-6901] identifier 'ResultSrc_mem_reg' is used before its declaration [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:36]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'i2c_driver' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:54]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'i2c_driver' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:55]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'i2c_driver' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:56]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'i2c_driver' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:57]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'i2c_driver' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:58]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'i2c_driver' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:59]
+WARNING: [Synth 8-9887] parameter declaration becomes local in 'i2c_driver' with formal parameter declaration list [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:60]
+WARNING: [Synth 8-8895] 'mlp_start' is already implicitly declared on line 22 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:65]
+WARNING: [Synth 8-8895] 'mlp_busy' is already implicitly declared on line 23 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:66]
+WARNING: [Synth 8-8895] 'mlp_valid' is already implicitly declared on line 24 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:67]
+WARNING: [Synth 8-8895] 'lcd_start' is already implicitly declared on line 27 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:84]
+WARNING: [Synth 8-8895] 'funct7_top' is already implicitly declared on line 177 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:235]
+WARNING: [Synth 8-8895] 'rs2_addr_top' is already implicitly declared on line 156 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:236]
+WARNING: [Synth 8-8895] 'rs1_addr_top' is already implicitly declared on line 155 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:237]
+WARNING: [Synth 8-8895] 'rd_addr_id_ex_wire' is already implicitly declared on line 157 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:267]
+WARNING: [Synth 8-8895] 'ResultSrc_id_ex_wire' is already implicitly declared on line 158 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:273]
+WARNING: [Synth 8-8895] 'Jump_id_ex_wire' is already implicitly declared on line 164 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:275]
+WARNING: [Synth 8-8895] 'Branch_id_ex_wire' is already implicitly declared on line 164 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:276]
+WARNING: [Synth 8-8895] 'rs1_addr_ex_wire' is already implicitly declared on line 144 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:279]
+WARNING: [Synth 8-8895] 'rs2_addr_ex_wire' is already implicitly declared on line 145 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:280]
+WARNING: [Synth 8-8895] 'jalr_ctrl_top_wire' is already implicitly declared on line 201 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:281]
+WARNING: [Synth 8-8895] 'busy_alu_top' is already implicitly declared on line 167 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:332]
+WARNING: [Synth 8-8895] 'valid_alu_top' is already implicitly declared on line 168 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:333]
+WARNING: [Synth 8-8895] 'alu_result_ex_mem_wire' is already implicitly declared on line 103 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:355]
+WARNING: [Synth 8-8895] 'rs2_ex_mem_wire' is already implicitly declared on line 104 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:356]
+WARNING: [Synth 8-8895] 'rd_addr_ex_mem_wire' is already implicitly declared on line 146 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:357]
+WARNING: [Synth 8-8895] 'Reg_Write_ex_mem_wire' is already implicitly declared on line 148 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:362]
+WARNING: [Synth 8-8895] 'Mem_Write_ex_mem_wire' is already implicitly declared on line 105 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:364]
+WARNING: [Synth 8-8895] 'rd_addr_mem_wb_wb_wire' is already implicitly declared on line 147 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:412]
+WARNING: [Synth 8-8895] 'Reg_Write_mem_wb_wire' is already implicitly declared on line 149 [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:417]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Single_Cycle_RISCV32I' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:1]
+INFO: [Synth 8-6157] synthesizing module 'decision_making_controller' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/decision_making_controller.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'decision_making_controller' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/decision_making_controller.v:1]
+INFO: [Synth 8-6157] synthesizing module 'I2C_Slave' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:1]
+	Parameter debounce bound to: 3 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:153]
+INFO: [Synth 8-6155] done synthesizing module 'I2C_Slave' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/I2C_Slave.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mlp' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/mlp.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mlp' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/mlp.v:1]
+INFO: [Synth 8-6157] synthesizing module 'lcd_driver' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/lcd_driver.v:1]
+INFO: [Synth 8-6157] synthesizing module 'i2c_driver' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:94]
+INFO: [Synth 8-6155] done synthesizing module 'i2c_driver' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/lcd_driver.v:350]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/lcd_driver.v:338]
+INFO: [Synth 8-6155] done synthesizing module 'lcd_driver' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/lcd_driver.v:1]
+WARNING: [Synth 8-689] width (4) of port connection 'selective' does not match port width (3) of module 'lcd_driver' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:89]
+WARNING: [Synth 8-6104] Input port 'scl_master' has an internal driver [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:91]
+INFO: [Synth 8-6157] synthesizing module 'Data_Memory_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Data_Memory.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Data_Memory_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Data_Memory.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Hazard_Unit_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Hazard_Unit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Hazard_Unit_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Hazard_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Control_Unit_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:25]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:83]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:147]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'Control_Unit_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'PC_Counter_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/PC_Counter.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'PC_Counter_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/PC_Counter.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pc_plus_4_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/pc_plus_4.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pc_plus_4_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/pc_plus_4.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_Memory_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:1]
+CRITICAL WARNING: [Synth 8-4445] could not open $readmem data file 'report_mem.mem'; please make sure the file is added to project and has read permission, ignoring [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:15]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_Memory_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Fetch_Stage_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Fetch_Stage.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Fetch_Stage_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Fetch_Stage.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Instruction_Decoder_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instruction_Decoder.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Instruction_Decoder_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instruction_Decoder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Register_File_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Register_File.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Register_File_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Register_File.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Decode_Stage_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Decode_Stage_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Decode_Stage.v:1]
+INFO: [Synth 8-6157] synthesizing module 'pc_imm_adder_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/pc_imm_adder.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'pc_imm_adder_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/pc_imm_adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'ALU_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Function_Control' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Function_Control.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Function_Control' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Function_Control.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Ripple_Carry_Adder' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Ripple_Carry_Adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'full_adder' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Ripple_Carry_Adder.v:35]
+INFO: [Synth 8-6155] done synthesizing module 'full_adder' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Ripple_Carry_Adder.v:35]
+INFO: [Synth 8-6155] done synthesizing module 'Ripple_Carry_Adder' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Ripple_Carry_Adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Logic_Unit' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Logic_Unit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Logic_Unit' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Logic_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Shifter_Unit' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Shifter_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Shifter_Unit.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'mux' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Shifter_Unit.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'Shifter_Unit' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Shifter_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Comparison_Unit' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Comparison_Unit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Comparison_Unit' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Comparison_Unit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Booth_Radix4_Multiplier' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/new/Booth_Radix4_Multiplier.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Booth_Radix4_Multiplier' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/new/Booth_Radix4_Multiplier.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Booth_Radix2_Divider' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/new/Booth_Radix2_Divider.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Booth_Radix2_Divider' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/new/Booth_Radix2_Divider.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'ALU_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Extend_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Extend.v:1]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Extend.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'Extend_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Extend.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Execute_Stage_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Execute_Stage_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Execute_Stage.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Uart_TX' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/new/Uart_TX.v:2]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/new/Uart_TX.v:39]
+INFO: [Synth 8-6155] done synthesizing module 'Uart_TX' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/new/Uart_TX.v:2]
+WARNING: [Synth 8-689] width (9) of port connection 'din_i' does not match port width (8) of module 'Uart_TX' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:402]
+INFO: [Synth 8-6157] synthesizing module 'Memory_Access_Stage_1' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Memory_Access_Stage_1' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Memory_Access_Stage.v:1]
+INFO: [Synth 8-6157] synthesizing module 'Mux_2' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Mux_2.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Mux_2' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Mux_2.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'Single_Cycle_RISCV32I' (0#1) [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Single_Cycle_RISCV32I.v:1]
+WARNING: [Synth 8-3848] Net done in module/entity decision_making_controller does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/decision_making_controller.v:18]
+WARNING: [Synth 8-6014] Unused sequential element nack_received_reg was removed.  [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:80]
+WARNING: [Synth 8-6014] Unused sequential element capture_en_reg was removed.  [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/i2c_driver.v:84]
+WARNING: [Synth 8-6014] Unused sequential element clear_display_reg was removed.  [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/Downloads/lcd_driver.v:323]
+WARNING: [Synth 8-3848] Net dmc_start_bit in module/entity Data_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Data_Memory.v:12]
+WARNING: [Synth 8-3848] Net dmc_real_time_bit in module/entity Data_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Data_Memory.v:13]
+WARNING: [Synth 8-3848] Net mlp_busy_bit in module/entity Data_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Data_Memory.v:15]
+WARNING: [Synth 8-3848] Net i2c_busy_bit in module/entity Data_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Data_Memory.v:16]
+WARNING: [Synth 8-3848] Net ex_Stall in module/entity Hazard_Unit_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Hazard_Unit.v:28]
+WARNING: [Synth 8-3848] Net mem_Stall in module/entity Hazard_Unit_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/new/Hazard_Unit.v:29]
+WARNING: [Synth 8-4767] Trying to implement RAM ' ' in registers. Block RAM or DRAM implementation is not possible; see log for reasons.
+	1: Unable to determine number of words or word size in RAM. 
+	2: No valid read/write found for RAM. 
+RAM dissolved into registers
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+WARNING: [Synth 8-3848] Net report_mem_Reg in module/entity Instruction_Memory_1 does not have driver. [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Instructrion_Memory.v:9]
+INFO: [Common 17-14] Message 'Synth 8-3848' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7129] Port B_i[31] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[30] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[29] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[28] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[27] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[26] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[25] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[24] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[23] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[22] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[21] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[20] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[19] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[18] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[17] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[16] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[15] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[14] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[13] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[12] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[11] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[10] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[9] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[8] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[7] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[6] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[5] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[31] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ex_Stall in module Hazard_Unit_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mem_Stall in module Hazard_Unit_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dmc_start_bit in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dmc_real_time_bit in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mlp_busy_bit in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port i2c_busy_bit in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mlp_result_bits[3] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mlp_result_bits[2] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mlp_result_bits[1] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port mlp_result_bits[0] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[31] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[30] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[29] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[28] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[27] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[26] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[25] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[24] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[23] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[22] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[21] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[20] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[19] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[18] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[17] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[16] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[15] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[14] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[13] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[12] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[11] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[10] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[9] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port alu_result[8] in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port dmc_done_bit in module Data_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port done in module decision_making_controller is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a50ticsg324-1L
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a50ticsg324-1L
+INFO: [Synth 8-802] inferred FSM for state register 'STATE_reg' in module 'decision_making_controller'
+INFO: [Synth 8-802] inferred FSM for state register 'fsm_state_reg' in module 'I2C_Slave'
+INFO: [Synth 8-802] inferred FSM for state register 'fsm_state_reg' in module 'i2c_driver'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'lcd_driver'
+INFO: [Synth 8-802] inferred FSM for state register 'state_1_reg' in module 'lcd_driver'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Uart_TX'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                               00 |                               00
+                     GET |                               01 |                               01
+                     RUN |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'STATE_reg' using encoding 'sequential' in module 'decision_making_controller'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+                    TLOW |                              010 |                              010
+                   THIGH |                              011 |                              011
+                    TSTO |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'fsm_state_reg' using encoding 'sequential' in module 'I2C_Slave'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+                   START |                              001 |                              001
+                    TLOW |                              010 |                              010
+                     TSU |                              011 |                              011
+                   THIGH |                              100 |                              100
+                     THD |                              101 |                              101
+                    TSTO |                              110 |                              110
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'fsm_state_reg' using encoding 'sequential' in module 'i2c_driver'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  PART_1 |                                0 |                              000
+                  PART_2 |                                1 |                              001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_1_reg' using encoding 'sequential' in module 'lcd_driver'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                              000 |                              000
+          INITIALIZE_LCD |                              001 |                              001
+               WRITE_LCD |                              010 |                              010
+               COMPLETED |                              011 |                              011
+                  iSTATE |                              100 |                              111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'lcd_driver'
+WARNING: [Synth 8-327] inferring latch for variable 'ResultSrc_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'Mem_Write_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'Alu_Control_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'AluSrc_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'ImmSrc_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'jalr_ctrl_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'Reg_Write_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Control_Unit.v:33]
+WARNING: [Synth 8-327] inferring latch for variable 'arith_op_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Function_Control.v:36]
+WARNING: [Synth 8-327] inferring latch for variable 'logic_op_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Function_Control.v:45]
+WARNING: [Synth 8-327] inferring latch for variable 'shifter_op_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Function_Control.v:79]
+WARNING: [Synth 8-327] inferring latch for variable 'cmp_op_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Function_Control.v:58]
+WARNING: [Synth 8-327] inferring latch for variable 'mul_op_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Function_Control.v:99]
+WARNING: [Synth 8-327] inferring latch for variable 'div_op_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Function_Control.v:103]
+WARNING: [Synth 8-327] inferring latch for variable 'F_o_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/ALU_top.v:107]
+WARNING: [Synth 8-327] inferring latch for variable 'immediate_extended_reg' [C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.srcs/sources_1/imports/sources_1/imports/sources_1/imports/new/Extend.v:10]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                               00 |                              000
+                 S_START |                               01 |                              001
+                  S_DATA |                               10 |                              010
+                  S_STOP |                               11 |                              011
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'Uart_TX'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:13 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input   64 Bit       Adders := 1     
+	   2 Input   33 Bit       Adders := 1     
+	   2 Input   32 Bit       Adders := 5     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 3     
+	   2 Input    5 Bit       Adders := 4     
+	   2 Input    3 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 65    
++---Registers : 
+	               65 Bit    Registers := 1     
+	               64 Bit    Registers := 3     
+	               33 Bit    Registers := 1     
+	               32 Bit    Registers := 207   
+	               29 Bit    Registers := 3     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 10    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 5     
+	                5 Bit    Registers := 8     
+	                3 Bit    Registers := 7     
+	                1 Bit    Registers := 56    
++---Muxes : 
+	   2 Input   65 Bit        Muxes := 4     
+	   3 Input   64 Bit        Muxes := 1     
+	   2 Input   64 Bit        Muxes := 4     
+	   2 Input   32 Bit        Muxes := 23    
+	   4 Input   32 Bit        Muxes := 2     
+	   6 Input   32 Bit        Muxes := 1     
+	   3 Input   32 Bit        Muxes := 2     
+	   5 Input   29 Bit        Muxes := 1     
+	   2 Input   28 Bit        Muxes := 1     
+	   7 Input   21 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 2     
+	   5 Input   10 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 3     
+	  20 Input    8 Bit        Muxes := 14    
+	   5 Input    8 Bit        Muxes := 3     
+	   4 Input    8 Bit        Muxes := 1     
+	   7 Input    7 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 3     
+	   2 Input    5 Bit        Muxes := 5     
+	   5 Input    5 Bit        Muxes := 1     
+	   7 Input    5 Bit        Muxes := 5     
+	  10 Input    5 Bit        Muxes := 1     
+	   9 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 1     
+	  37 Input    3 Bit        Muxes := 1     
+	   7 Input    3 Bit        Muxes := 3     
+	   2 Input    3 Bit        Muxes := 7     
+	   4 Input    3 Bit        Muxes := 2     
+	   6 Input    3 Bit        Muxes := 1     
+	  10 Input    3 Bit        Muxes := 2     
+	  19 Input    3 Bit        Muxes := 1     
+	   8 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 3     
+	  19 Input    2 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 313   
+	   3 Input    1 Bit        Muxes := 7     
+	   5 Input    1 Bit        Muxes := 55    
+	   7 Input    1 Bit        Muxes := 15    
+	   8 Input    1 Bit        Muxes := 4     
+	  10 Input    1 Bit        Muxes := 6     
+	  19 Input    1 Bit        Muxes := 7     
+	   4 Input    1 Bit        Muxes := 9     
+	   6 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 120 (col length:60)
+BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port B_i[31] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[30] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[29] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[28] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[27] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[26] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[25] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[24] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[23] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[22] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[21] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[20] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[19] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[18] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[17] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[16] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[15] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[14] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[13] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[12] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[11] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[10] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[9] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[8] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[7] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[6] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port B_i[5] in module Shifter_Unit is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[31] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[30] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[29] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[28] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[27] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[26] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[25] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[24] in module Instruction_Memory_1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port address[23] in module Instruction_Memory_1 is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (FSM_sequential_STATE_reg[0]) is unused and will be removed from module decision_making_controller.
+WARNING: [Synth 8-3332] Sequential element (ResultSrc_reg[2]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (ResultSrc_reg[1]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (ResultSrc_reg[0]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (Mem_Write_reg) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (Alu_Control_reg[4]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (Alu_Control_reg[3]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (Alu_Control_reg[2]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (Alu_Control_reg[1]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (Alu_Control_reg[0]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (AluSrc_reg) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (ImmSrc_reg[2]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (ImmSrc_reg[1]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (ImmSrc_reg[0]) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (jalr_ctrl_reg) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (Reg_Write_reg) is unused and will be removed from module Control_Unit_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/arith_op_reg) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/logic_op_reg[1]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/logic_op_reg[0]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/shifter_op_reg[1]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/shifter_op_reg[0]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/cmp_op_reg[2]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/cmp_op_reg[1]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/cmp_op_reg[0]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/mul_op_reg) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Function_Control_1/div_op_reg) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[31]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[30]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[29]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[28]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[27]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[26]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[25]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[24]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[23]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[22]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[21]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[20]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[19]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[18]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[17]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[16]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[15]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[14]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[13]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[12]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[11]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[10]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[9]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[8]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[7]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[6]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[5]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[4]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[3]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[2]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[1]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (F_o_reg[0]) is unused and will be removed from module ALU_1.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[31]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[30]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[29]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[28]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[27]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[26]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[25]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[24]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[23]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[22]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[21]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[20]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[19]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[18]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[17]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[16]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[15]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[14]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[13]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[12]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[11]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[10]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[9]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[8]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[7]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[6]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[5]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[4]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[3]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[2]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[1]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (Extend/immediate_extended_reg[0]) is unused and will be removed from module Single_Cycle_RISCV32I.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:21 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++-----------------+--------------------------------+---------------+----------------+
+|Module Name      | RTL Object                     | Depth x Width | Implemented As | 
++-----------------+--------------------------------+---------------+----------------+
+|Function_Control | unit_select                    | 32x3          | LUT            | 
+|Function_Control | cmp_op                         | 32x1          | LUT            | 
+|ALU_1            | Function_Control_1/unit_select | 32x3          | LUT            | 
+|ALU_1            | Function_Control_1/cmp_op      | 32x1          | LUT            | 
++-----------------+--------------------------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:21 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (nolabel_line14/FSM_sequential_STATE_reg[1]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (LCD_MODULE/I2C/FSM_sequential_fsm_state_reg[2]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (LCD_MODULE/I2C/FSM_sequential_fsm_state_reg[1]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (LCD_MODULE/I2C/FSM_sequential_fsm_state_reg[0]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (LCD_MODULE/FSM_sequential_state_1_reg) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (LCD_MODULE/FSM_sequential_state_reg[2]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (LCD_MODULE/FSM_sequential_state_reg[1]) is unused and will be removed from module Single_Cycle_RISCV32I.
+WARNING: [Synth 8-3332] Sequential element (LCD_MODULE/FSM_sequential_state_reg[0]) is unused and will be removed from module Single_Cycle_RISCV32I.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:21 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4649] Removing BlackBox instance MLP_MODULE of module mlp having unconnected or no output ports
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    45|
+|3     |LUT1   |     2|
+|4     |LUT2   |    80|
+|5     |LUT3   |    16|
+|6     |LUT4   |   107|
+|7     |LUT5   |    34|
+|8     |LUT6   |    77|
+|9     |FDRE   |   167|
+|10    |FDSE   |     9|
+|11    |IBUF   |     3|
+|12    |IOBUF  |     1|
+|13    |OBUF   |     1|
+|14    |OBUFT  |     1|
++------+-------+------+
+
+Report Instance Areas: 
++------+-------------------+-----------+------+
+|      |Instance           |Module     |Cells |
++------+-------------------+-----------+------+
+|1     |top                |           |   544|
+|2     |  I2C_SLAVE_MODULE |I2C_Slave  |   441|
+|3     |  LCD_MODULE       |lcd_driver |     1|
+|4     |    I2C            |i2c_driver |     1|
+|5     |  UART             |Uart_TX    |    95|
++------+-------------------+-----------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 1 critical warnings and 469 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:25 . Memory (MB): peak = 1293.879 ; gain = 0.000
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1293.879 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 46 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1293.879 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Synth Design complete, checksum: e81dadb1
+INFO: [Common 17-83] Releasing license: Synthesis
+105 Infos, 405 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:27 . Memory (MB): peak = 1293.879 ; gain = 0.000
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.runs/synth_1/Single_Cycle_RISCV32I.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Single_Cycle_RISCV32I_utilization_synth.rpt -pb Single_Cycle_RISCV32I_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Mar 24 20:33:22 2024...
