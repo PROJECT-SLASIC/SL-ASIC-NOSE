@@ -8,27 +8,39 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 	inout  sda_slave
 );
 
-	wire dmc_start    ;
-	wire dmc_real_time;
-	wire dmc_done     ;
-	decision_making_controller (
-		.clk      (clk),
-		.rst      (rst_i),
+	wire        dmc_start      ;
+	wire        dmc_real_time  ;
+	wire        dmc_done       ;
+	wire [31:0] dm_data        ;
+	wire [31:0] dm_address     ;
+	wire        dm_read_enable ;
+	wire        dm_write_enable;
 
-		.i2c_start(),
-		.i2c_busy (),
-		.i2c_valid(),
-
-		.mlp_start(mlp_start),
-		.mlp_busy (mlp_busy),
-		.mlp_valid(mlp_valid),
-		.mlp_ready(mlp_ready),
-
-		.lcd_start(lcd_start),
-
-		.start    (dmc_start),
-		.real_time(dmc_real_time),
-		.done     (dmc_done)
+	decision_making_controller DECISION_MAKING_CONTROLLER (
+		.clk            (clk               ),
+		.rst            (rst_i             ),
+		
+		.i2c_busy       (i2c_slave_busy    ),
+		.i2c_valid      (i2c_slave_valid   ),
+		.i2c_index      (i2c_slave_index   ),
+		.i2c_data_in    (i2c_slave_data_out),
+		.i2c_data_out   (i2c_slave_data_in ),
+		
+		.mlp_start      (mlp_start         ),
+		.mlp_busy       (mlp_busy          ),
+		.mlp_valid      (mlp_valid         ),
+		.mlp_ready      (mlp_ready         ),
+		
+		.lcd_start      (lcd_start         ),
+		
+		.dm_data        (dm_data           ),
+		.dm_address     (dm_address        ),
+		.dm_read_enable (dm_read_enable    ),
+		.dm_write_enable(dm_write_enable   ),
+		
+		.start          (dmc_start         ),
+		.real_time      (dmc_real_time     ),
+		.done           (dmc_done          )
 	);
 
 
@@ -60,7 +72,7 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 		.busy      (i2c_slave_busy    ), // output
 		.valid     (i2c_slave_valid   )  // output
 	);
-	
+
 
 	wire        mlp_start                   ;
 	wire        mlp_busy                    ;
@@ -105,6 +117,12 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 		.wd_data          (rs2_ex_mem_wire       ),
 		.write_enable     (Mem_Write_ex_mem_wire ),
 		.rd               (rd_top                ),
+		
+		// Decision Making Controller Access Pins
+		.data             (dm_data               ),
+		.address          (dm_address            ),
+		.read             (dm_read_enable        ),
+		.write            (dm_write_enable       ),
 		
 		// Special Registers & Bits
 		.dmc_start_bit    (dmc_start             ),
@@ -336,18 +354,18 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 	wire busy_alu_top ;
 	wire valid_alu_top;
 	ALU_1 ALU (
-		.clk      (clk                   ),
-		.rst      (rst_i                 ),
-		.A_i      ((Forward_A_wire==2'b10) ? (alu_result_ex_mem_wire)
-		: ((Forward_A_wire==2'b01) ? (output_mux_top) 
+		.clk      (clk                                                                      ),
+		.rst      (rst_i                                                                    ),
+		.A_i      ((Forward_A_wire==2'b10) ? (alu_result_ex_mem_wire                        )
+		: ((Forward_A_wire==2'b01) ? (output_mux_top)
 		: (rs1_id_ex_wire))), //ok
 		.B_i      ((!AluSrc_id_ex_wire) ? ((Forward_B_wire==2'b10) ? (alu_result_ex_mem_wire)
-		: ((Forward_B_wire==2'b01) ? (output_mux_top) 
+		: ((Forward_B_wire==2'b01) ? (output_mux_top)
 		: (rs2_id_ex_wire))) : (immediate_extended_id_ex_wire)),//ok
-		.op       (Alu_Control_id_ex_wire), //ok
-		.busy_alu (busy_alu_top          ), //ok
-		.valid_alu(valid_alu_top         ), //ok
-		.F_o      (F_o_top               )  //ok
+		.op       (Alu_Control_id_ex_wire                                                   ), //ok
+		.busy_alu (busy_alu_top                                                             ), //ok
+		.valid_alu(valid_alu_top                                                            ), //ok
+		.F_o      (F_o_top                                                                  )  //ok
 	);
 
 	Extend_1 Extend (

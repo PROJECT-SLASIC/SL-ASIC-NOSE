@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
-| Date         : Sun Mar 24 20:33:22 2024
+| Date         : Mon Mar 25 16:42:36 2024
 | Host         : DESKTOP-VS08MQJ running 64-bit major release  (build 9200)
 | Command      : report_utilization -file Single_Cycle_RISCV32I_utilization_synth.rpt -pb Single_Cycle_RISCV32I_utilization_synth.pb
 | Design       : Single_Cycle_RISCV32I

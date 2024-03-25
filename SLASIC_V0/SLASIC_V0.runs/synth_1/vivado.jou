@@ -2,8 +2,8 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Sun Mar 24 20:32:48 2024
-# Process ID: 20028
+# Start of session at: Mon Mar 25 16:41:58 2024
+# Process ID: 17816
 # Current directory: C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.runs/synth_1
 # Command line: vivado.exe -log Single_Cycle_RISCV32I.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Single_Cycle_RISCV32I.tcl
 # Log file: C:/Users/cengi/OneDrive/Desktop/SLASIC/SL-ASIC-NOSE/SLASIC_V0/SLASIC_V0.runs/synth_1/Single_Cycle_RISCV32I.vds

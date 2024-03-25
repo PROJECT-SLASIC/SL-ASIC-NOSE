@@ -8,6 +8,11 @@ module Data_Memory_1#(parameter width = 32)(
 //    output enable,
     output [width-1:0] rd,          // Read Data
     
+    inout [width-1:0] data,
+    input [width-1:0] address,
+    input read,
+    input write,
+    
     // Special Registers
     output dmc_start_bit,
     output dmc_real_time_bit,
