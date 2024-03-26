@@ -77,7 +77,7 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 	wire        mlp_start                   ;
 	wire        mlp_busy                    ;
 	wire        mlp_valid                   ;
-	wire        mlp_memory_ready            ;
+	wire        mlp_ready                   ;
 	wire [31:0] sensor_data_register_address;
 	wire [31:0] mlp_data                    ;
 	wire [ 3:0] mlp_result                  ;
@@ -87,7 +87,7 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 		.start           (mlp_start                   ),
 		.busy            (mlp_busy                    ),
 		.valid           (mlp_valid                   ),
-		.memory_ready    (mlp_memory_ready            ),
+		.memory_ready    (mlp_ready                   ),
 		.data_req_address(sensor_data_register_address),
 		.data            (mlp_data                    ),
 		.decsion_result  (mlp_result                  )
@@ -354,18 +354,14 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 	wire busy_alu_top ;
 	wire valid_alu_top;
 	ALU_1 ALU (
-		.clk      (clk                                                                      ),
-		.rst      (rst_i                                                                    ),
-		.A_i      ((Forward_A_wire==2'b10) ? (alu_result_ex_mem_wire                        )
-		: ((Forward_A_wire==2'b01) ? (output_mux_top)
-		: (rs1_id_ex_wire))), //ok
-		.B_i      ((!AluSrc_id_ex_wire) ? ((Forward_B_wire==2'b10) ? (alu_result_ex_mem_wire)
-		: ((Forward_B_wire==2'b01) ? (output_mux_top)
-		: (rs2_id_ex_wire))) : (immediate_extended_id_ex_wire)),//ok
-		.op       (Alu_Control_id_ex_wire                                                   ), //ok
-		.busy_alu (busy_alu_top                                                             ), //ok
-		.valid_alu(valid_alu_top                                                            ), //ok
-		.F_o      (F_o_top                                                                  )  //ok
+		.clk      (clk                                                                                                                                                                            ),
+		.rst      (rst_i                                                                                                                                                                          ),
+		.A_i      ((Forward_A_wire==2'b10) ? (alu_result_ex_mem_wire) : ((Forward_A_wire==2'b01) ? (output_mux_top) : (rs1_id_ex_wire))                                                           ), //ok
+		.B_i      ((!AluSrc_id_ex_wire) ? ((Forward_B_wire==2'b10) ? (alu_result_ex_mem_wire) : ((Forward_B_wire==2'b01) ? (output_mux_top) : (rs2_id_ex_wire))) : (immediate_extended_id_ex_wire)), //ok
+		.op       (Alu_Control_id_ex_wire                                                                                                                                                         ), //ok
+		.busy_alu (busy_alu_top                                                                                                                                                                   ), //ok
+		.valid_alu(valid_alu_top                                                                                                                                                                  ), //ok
+		.F_o      (F_o_top                                                                                                                                                                        )  //ok
 	);
 
 	Extend_1 Extend (
@@ -386,34 +382,32 @@ module Single_Cycle_RISCV32I #(parameter width = 32) (
 	wire       Mem_Write_ex_mem_wire;
 
 	Execute_Stage_1 Execute_Stage (
-		.clk                      (clk                                               ),
-		.rst                      (rst_i                                             ),
-		.stall_ex                 (Stall_ex_wire                                     ), //ok                                                                           // hazarddan ba?la
-		.flush_ex                 (1'b0                                              ), // hazarddan ba?la
+		.clk                      (clk                                                                                                                   ),
+		.rst                      (rst_i                                                                                                                 ),
+		.stall_ex                 (Stall_ex_wire                                                                                                         ), //ok // hazarddan ba?la
+		.flush_ex                 (1'b0                                                                                                                  ), // hazarddan ba?la
 		//
-		.i_alu_result_ex          (F_o_top                                           ), //ok
-		.i_rs2_ex                 (((Forward_B_wire==2'b10) ? (alu_result_ex_mem_wire)
-		: ((Forward_B_wire==2'b01) ? (output_mux_top)
-		: (rs2_id_ex_wire)))),//ok
-		.i_rd_addr_ex             (rd_addr_id_ex_wire                                ), //ok
-		.i_pc_plus_4_ex           (pc_plus_4_id_ex_wire                              ), //ok
-		.i_pc_target_ex           (pc_target_top                                     ), //ok
-		.i_immediate_extended_ex  (immediate_extended_id_ex_wire                     ), //ok
+		.i_alu_result_ex          (F_o_top                                                                                                               ), //ok
+		.i_rs2_ex                 (((Forward_B_wire==2'b10) ? (alu_result_ex_mem_wire) : ((Forward_B_wire==2'b01) ? (output_mux_top) : (rs2_id_ex_wire)))), //ok
+		.i_rd_addr_ex             (rd_addr_id_ex_wire                                                                                                    ), //ok
+		.i_pc_plus_4_ex           (pc_plus_4_id_ex_wire                                                                                                  ), //ok
+		.i_pc_target_ex           (pc_target_top                                                                                                         ), //ok
+		.i_immediate_extended_ex  (immediate_extended_id_ex_wire                                                                                         ), //ok
 		// Control Unit
-		.i_Reg_Write_ex           (Reg_Write_id_ex_wire                              ), //ok
-		.i_ResultSrc_ex           (ResultSrc_id_ex_wire                              ), //ok
-		.i_Mem_Write_ex           (Mem_Write_id_ex_wire                              ), //ok
+		.i_Reg_Write_ex           (Reg_Write_id_ex_wire                                                                                                  ), //ok
+		.i_ResultSrc_ex           (ResultSrc_id_ex_wire                                                                                                  ), //ok
+		.i_Mem_Write_ex           (Mem_Write_id_ex_wire                                                                                                  ), //ok
 		//
-		.alu_result_ex_mem        (alu_result_ex_mem_wire                            ), //ok
-		.rs2_ex_mem               (rs2_ex_mem_wire                                   ), //ok
-		.rd_addr_ex_mem           (rd_addr_ex_mem_wire                               ), //ok
-		.pc_plus_4_ex_mem         (pc_plus_4_ex_mem_wire                             ), //ok
-		.pc_target_ex_mem         (pc_target_ex_mem_wire                             ), //ok
-		.immediate_extended_ex_mem(immediate_extended_ex_mem_wire                    ), //ok
+		.alu_result_ex_mem        (alu_result_ex_mem_wire                                                                                                ), //ok
+		.rs2_ex_mem               (rs2_ex_mem_wire                                                                                                       ), //ok
+		.rd_addr_ex_mem           (rd_addr_ex_mem_wire                                                                                                   ), //ok
+		.pc_plus_4_ex_mem         (pc_plus_4_ex_mem_wire                                                                                                 ), //ok
+		.pc_target_ex_mem         (pc_target_ex_mem_wire                                                                                                 ), //ok
+		.immediate_extended_ex_mem(immediate_extended_ex_mem_wire                                                                                        ), //ok
 		// Control Unit
-		.Reg_Write_ex_mem         (Reg_Write_ex_mem_wire                             ), //ok
-		.ResultSrc_ex_mem         (ResultSrc_ex_mem_wire                             ), //ok
-		.Mem_Write_ex_mem         (Mem_Write_ex_mem_wire                             )  //ok
+		.Reg_Write_ex_mem         (Reg_Write_ex_mem_wire                                                                                                 ), //ok
+		.ResultSrc_ex_mem         (ResultSrc_ex_mem_wire                                                                                                 ), //ok
+		.Mem_Write_ex_mem         (Mem_Write_ex_mem_wire                                                                                                 )  //ok
 	);
 
 	wire tx_busy_wire     ;

@@ -13,12 +13,17 @@ module bootloader(
 	output reg        mlp_start      ,
 	input             mlp_busy       ,
 	input             mlp_valid      ,
-	input             mlp_ready      ,
-    
-    
+	input             mlp_ready      
 );
 
-
+	always @(posedge clk) begin
+		if (rst) begin
+			
+		end
+		else begin
+			
+		end
+	end
 
 
 

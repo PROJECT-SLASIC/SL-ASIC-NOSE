@@ -76,15 +76,15 @@ module Function_Control(
             end
             // Shifter Unit - unit_select = 3'b11;
             SLL:begin
-                shifter_op = 2'b000;
+                shifter_op = 2'b00;
                 unit_select = 3'b011;
             end
             SRL:begin
-                shifter_op = 2'b001;
+                shifter_op = 2'b01;
                 unit_select = 3'b011;
             end
             SRA:begin
-                shifter_op = 2'b010;
+                shifter_op = 2'b10;
                 unit_select = 3'b011;
             end
             GREATER_EQUAL_SIGNED:begin
